@@ -40,6 +40,7 @@ model Profiles {
   type_profile   String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  permissions Profiles_Permissions[]
 }
 
 model Permissions {
@@ -47,6 +48,7 @@ model Permissions {
   type_permission      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  profiles Profiles_Permissions[]
 }
 
 model User_Department {
@@ -68,4 +70,9 @@ model Profiles_Permissions {
   permission_id Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  profile        Profiles     @relation(fields: [profile_id], references: [id])
+  permission     Permissions  @relation(fields: [permission_id], references: [id])
+
+  @@index([profile_id, permission_id], name: "unique_profile_permission")
 }
