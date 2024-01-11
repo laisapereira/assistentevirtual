@@ -7,22 +7,40 @@ interface CreateUser {
     email: string;
     password: string;
     name: string;
-    department: string;
-}3
+    departmentId: number;
+}
 
 export const createUser = async (req: Request<CreateUser>, res: Response) => {
-    const { email, password, name, department } = req.body as CreateUser;
+    const { email, password, name, departmentId } = req.body as CreateUser;
 
     try {
-        const user = await prisma.user.create({
-            data: {
-                email,
-                password,
-                name,
-            },
+        
+        // fazendo a verificação do departamento (se existe ou não)
+        const departmentExists = await prisma.department.findUnique({
+          where: { id: departmentId },
         });
+    
+        if (!departmentExists) {
+          return res.status(400).json({ error: 'O departamento especificado não existe.' });
+        }
 
-        res.status(201).json(user);
+        try {
+            const user = await prisma.user.create({
+                data: {
+                    email,
+                    password,
+                    name,
+                    departments: {
+                        connect: { id: departmentId },
+                      },
+                },
+            });
+
+            res.status(201).json(user);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: 'erro ao criar o usuário' });
+        }
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'erro ao criar o usuário' });
