@@ -8,7 +8,7 @@ interface CreateUser {
     password: string;
     name: string;
     department: string;
-}
+}3
 
 export const createUser = async (req: Request<CreateUser>, res: Response) => {
     const { email, password, name, department } = req.body as CreateUser;
@@ -19,17 +19,12 @@ export const createUser = async (req: Request<CreateUser>, res: Response) => {
                 email,
                 password,
                 name,
-                departments: {
-                    create: {
-                       // name: department,
-                    },
-                },
             },
         });
 
         res.status(201).json(user);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Failed to create user' });
+        res.status(500).json({ error: 'erro ao criar o usuário' });
     }
 };
