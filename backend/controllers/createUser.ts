@@ -1,14 +1,35 @@
-import prisma from "../prismaConfig";
+import { Request, Response } from 'express';
+import { PrismaClient } from '@prisma/client';
 
-const createUser = async (userData: any) => {
+const prisma = new PrismaClient();
+
+interface CreateUser {
+    email: string;
+    password: string;
+    name: string;
+    department: string;
+}
+
+export const createUser = async (req: Request<CreateUser>, res: Response) => {
+    const { email, password, name, department } = req.body as CreateUser;
+
     try {
         const user = await prisma.user.create({
-            data: userData,
+            data: {
+                email,
+                password,
+                name,
+                departments: {
+                    create: {
+                       // name: department,
+                    },
+                },
+            },
         });
-        return user;
+
+        res.status(201).json(user);
     } catch (error) {
-        throw new Error(`Erro ao criar o usuário: ${error}`);
+        console.error(error);
+        res.status(500).json({ error: 'Failed to create user' });
     }
 };
-
-export default createUser;

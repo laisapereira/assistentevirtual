@@ -1,15 +1,15 @@
-import prisma from "../prismaConfig";
+import prisma from '../prismaConfig';
+import { Request, Response } from 'express';
 
-async function listAllUsers() {
+const listAllUsers = async (req: Request, res: Response) => {
     try {
-        const usuarios = await prisma.user.findMany();
-        return usuarios;
+        const users = await prisma.user.findMany();
+        res.json(users);
     } catch (error) {
-        console.error('Erro ao listar usuários:', error);
-        throw error;
-    } finally {
-        await prisma.$disconnect();
+        console.error(error);
+        res.status(500).json({ error: 'Failed to fetch users' });
     }
-}
+};
 
 export default listAllUsers;
+

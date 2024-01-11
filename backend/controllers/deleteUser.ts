@@ -1,16 +1,33 @@
 import prisma from "../prismaConfig";
+import { Request, Response } from "express";
 
-async function deleteUser(userId: number) {
+const deleteUser = async (req: Request, res: Response) => {
+    const { userId } = req.params;
+
     try {
-        await prisma.user.delete({
+        // verificando se o user existe
+        const user = await prisma.user.findUnique({
             where: {
-                id: userId,
+                id: parseInt(userId),
             },
         });
-        console.log('Usuário deletado com sucesso!');
+
+        if (!user) {
+            return res.status(404).json({ message: 'Usuário não encontrado' });
+        }
+
+        await prisma.user.delete({
+            where: {
+                id: parseInt(userId),
+            },
+        });
+
+        return res.status(200).json({ message: 'Usuário excluído com sucesso' });
     } catch (error) {
-        console.error('Erro ao deletar usuário:', error);
-    } finally {
-        await prisma.$disconnect();
+        console.error(error);
+        return res.status(500).json({ message: 'Erro ao excluir o usuário' });
     }
-}
+};
+
+export default deleteUser;
+
