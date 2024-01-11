@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import prisma from '../prismaConfig';
 
-export const updateUser = async (req: Request, res: Response) => {
+const updateUser = async (req: Request, res: Response) => {
     const { id, name, email } = req.body;
 
     try {
@@ -17,3 +17,4 @@ export const updateUser = async (req: Request, res: Response) => {
     }
 };
 
+export default updateUser;  
