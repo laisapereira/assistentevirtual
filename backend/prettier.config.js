@@ -1,0 +1,22 @@
+// Take a look at https://prettier.io/docs/en/options.html for configuration options
+module.exports = {
+    tabWidth: 4,
+    useTabs: false,
+    singleQuote: true,
+    quoteProps: 'as-needed',
+    jsxSingleQuote: false,
+    trailingComma: "es5",
+    bracketSpacing: true,
+    jsxBracketSameLine: false,
+    arrowParens: 'avoid',
+    rangeStart: 0,
+    rangeEnd: Infinity,
+    // parser: "custom parser",
+    // filepath: "",
+    requirePragma: false,
+    insertPragma: false,
+    proseWrap: 'preserve',
+    htmlWhitespaceSensitivity: 'css',
+    endOfLine: 'auto',
+    semi: false,
+};
