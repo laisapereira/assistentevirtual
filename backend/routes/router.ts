@@ -5,7 +5,9 @@ import listAllUsers from '../UserController/listAllUsers';
 import updateUser from '../UserController/updateUser';
 
 const router = express.Router();
+const app = express();  
 
+app.use(express.json());
 
 router.get('/users', listAllUsers);
 

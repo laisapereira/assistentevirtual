@@ -12,16 +12,15 @@ interface CreateUser {
 
 const createUser = async (req: Request<CreateUser>, res: Response) => {
     const { email, password, name, departmentId } = req.body as CreateUser;
-
+  
     try {
-        
-        // fazendo a verificação do departamento (se existe ou não)
-        const departmentExists = await prisma.department.findUnique({
-          where: { id: departmentId },
+
+        const departmentExists = await prisma.department.findMany({
+            where: { id: departmentId },
         });
-    
+
         if (!departmentExists) {
-          return res.status(400).json({ error: 'O departamento especificado não existe.' });
+            return res.status(400).json({ error: 'O departamento especificado não existe.' });
         }
 
         try {

@@ -52,6 +52,7 @@ var createUser = function (req, res) { return __awaiter(void 0, void 0, void 0, 
                     })];
             case 2:
                 departmentExists = _b.sent();
+                console.log(departmentExists);
                 if (!departmentExists) {
                     return [2 /*return*/, res.status(400).json({ error: 'O departamento especificado não existe.' })];
                 }
