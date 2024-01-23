@@ -1,4 +1,4 @@
-// It's a svg files parser for Jest library
+/* // It's a svg files parser for Jest library
 
 module.exports = {
   process() {
@@ -8,4 +8,4 @@ module.exports = {
     // The output is always the same.
     return 'svgTransform';
   },
-};
+}; */
