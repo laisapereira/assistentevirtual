@@ -1,5 +1,5 @@
 {
-  "name": "node-typescript-starter",
+  "name": "backend",
   "version": "1.0.0",
   "description": "basic node.js, typescript, and jest project starter",
   "main": "dist/index.js",
@@ -17,7 +17,7 @@
     "starter",
     "jest"
   ],
-  "author": "nkmmadusanka@gmail.com",
+  "author": "acelera_FJS",
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^24.0.21",
