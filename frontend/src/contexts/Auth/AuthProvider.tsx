@@ -13,9 +13,9 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const signIn = async (email: string, password: string) => {
     const data = await api.signIn(email, password);
 
-    if (data.user && data.token) {
+    if (data.user && data.success) {
       setUser(data.user);
-      localStorage.setItem("token", data.token);
+     
       return true;
     }
     return false;
