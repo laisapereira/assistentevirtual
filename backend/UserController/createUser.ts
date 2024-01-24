@@ -11,6 +11,7 @@ interface CreateUser {
 }
 
 const createUser = async (req: Request<CreateUser>, res: Response) => {
+
     const { email, password, name, departmentId } = req.body as CreateUser;
   
     try {
@@ -44,6 +45,8 @@ const createUser = async (req: Request<CreateUser>, res: Response) => {
         console.error(error);
         res.status(500).json({ error: 'erro ao criar o usuário' });
     }
+
+    return res.status(200).json({ message: 'User created successfully' });
 };
 
 export default createUser;
