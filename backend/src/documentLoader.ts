@@ -1,5 +1,6 @@
 import { DirectoryLoader } from "langchain/document_loaders/fs/directory";
 import { PDFLoader } from "langchain/document_loaders/fs/pdf";
+import { TextLoader} from "langchain/document_loaders/fs/text";
 
 interface Document {
     pageContent: string | string[];
@@ -8,6 +9,7 @@ interface Document {
 export const loadAndNormalizeDocuments = async (): Promise<string[]> => {
     const loader = new DirectoryLoader("./documents", {
         ".pdf": (path: string) => new PDFLoader(path),
+        ".txt": (path: string) => new TextLoader(path)
     });
 
     console.log("Loading docs...");
