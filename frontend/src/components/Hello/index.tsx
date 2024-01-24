@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+/* import React, { useState } from 'react';
 
-import { initialComponentProps } from './handlers';
+import { initialComponentProps } from '../Hello/Hello';
 import { Hello } from '@components/Hello/Hello';
 
 export default (): JSX.Element => {
@@ -8,3 +8,4 @@ export default (): JSX.Element => {
 
   return <Hello {...componentProps} />;
 };
+ */

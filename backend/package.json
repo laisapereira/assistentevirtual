@@ -6,7 +6,7 @@
     "test": "jest",
     "coverage": "jest --coverage",
     "build": "rimraf dist && tsc",
-   "dev": "npx tsx ./src/server.ts",
+    "dev": "npx tsx ./src/server.ts",
     "lint": "prettier --write \"{src,test}/**/*.ts\""
   },
   "keywords": [
@@ -38,6 +38,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@prisma/client": "^5.8.1",
     "performance-now": "^2.1.0",
     "ts-node": "^10.9.2"
   }
