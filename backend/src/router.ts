@@ -5,6 +5,21 @@ import { OpenAI } from "langchain/llms/openai";
 import { RetrievalQAChain } from "langchain/chains";
 
 import now from "performance-now";
+import fs from "fs";
+
+const addConsultaAoHistorico = (consulta: string, resposta: string) => {
+
+    const timestamp = new Date().toISOString();
+  
+    const logEntry = `${timestamp} - Consulta: ${consulta}\nResposta: ${resposta}\n\n`;
+  
+    fs.appendFile("consultas.log", logEntry, (err) => {
+  
+      if (err) console.error("Erro ao adicionar consulta ao histórico:", err);
+  
+    });
+  
+};
 
 let totalInteractions = 0;
 let resolvedInteractions = 0;
@@ -31,6 +46,7 @@ router.post('/', async (request: Request, response: Response) => {
 
     console.log("Querying chain...");
     const result = await chain.call({ query: chats });
+    console.log(result);
 
     // metricas 
     const endTime = now();
@@ -43,6 +59,9 @@ router.post('/', async (request: Request, response: Response) => {
         resolvedInteractions++;
     }
 
+    const resposta = result?.text?.toString() || "Nenhuma resposta encontrada.";
+
+    addConsultaAoHistorico(chats, resposta);
     logMetrics();
 
     response.json({ output: result });
