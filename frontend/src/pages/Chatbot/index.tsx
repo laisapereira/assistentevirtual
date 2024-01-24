@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import ChatForm from '../Form/index';
-import { sendMessage } from '../App/apiFunctions';
+import { useState } from "react";
+import ChatForm from "../../components/Form/index.tsx";
+import { sendMessage } from "../../components/App/apiFunctions.ts";
 
-import './chatbot.css';
-import React from 'react';
+import "./chatbot.css";
+import React from "react";
 
 const Chatbot = () => {
   const [chatLog, setChatLog] = useState([]);
@@ -11,11 +11,21 @@ const Chatbot = () => {
   const handleSubmit = async (userMessage: string) => {
     const botResponse = await sendMessage(userMessage);
 
-    setChatLog((prevChatLog) => [
-      ...prevChatLog,
-      { type: 'user', message: userMessage, profilePic: '../../assets/user.svg' },
-      { type: 'bot', message: botResponse.text, profilePic: '../../assets/logo.svg' },
-    ]);
+    setChatLog(
+      (prevChatLog: { type: string; message: any; profilePic: string }[]) => [
+        ...prevChatLog,
+        {
+          type: "user",
+          message: userMessage,
+          profilePic: "../../assets/user.svg",
+        },
+        {
+          type: "bot",
+          message: botResponse.text,
+          profilePic: "../../assets/logo.svg",
+        },
+      ]
+    );
   };
 
   return (
@@ -28,7 +38,7 @@ const Chatbot = () => {
               <img
                 className="profile-pic"
                 src={entry.profilePic}
-                alt={entry.type === 'user' ? 'Foto do Usuário' : 'Foto do Bot'}
+                alt={entry.type === "user" ? "Foto do Usuário" : "Foto do Bot"}
               />
               <div className={`${entry.type}-message message-content`}>
                 <p>{entry.message}</p>
