@@ -2,10 +2,9 @@
 
 import { useState } from "react";
 import React from "react";
-import { AuthContext } from "./AuthContext";
+import { AuthContext } from "./AuthContext.tsx";
 import { User } from "../../types/User";
-import { use } from "chai";
-import { useApi } from "../../hooks/useApi";
+import { useApi } from "../../hooks/useApi.ts";
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const [user, setUser] = useState<User | null>(null);
@@ -21,7 +20,10 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     }
     return false;
   };
-  const signOut = async () => {};
+  const signOut = async () => {
+    await api.logout()
+    setUser(null);
+  };
 
   return (
     <AuthContext.Provider value={{ user, signIn, signOut }}>
