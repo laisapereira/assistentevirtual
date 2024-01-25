@@ -11,33 +11,33 @@ export const useApi = () => ({
     if (user) {
       return { success: true, user, token };
     } else {
-      return { success: false, message: 'Token inválido' };
+      return { success: false, message: "Token inválido" };
     }
-    
+
     /* const response = await api.post("/validateToken", { token }); 
     return response.data; */
   },
 
   signIn: async (email: string, password: string) => {
-   
-    const user = mockUsers.
-    find((user) => user.email === email && user.password === password);
-      
-    if (user) {
-        return { success: true, user };
-    } else {
-      return { success: false, message: 'Usuário ou senha incorretos' };
-    }
-   
-    /*  const response = await api.post("/signIn", { email, password }); 
+    const user = mockUsers.find((user) => user.email === email && user.password === password);
     
- /*    return response.data; */
+    if (user) {
+      return {
+        user,
+        token: user.id
+      };
+    } else {
+      return { success: false, message: "Usuário ou senha incorretos" };
+    }
+
+    /*  const response = await api.post("/signIn", { email, password }); 
+      
+   /*    return response.data; */
   },
 
   logout: async () => {
-
     return { success: true };
-   /*  const response = await api.post("/logout");
+    /*  const response = await api.post("/logout");
     return response.data; */
   },
 });
