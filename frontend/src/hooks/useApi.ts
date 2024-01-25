@@ -20,7 +20,7 @@ export const useApi = () => ({
 
   signIn: async (email: string, password: string) => {
     const user = mockUsers.find((user) => user.email === email && user.password === password);
-    
+
     if (user) {
       return {
         user,
@@ -30,8 +30,7 @@ export const useApi = () => ({
       return { success: false, message: "Usuário ou senha incorretos" };
     }
 
-    /*  const response = await api.post("/signIn", { email, password }); 
-      
+    /*  const response = await api.post("/signIn", { email, password });    
    /*    return response.data; */
   },
 

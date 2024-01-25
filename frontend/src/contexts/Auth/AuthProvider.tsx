@@ -19,10 +19,8 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
           setUser(data.user)
         }
       }
-    }
-    
-    validateToken()
-   
+    }  
+    validateToken()  
   }, [api])
 
 

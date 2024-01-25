@@ -14,7 +14,7 @@ const Chatbot = () => {
     const botResponse = await sendMessage(userMessage);
 
     setChatLog(
-      (prevChatLog: { type: string; message: any; profilePic: string }[]) => [
+      (prevChatLog: { type: string; message: string; profilePic: string }[]) => [
         ...prevChatLog,
         {
           type: "user",
