@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ChatForm from "../../components/Form/index.tsx";
 import { sendMessage } from "../../components/App/apiFunctions.ts";
 
 import "./chatbot.css";
 import React from "react";
+import { AuthContext } from "../../contexts/Auth/AuthContext.tsx";
 
 const Chatbot = () => {
   const [chatLog, setChatLog] = useState([]);
+  const auth = useContext(AuthContext);
 
   const handleSubmit = async (userMessage: string) => {
     const botResponse = await sendMessage(userMessage);
@@ -31,6 +33,7 @@ const Chatbot = () => {
   return (
     <div className="chatbot">
       <h1>Assistente Virtual FJS</h1>
+      <h3> Olá, {auth.user?.name}! Tudo bem? </h3>
       <div className="chat-box">
         <div className="chat-log" id="chat-log">
           {chatLog.map((entry, index) => (

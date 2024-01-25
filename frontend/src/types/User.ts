@@ -8,9 +8,9 @@ export interface User {
 const mockUsers: User[] = [
   {
     id: 1,
-    email: 'user1@example.com',
+    email: 'user@example.com',
     name: 'John Doe',
-    password: 'hashedpassword1',
+    password: '1234567',
   },
   {
     id: 2,

@@ -1,23 +1,30 @@
 import Footer from "../Footer/index.tsx";
 import "../../../src/index.css";
 import Chatbot from "../../pages/Chatbot/index.tsx";
-import React from "react";
+import React, { useContext } from "react";
 
 import Home from "../../pages/Home/index.tsx";
 
-import { Route, Routes } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import { RequireAuth } from "../../contexts/Auth/RequireAuth.tsx";
+import { AuthContext } from "../../contexts/Auth/AuthContext.tsx";
 
 export default function App() {
+
+  const auth = useContext(AuthContext);
+
+
   return (
     <div className="body-page">
       <section className="main-section">
         <h1>Pagina inicial</h1>
         <nav>
-          <a href="/" style={{ margin: "15px" }}>
+          <Link to="/" style={{ margin: "15px" }}>
             Home
-          </a>
-          <a href="/private">Chatbot</a>
+          </Link>
+          <Link to="/private">Chatbot</Link>
+          {auth.user && <button onClick={auth.signOut}>Sair</button> }
+
         </nav>
       </section>
 

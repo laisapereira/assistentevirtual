@@ -7,7 +7,7 @@ const api = axios.create({
 
 export const useApi = () => ({
   validateToken: async (token: string) => {
-    const user = mockUsers.find((u) => u.id === +token); // Simula que o token é o ID do usuário
+    const user = mockUsers.find((user) => user.id === +token); // simulando que o token é o ID do usuário
     if (user) {
       return { success: true, user, token };
     } else {
@@ -20,8 +20,10 @@ export const useApi = () => ({
 
   signIn: async (email: string, password: string) => {
    
-    const user = mockUsers.find((u) => u.email === email && u.password === password);
-      if (user) {
+    const user = mockUsers.
+    find((user) => user.email === email && user.password === password);
+      
+    if (user) {
         return { success: true, user };
     } else {
       return { success: false, message: 'Usuário ou senha incorretos' };
