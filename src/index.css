@@ -1,0 +1,36 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.body-page {
+  font-size: 23px;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  text-align: center;
+
+  background-color: #fff;
+  flex-direction: column;;
+  max-width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+
+
+  display:block;
+
+  
+
+}
+
+::-webkit-scrollbar {
+	width: 20px;
+	height: 10px;
+  border-radius: 10px;
+}
+
+.main-section {
+  min-height: 100%;
+  min-width: 100%;
+
+}
+
