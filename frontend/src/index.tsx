@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import App from './components/App/index';
+import App from "../src/components/App/App.tsx"
 import '../src/index.css';
 
 const rootElement = document.getElementById('root') || document.createElement('div');

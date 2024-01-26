@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import ChatForm from '../Form/index';
-import { sendMessage } from '../App/apiFunctions';
+import ChatForm from '../Form/index.tsx';
+import { sendMessage } from '../App/apiFunctions.ts';
 
 import './chatbot.css';
 import React from 'react';

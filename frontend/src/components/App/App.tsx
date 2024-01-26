@@ -1,6 +1,6 @@
-import Footer from '../Footer/index';
+import Footer from '../Footer/index.tsx'
 import '../../../src/index.css';
-import Chatbot from '../Chatbot/index';
+import Chatbot from '../Chatbot/index.tsx';
 import React from 'react';
 
 export default function App() {

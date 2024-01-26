@@ -18,7 +18,7 @@ const ChatForm: React.FC<ChatFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} id="user-input-form">
+    <form onSubmit={handleSubmit} id="user-input-form" className='text-3xl font-bold underline bg-slate-950'>
       <input
         type="text"
         id="user-input"
