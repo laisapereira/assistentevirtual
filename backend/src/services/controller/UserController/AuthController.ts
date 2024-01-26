@@ -1,8 +1,9 @@
 import prisma from "../../../utils/prisma"
 import bycrypt from 'bcryptjs';
 import { Request, Response } from "express";
+import jwt from "jsonwebtoken";
 
-const listAllUsers = async (req: Request, res: Response) => {
+const AuthController = async (req: Request, res: Response) => {
 
   const {email, password} = req.body;
   
@@ -21,17 +22,19 @@ const listAllUsers = async (req: Request, res: Response) => {
         if (!isValuePassword) {
           return res.status(401).json({ error: "Senha incorreta" });
         }
-        return res.json(user);
+        const token = jwt.sign({ id: user.id }, "secret", {expiresIn: "1d"}) // so a aplicacao sabe o secret 
+        return res.json({user, token});
+
       } catch (error) {
         console.error(error);
-        return res.status(500).json({ error: "Failed to fetch users" });
+        return res.status(500).json({ error: "Identificação de senha correspondente falhou" });
       }
   
   } catch (error) {
-  
-  
-  }
+    console.error(error);
   
   }
-  export default listAllUsers;
   
+  }
+
+  export default AuthController 
