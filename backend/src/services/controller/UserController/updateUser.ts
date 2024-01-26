@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import prisma from "../../prismaConfig";
+import prisma from "../../../utils/prisma";
 
 const updateUser = async (req: Request, res: Response) => {
   const { id, name, email } = req.body;

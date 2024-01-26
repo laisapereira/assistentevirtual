@@ -1,11 +1,10 @@
-import prisma from "../../prismaConfig";
+import prisma from "../../../utils/prisma"
 import { Request, Response } from "express";
 
 const deleteUser = async (req: Request, res: Response) => {
   const { userId } = req.params;
 
   try {
-    // verificando se o user existe
     const user = await prisma.user.findUnique({
       where: {
         id: parseInt(userId),
