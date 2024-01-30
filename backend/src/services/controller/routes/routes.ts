@@ -5,11 +5,13 @@ import listAllUsers from "../UserController/listAllUsers";
 import updateUser from "../UserController/updateUser";
 import AuthController from "../UserController/AuthController";
 
+import { AuthMiddleware } from "../../middlewares/auth";
+
 export const router = express.Router();
 
 router.use(express.json());
 
-router.get("/users", listAllUsers);
+router.get("/users", AuthMiddleware, listAllUsers);
 
 router.post("/create", createUser);
 
