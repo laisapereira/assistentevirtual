@@ -9,13 +9,12 @@
 }
 
 .aside-left {
-    @apply w-1/2 h-full bg-custom-blue p-12 rounded-lg shadow-lg;
+    @apply w-1/2 h-full bg-customBlue p-12 rounded-lg shadow-xl;
   }
-
 
   
 .aside-login{
-    @apply w-1/2 h-full bg-white p-12 rounded-lg;
+    @apply w-1/2 h-full bg-white p-12 rounded-lg shadow-xl;
   }
 
 .login-screen {

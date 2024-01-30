@@ -13,13 +13,13 @@ const Login = () => {
 
                 <div className="aside-left jo-content flex flex-col gap-y-20">
                     <div className="img-logo ">
-                        <img src={joLogo} alt="" className='w-56 h-14'/>
+                        <img src={joLogo} alt="" className='w-56 h-14' />
                     </div>
 
                     <section className='flex flex-col gap-y-6 ml-[1.8rem]'>
                         <div className="h1-and-img flex items-center">
                             <h1 className='text-5xl text-start w-[31%] leading-[3.8rem]'>Descubra Aqui! </h1>
-                            <img src={emoji} alt="emoji" className='w-16 pt-14'/>
+                            <img src={emoji} alt="emoji" className='w-16 pt-14' />
                         </div>
                         <div className="">
                             <p className='text-lg font-thin text-start w-[86%]'>
@@ -36,26 +36,34 @@ const Login = () => {
                     </section>
 
 
-                    <div className="o resto é contigo">
-                        <img></img>
-                        <p></p>
-                    </div>
-                            
+                    <section className="qtde-cadastrados">
+                        <h1 className='bg-custom-gray p-2 text-lg text-black rounded-full w-[50%]'>+1.2k Cadastrados</h1>
+                    </section>
+
                 </div>
 
 
 
-
-                
-
-
-                <div className="aside-login">
-                    <h1 className="text-black"></h1>
+                <section className="aside-login flex flex-col gap-36">
                     <h1 className='text-black'>Fazer Login</h1>
-                </div>
+                    <form action="" className='login-email-password flex flex-col gap-10 items-center justify-center'>
+                        <div className="email flex flex-col w-[60%]">
+                                <label htmlFor="Email" className='text-black text-left'>Email</label>
+                                <input className='text-lg text-black text-sm border-b-2 border-customBlue' type="text" name="" id="" placeholder='Exemplo: test@email.com' />
+                        </div>
+                        <div className="password flex flex-col w-[60%]">
+                                <label htmlFor="Email" className='text-black text-left'>Senha</label>
+                                <input className='text-lg text-black text-sm border-b-2 border-customBlue' type="text" name="" id="" placeholder='Escreva sua senha aqui...' />
+                        </div>
+                        <div className="button gap-36">
+                                <button className='bg-black p-1.5 rounded-lg '><h1 className="text-white w-72">Entrar</h1></button>
+                                <h3 className='text-black text-sm p-8'>Novo usuário? <a href="" className='text-sm text-customBlue' target='_blank'>Crie uma conta</a></h3>
+                        </div>
+                    </form>
+                </section>
             </div>
         </div>
-        
+
     );
 };
 
