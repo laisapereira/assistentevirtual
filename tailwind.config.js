@@ -10,7 +10,8 @@ module.exports = {
       },
       colors: {
         'customBlue': '#5252F1',
-        'custom-gray': '#EFEFED'
+        'custom-gray': '#EFEFED',
+        'custom-black': '#374151',
       }
     },
   },
