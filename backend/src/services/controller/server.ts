@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import { setupExpress } from "../processors/expressConfig";
 import { router } from "./routes/routes";
 
+
 dotenv.config();
 
 const app: Express = express();
@@ -11,5 +12,5 @@ const port: number = 3333;
 app.use(router);
 
 app.listen(port, () => {
-    console.log(`Server is listening at http://localhost:${port}`);
+  console.log(`Server is listening at http://localhost:${port}`);
 });

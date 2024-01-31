@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
 export default function Register() {
   const [values, setValues] = useState({
@@ -11,15 +12,26 @@ export default function Register() {
     ramal: '',
   })
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [error, setError] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(values)
-  }
 
+    if (values.password !== values.confirmPassword) {
+      setError('As senhas não coincidem');
+      return;
+    }
+    try {
+      const res = await axios.post("http://localhost:3333/register", values);
+      console.log(res);
+      setError('');
+    } catch (err) {
+      console.error(err);
+      console.log(values);
+      setError('Erro ao registrar usuário');
+    }
+  };
   
-
-
-
 
   return (
     <div>
@@ -83,6 +95,10 @@ export default function Register() {
           onChange={e=> setValues({...values, ramal: e.target.value })}
           />
         </div>
+
+
+        {error && <div style={{ color: 'red' }}>{error}</div>}
+
         <button type="submit">Register</button>
       </form>
     </div>

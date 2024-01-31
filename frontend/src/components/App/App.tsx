@@ -8,11 +8,10 @@ import Home from "../../pages/Home/index.tsx";
 import { Link, Route, Routes } from "react-router-dom";
 import { RequireAuth } from "../../contexts/Auth/RequireAuth.tsx";
 import { AuthContext } from "../../contexts/Auth/AuthContext.tsx";
+import Register from "../../pages/Register/index.tsx";
 
 export default function App() {
-
   const auth = useContext(AuthContext);
-
 
   return (
     <div className="body-page">
@@ -23,14 +22,23 @@ export default function App() {
             Home
           </Link>
           <Link to="/private">Chatbot</Link>
-          {auth.user && <button onClick={auth.signOut}>Sair</button> }
-
+          <Link to="/register">Register</Link>
+          {auth.user && <button onClick={auth.signOut}>Sair</button>}
         </nav>
       </section>
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/private" element={<RequireAuth><Chatbot/></RequireAuth>} />
+        <Route
+          path="/private"
+          element={
+            <RequireAuth>
+              <Chatbot />
+            </RequireAuth>
+          }
+        />
+
+        <Route path="/register" element={<Register />} />
       </Routes>
     </div>
   );

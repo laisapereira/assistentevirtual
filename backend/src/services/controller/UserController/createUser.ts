@@ -10,11 +10,11 @@ export interface CreateUser {
   name: string;
   departmentId: number;
   lead: string;
-  ramal: number
+  ramal: number;
 }
 
 const createUser = async (req: Request<CreateUser>, res: Response) => {
-  const { email, password, name, departmentId } = req.body as CreateUser;
+  const { email, password, name, departmentId, lead, ramal } = req.body as CreateUser;
 
   const userExists = await prisma.user.findUnique({where: {email}})
 
@@ -40,9 +40,17 @@ const createUser = async (req: Request<CreateUser>, res: Response) => {
           email,
           password: hash_password,
           name,
-           departments: {
-            connect: { id: departmentId },
-          }, 
+          departments: {
+            create: {
+              lead,
+              ramal,
+              department: {
+                connect: {
+                  id: departmentId,
+                },
+              },
+            },
+          },
         },
       });
 
