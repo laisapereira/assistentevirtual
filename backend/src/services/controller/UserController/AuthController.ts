@@ -41,12 +41,10 @@ export const registerController = async (req: Request, res: Response) => {
     const mockRequest = {} as Request<any, any, CreateUser>;
     mockRequest.body = req.body;
     await createUser(mockRequest, res);
-
-    res.status(201).json({ message: 'Usuário registrado com sucesso' });
     
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Erro ao registrar usuário' });
+    console.log("error1234")
    
   }
  
