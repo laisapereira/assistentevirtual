@@ -1,9 +1,11 @@
 import prisma from "../../../utils/prisma"
 import bycrypt from 'bcryptjs';
-import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
+import createUser from "./createUser";
+import { CreateUser } from "./createUser";
+import { Request, Response} from "express";
 
-const AuthController = async (req: Request, res: Response) => {
+export const loginController = async (req: Request, res: Response) => {
 
   const {email, password} = req.body;
   
@@ -31,6 +33,21 @@ const AuthController = async (req: Request, res: Response) => {
         return res.status(500).json({ error: "Senha incorreta" });
       }
 }
-        
+
+export const registerController = async (req: Request, res: Response) => {
+  
+  try {
+    // instancia de Request
+    const mockRequest = {} as Request<any, any, CreateUser>;
+    mockRequest.body = req.body;
+    await createUser(mockRequest, res);
+
+    res.status(201).json({ message: 'Usuário registrado com sucesso' });
     
-  export default AuthController 
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao registrar usuário' });
+   
+  }
+ 
+}

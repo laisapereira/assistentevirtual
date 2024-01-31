@@ -1,9 +1,10 @@
+import { loginController, registerController } from './../UserController/AuthController';
 import express from "express";
 import createUser from "../UserController/createUser";
 import deleteUser from "../UserController/deleteUser";
 import listAllUsers from "../UserController/listAllUsers";
 import updateUser from "../UserController/updateUser";
-import AuthController from "../UserController/AuthController";
+
 
 import { AuthMiddleware } from "../../middlewares/auth";
 
@@ -13,13 +14,16 @@ router.use(express.json());
 
 router.get("/users", AuthMiddleware, listAllUsers);
 
+router.put("/users/:id", AuthMiddleware, updateUser);
+
+router.delete("/users/:id", AuthMiddleware, deleteUser);
+
+router.post("/login", loginController);
+
 router.post("/create", createUser);
 
-router.put("/users/:id", updateUser);
+router.post("/register", registerController)
 
-router.delete("/users/:id", deleteUser);
-
-router.post("/auth", AuthController);
 
 
 

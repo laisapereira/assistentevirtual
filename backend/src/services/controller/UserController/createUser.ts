@@ -4,11 +4,13 @@ import prisma from "../../../utils/prisma";
 
 import bcrypt from "bcryptjs";
 
-interface CreateUser {
+export interface CreateUser {
   email: string;
   password: string;
   name: string;
   departmentId: number;
+  lead: string;
+  ramal: number
 }
 
 const createUser = async (req: Request<CreateUser>, res: Response) => {
@@ -19,7 +21,6 @@ const createUser = async (req: Request<CreateUser>, res: Response) => {
   if (userExists) {
     return res.status(400).json({ error: "O usuário já existe." });
   } 
-
 
   const departmentExists = await prisma.department.findMany({
       where: { id: departmentId },
@@ -39,9 +40,9 @@ const createUser = async (req: Request<CreateUser>, res: Response) => {
           email,
           password: hash_password,
           name,
-          /* departments: {
+           departments: {
             connect: { id: departmentId },
-          }, */
+          }, 
         },
       });
 
