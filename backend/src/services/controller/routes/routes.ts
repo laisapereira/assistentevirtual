@@ -1,16 +1,16 @@
-import { loginController, registerController } from './../UserController/AuthController';
+import {
+  loginController,
+  registerController,
+} from "./../UserController/AuthController";
 import express from "express";
 import createUser from "../UserController/createUser";
 import deleteUser from "../UserController/deleteUser";
 import listAllUsers from "../UserController/listAllUsers";
 import updateUser from "../UserController/updateUser";
 
-
 import { AuthMiddleware } from "../../middlewares/auth";
 
 export const router = express.Router();
-
-router.use(express.json());
 
 router.get("/users", AuthMiddleware, listAllUsers);
 
@@ -22,9 +22,4 @@ router.post("/login", loginController);
 
 router.post("/create", createUser);
 
-router.post("/register", registerController)
-
-
-
-
-
+router.post("/register", registerController);

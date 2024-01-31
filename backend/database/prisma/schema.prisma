@@ -11,72 +11,72 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  name      String
-  password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          Int               @id @default(autoincrement())
+  email       String            @unique
+  name        String
+  password    String
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
   departments User_Department[]
 }
 
 model Department {
-  id        Int      @id @default(autoincrement())
+  id        Int               @id @default(autoincrement())
   name      String
-  lead      String  
-  ramal     Int      
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  lead      String
+  ramal     String
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
   users     User_Department[]
 }
 
 model Files {
   id        Int      @id @default(autoincrement())
-  file_path      String
+  file_path String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model Profiles {
-  id        Int      @id @default(autoincrement())
-  type_profile   String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  permissions Profiles_Permissions[]
+  id           Int                    @id @default(autoincrement())
+  type_profile String
+  createdAt    DateTime               @default(now())
+  updatedAt    DateTime               @updatedAt
+  permissions  Profiles_Permissions[]
 }
 
 model Permissions {
-  id        Int      @id @default(autoincrement())
-  type_permission      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  profiles Profiles_Permissions[]
+  id              Int                    @id @default(autoincrement())
+  type_permission String
+  createdAt       DateTime               @default(now())
+  updatedAt       DateTime               @updatedAt
+  profiles        Profiles_Permissions[]
 }
 
 model User_Department {
-  id        Int      @id @default(autoincrement())
-  user_id   Int
-  lead     String
-  ramal    Int
+  id            Int      @id @default(autoincrement())
+  user_id       Int
+  lead          String
+  ramal         String
   department_id Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 
-  user         User     @relation(fields: [user_id], references: [id])
-  department   Department @relation(fields: [department_id], references: [id])
+  user       User       @relation(fields: [user_id], references: [id])
+  department Department @relation(fields: [department_id], references: [id])
 
   @@index([user_id, department_id], name: "unique_user_department")
 }
 
 model Profiles_Permissions {
-  id        Int      @id @default(autoincrement())
-  profile_id   Int
+  id            Int      @id @default(autoincrement())
+  profile_id    Int
   permission_id Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 
-  profile        Profiles     @relation(fields: [profile_id], references: [id])
-  permission     Permissions  @relation(fields: [permission_id], references: [id])
+  profile    Profiles    @relation(fields: [profile_id], references: [id])
+  permission Permissions @relation(fields: [permission_id], references: [id])
 
   @@index([profile_id, permission_id], name: "unique_profile_permission")
 }

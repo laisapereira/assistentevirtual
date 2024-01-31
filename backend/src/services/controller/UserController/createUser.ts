@@ -10,7 +10,7 @@ export interface CreateUser {
   name: string;
   departmentId: number;
   lead: string;
-  ramal: number;
+  ramal: string;
 }
 
 const createUser = async (req: Request<CreateUser>, res: Response) => {
