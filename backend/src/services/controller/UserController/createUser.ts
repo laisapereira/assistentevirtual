@@ -15,44 +15,37 @@ const createUser = async (req: Request<CreateUser>, res: Response) => {
 
   const userExists = await prisma.user.findUnique({ where: { email } });
   const departmentExists = await prisma.department.findUnique({
-    where: { id: departmentIdNumber },
+  where: { id: departmentIdNumber },
+});
+
+if (userExists) {
+  return res.status(400).json({ error: "O usuário já existe." });
+}
+
+if (!departmentExists) {
+  return res
+    .status(400)
+    .json({ error: `O departamento com id ${departmentIdNumber} não existe.` });
+}
+
+try {
+  const hash_password = await bcrypt.hash(password, 10);
+  const user = await prisma.user.create({
+    data: {
+      email,
+      password: hash_password,
+      name,
+      departments: {
+        connect: { id: departmentIdNumber },
+      },
+    },
   });
 
-  if (userExists) {
-    return res.status(400).json({ error: "O usuário já existe." });
-  }
+  return res.status(201).json(user);
+} catch (error) {
+  console.error(error);
+  return res.status(500).json({ error: "Erro ao criar o usuário" });
+}
 
-  if (!departmentExists) {
-    return res
-      .status(400)
-      .json({ error: `O departamento com id ${departmentIdNumber} não existe.` });
-  }
-
-  
-  try {
-    const hash_password = await bcrypt.hash(password, 10);
-    const user = await prisma.user.create({
-      data: {
-        email,
-        password: hash_password,
-        name,
-        departments: {
-          create: {
-            department: {
-              connect: { id: departmentIdNumber },
-            },
-          },
-        },
-      },
-    });
-
-    res.status(201).json(user);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Erro ao criar o usuário" });
-  }
-
-  return res.status(200).json({ message: "Usuário criado com sucesso" });
-};
-
+}
 export default createUser;

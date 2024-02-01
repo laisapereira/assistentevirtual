@@ -39,6 +39,6 @@ export const registerController = async (req: Request<CreateUser>, res: Response
     await createUser(req as Request<CreateUser>, res);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'An error occurred while registering the user.' });
+    return res.status(500).json({ error: 'An error occurred while registering the user.' });
   }
 }

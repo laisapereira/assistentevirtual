@@ -13,7 +13,7 @@ const updateUser = async (req: Request, res: Response) => {
     return res.status(200).json(updatedUser);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Failed to update user" });
+    return res.status(500).json({ message: "Failed to update user" });
   }
 };
 
