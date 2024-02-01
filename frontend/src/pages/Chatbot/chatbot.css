@@ -1,30 +1,65 @@
-.chat-box {
-  background-color: #0000006f;
-  border: 5px solid #ffffff;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-  max-width: 50%;
-  min-width: 50rem;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  padding:1rem;
-  padding-top: 1.5rem;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  width: 40%;
+.main-chat {
+  @apply flex items-center h-screen;
+}
+
+.aside-header {
+  @apply bg-main-black h-full min-h-full w-1/5 flex flex-col items-center justify-between gap-16;
+}
+
+.banner-aside {
+  @apply flex flex-col items-center justify-evenly gap-12 px-4
+}
+
+.aside-header button {
+  @apply bg-main-white text-xl w-4/5 p-4 rounded-3xl hover:bg-main-gray
+}
+
+.banner-aside img {
+  @apply w-[350px] h-auto min-h-48 flex items-center justify-center
+}
+
+.img-logo {
+  @apply w-80 h-auto pt-12;
+}
+
+.footer-aside {
+  @apply bg-main-purple w-full h-1/6 flex items-center justify-center gap-8 border-white
+}
+
+.footer-aside p {
+  @apply text-white text-2xl font-bold font-fira-code 
+}
+
+.footer-aside p:nth-child(1) {
+  @apply text-4xl
+}
+
+.chat-container {
+  @apply bg-main-black
+}
+
+.chat-box {
+  @apply w-4/5 h-full bg-main-white
 }
 
 .chat-log {
-  height: 35rem;
-  min-height: 12rem;
+
+  @apply w-full h-[83%]
+  /* min-height: 12rem;
   overflow-y: scroll;
   padding: 1rem;
   border: 8px solid #dddd;
   border-radius: 5px;
-  background-color: #fff;
+  background-color: #fff; */
 }
 
+.chat-log img {
+  @apply pl-10
+}
 .chatbot {
   display: flex;
   flex-direction: column;
@@ -35,17 +70,9 @@
   gap: 3rem;
 
   padding: 8rem 0;
-
 }
 
 h1 {
-  font-family: 'Syne', sans-serif;
+  font-family: "Syne", sans-serif;
   font-size: clamp(2rem, 5vw, 4rem);
 }
-
-
-
-
-
-
- 

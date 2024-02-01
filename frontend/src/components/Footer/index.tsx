@@ -3,7 +3,7 @@ import './footer.css';
 
 export default function Footer() {
   return (
-    <div className="footer">
+    <div className="foote">
       <figure>
         <img src="../../assets/logo.svg" alt="Logo-FJS" />
       </figure>

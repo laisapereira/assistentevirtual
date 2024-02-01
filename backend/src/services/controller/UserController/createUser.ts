@@ -33,10 +33,7 @@ const createUser = async (req: Request<CreateUser>, res: Response) => {
       },
     });
   
-    for (const departmentId of departmentIds) {
-      const departmentExists = await prisma.department.findUnique({
-        where: { id: departmentId },
-      });
+   
   
       if (!departmentExists) {
         return res

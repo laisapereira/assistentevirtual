@@ -1,24 +1,24 @@
-import React, { useState, FormEvent } from 'react';
-import PropTypes from 'prop-types';
-import './chatform.css';
+import React, { useState, FormEvent } from "react";
+import PropTypes from "prop-types";
+import "./chatform.css";
 
 interface ChatFormProps {
   onSubmit: (input: string) => void;
 }
 
 const ChatForm: React.FC<ChatFormProps> = ({ onSubmit }) => {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (input.trim() !== '') {
+    if (input.trim() !== "") {
       onSubmit(input);
-      setInput('');
+      setInput("");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} id="user-input-form">
+    <form onSubmit={handleSubmit}  className="form-submit">
       <input
         type="text"
         id="user-input"
@@ -27,7 +27,7 @@ const ChatForm: React.FC<ChatFormProps> = ({ onSubmit }) => {
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
-      <button type="submit" id="button-send">
+      <button type="submit">
         Enviar
       </button>
     </form>

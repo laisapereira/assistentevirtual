@@ -14,9 +14,8 @@ export default function App() {
   const auth = useContext(AuthContext);
 
   return (
-    <div className="body-page">
+    <div>
       <section className="main-section">
-        <h1>Pagina inicial</h1>
         <nav>
           <Link to="/" style={{ margin: "15px" }}>
             Home
