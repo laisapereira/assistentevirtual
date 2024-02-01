@@ -9,6 +9,7 @@ import listAllUsers from "../UserController/listAllUsers";
 import updateUser from "../UserController/updateUser";
 
 import { AuthMiddleware } from "../../middlewares/auth";
+import listAllDepartments from "../UserController/listAllDepartments";
 
 export const router = express.Router();
 
@@ -23,3 +24,5 @@ router.post("/login", loginController);
 router.post("/create", createUser);
 
 router.post("/register", registerController);
+
+router.get("/departments", listAllDepartments);

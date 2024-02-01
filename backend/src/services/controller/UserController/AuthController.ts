@@ -22,7 +22,7 @@ export const loginController = async (req: Request, res: Response) => {
   try {
       const isValuePassword = await bycrypt.compare(password, user.password);
       if (!isValuePassword) {
-        return res.status(401).json({ error: "Senha incorreta" });
+       return res.status(401).json({ error: "Senha incorreta" });
       }
       const token = jwt.sign({ id: user.id }, "secret", {expiresIn: "1d"}) // so a aplicacao sabe o secret 
       const {id} = user
@@ -34,18 +34,11 @@ export const loginController = async (req: Request, res: Response) => {
       }
 }
 
-export const registerController = async (req: Request, res: Response) => {
-  
+export const registerController = async (req: Request<CreateUser>, res: Response) => {
   try {
-    // instancia de Request
-    const mockRequest = {} as Request<any, any, CreateUser>;
-    mockRequest.body = req.body;
-    await createUser(mockRequest, res);
-    
+    await createUser(req as Request<CreateUser>, res);
   } catch (error) {
     console.error(error);
-    console.log("error1234")
-   
+    res.status(500).json({ error: 'An error occurred while registering the user.' });
   }
- 
 }
