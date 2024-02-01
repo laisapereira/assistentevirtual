@@ -1,7 +1,7 @@
 import Footer from "../Footer/index.tsx";
 import "../../../src/index.css";
 import Chatbot from "../../pages/Chatbot/index.tsx";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import Home from "../../pages/Home/index.tsx";
 
@@ -13,11 +13,13 @@ import Register from "../../pages/Register/index.tsx";
 export default function App() {
   const auth = useContext(AuthContext);
 
+  
+
   return (
     <div>
       <section className="main-section">
-        <nav>
-          <Link to="/" style={{ margin: "15px" }}>
+        <nav className="nav">
+          <Link to="/">
             Home
           </Link>
           <Link to="/private">Chatbot</Link>

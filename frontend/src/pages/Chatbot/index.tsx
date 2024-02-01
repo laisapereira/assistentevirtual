@@ -6,10 +6,12 @@ import "./chatbot.css";
 import React from "react";
 import { Link } from "react-router-dom";
 
-import logoFjs from "../../assets/logo.svg";
-import bannerFjs from "../../assets/banner-fjs.svg";
-import iconUser from "../../assets/user.svg";
-import { GearFine } from "@phosphor-icons/react";
+import logoChat from "../../public/logo-chat.svg";
+
+import logoFjs from "../../public/logo.svg";
+import bannerFjs from "../../public/banner-fjs.svg";
+import iconUser from "../../public/user.svg";
+import { ArrowLeft, DotsThreeVertical, GearFine } from "@phosphor-icons/react";
 import { ChatEntry } from "../../types/types.ts";
 
 const Chatbot = () => {
@@ -23,12 +25,10 @@ const Chatbot = () => {
       {
         type: "user",
         message: userMessage,
-        profilePic: "../../assets/user.svg",
       },
       {
         type: "bot",
         message: botResponse.text,
-        profilePic: "../../assets/logo.svg",
       },
     ]);
   };
@@ -39,7 +39,9 @@ const Chatbot = () => {
         <img src={logoFjs} alt="Logo" className="img-logo" />
         <section className="banner-aside">
           <button>
-            <Link to="/">voltar à Home</Link>
+            <Link to="/" className="font-fira-code text-2xl">
+              <strong>voltar à Home</strong>
+            </Link>
           </button>
           <img src={bannerFjs} alt="Banner-Fjs" />
         </section>
@@ -56,27 +58,31 @@ const Chatbot = () => {
 
       <section className="chat-box">
         <div className="chat-log">
+          <div className="flex justify-between items-center max-w-full p-4 pt-10 px-12">
+            <ArrowLeft size={50} />
+            <DotsThreeVertical size={50} color="black" />
+          </div>
           {chatLog.map((entry, index) => (
             <div
               key={index}
-              className={`flex items-center ${
+              className={`flex pl-6 items-start ${
                 entry.type === "user" ? "justify-end" : "justify-start"
               }`}
             >
               <img
-                className="w-6 h-6 rounded-full mr-2"
-                src={entry.profilePic}
+                className="w-[150px] h-auto"
+                src={entry.type === "user" ? iconUser : logoChat}
                 alt={entry.type === "user" ? "Foto do Usuário" : "Foto do Bot"}
               />
               <div
-                className={`flex max-w-xs mx-16 my-10 p-3 rounded-lg shadow-lg ${
+                className={`flex w-[50%] max-w-[55%] mx-16 my-10 p-3 rounded-lg shadow-lg ${
                   entry.type === "user"
                     ? "bg-main-white text-black"
-                    : "bg-main-purple text-main-white"
+                    : "bg-main-purple text-main-white ml-[0rem] mt-[4rem]"
                 }`}
               >
-                <div className="flex items-center">
-                  <p>{entry.message}</p>
+                <div className="p-5 font-inter text-justify">
+                  <p className="text-3xl leading-[3rem]">{entry.message}</p>
                 </div>
               </div>
             </div>

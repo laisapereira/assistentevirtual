@@ -11,8 +11,10 @@
 }
 
 .form-submit button {
-  @apply bg-black text-white px-8 py-7 rounded-[30%] ml-[-9rem] w-[8rem] hover:bg-gray-900
+  @apply bg-black text-white px-8 py-7 rounded-[30%] 
+  ml-[-9rem] w-[8rem] hover:bg-gray-900 
 }
+
 
 .form-submit input { 
   @apply h-[130px] bg-main-white rounded-[2rem] w-[85%] p-8 shadow-sm shadow-black
@@ -96,7 +98,7 @@
 .bot-message {
 
 
-  @apply bg-main-purple text-white 
+  @apply bg-main-purple text-white mb-1
  /*  background-color: #28a745;
   color: #fff;
   padding: 5px 10px;
