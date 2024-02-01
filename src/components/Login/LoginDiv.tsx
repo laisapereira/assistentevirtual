@@ -35,17 +35,12 @@ const Login = () => {
                         </div>
                     </section>
 
-
-                    <section className="qtde-cadastrados">
-                        <h1 className='bg-custom-gray p-2 text-lg text-black rounded-full w-[50%]'>+1.2k Cadastrados</h1>
-                    </section>
-
                 </div>
 
 
 
                 <section className="aside-login flex flex-col gap-36">
-                    <h1 className='text-black'>Fazer Login</h1>
+                    <h1 className='text-black relative top-12'>Fazer Login</h1>
                     <form action="" className='login-email-password flex flex-col gap-10 items-center justify-center'>
                         <div className="email flex flex-col w-[60%]">
                                 <label htmlFor="Email" className='text-black text-left'>Email</label>
