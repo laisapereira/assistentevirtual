@@ -9,7 +9,8 @@ export const Login = () => {
 
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
+  const handleLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
     if (email && password) {
       const isLogged = await auth.signIn(email, password); // chamando função require (auth) [que vem do AuthContext], que chama o customhook api pra fazer a requisição no db
       if (isLogged) {
@@ -21,7 +22,7 @@ export const Login = () => {
   };
   return (
     <div>
-      <h1>Página Fechada - Login</h1>
+      <h1>Login</h1>
 
       <form>
         <input

@@ -13,16 +13,19 @@ import listAllDepartments from "../UserController/listAllDepartments";
 
 export const router = express.Router();
 
-router.get("/users", AuthMiddleware, listAllUsers);
+// controles adm
 
 router.put("/users/:id", AuthMiddleware, updateUser);
 
 router.delete("/users/:id", AuthMiddleware, deleteUser);
 
-router.post("/login", loginController);
-
 router.post("/create", createUser);
 
+// auth
+router.post("/signIn", loginController);
+
 router.post("/register", registerController);
+
+router.get("/users", AuthMiddleware, listAllUsers);
 
 router.get("/departments", listAllDepartments);
