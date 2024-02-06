@@ -12,3 +12,18 @@ const listAllUsers = async (req: Request, res: Response) => {
 };
 
 export default listAllUsers;
+
+
+export async function getUserById(id: number) {
+  try {
+    const user = await prisma.user.findUnique({
+      where: {
+        id: id,
+      },
+    });
+    return user;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}

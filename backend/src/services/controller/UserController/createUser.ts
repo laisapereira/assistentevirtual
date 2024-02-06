@@ -3,10 +3,11 @@ import prisma from "../../../utils/prisma";
 import bcrypt from "bcryptjs";
 
 export interface CreateUser {
+  id: number
   email: string;
   password: string;
   name: string;
-  departmentId: number
+  departmentId: number  
 }
 
 const createUser = async (req: Request<CreateUser>, res: Response) => {
