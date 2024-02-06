@@ -5,6 +5,7 @@ import React from "react";
 import { AuthContext } from "./AuthContext.tsx";
 import { User } from "../../types/User";
 import { useApi } from "../../hooks/useApi.ts";
+import Cookies from 'js-cookie';
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const [user, setUser] = useState<User | null>(null);
@@ -12,7 +13,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
 
   useEffect(() => {
     const validateToken = async () => {
-      const storageData = localStorage.getItem("authToken")
+      const storageData = Cookies.get("authToken")
       if (storageData) {
         const data = await api.validateToken(storageData)
         if (data.user) {
@@ -41,7 +42,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   };
 
   const setToken = (token: string) => {
-    localStorage.setItem("authToken", token)
+    Cookies.set("authToken", token)
   }
 
   return (

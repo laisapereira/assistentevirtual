@@ -1,5 +1,7 @@
 import axios from "axios";
 import mockUsers from "../types/User.ts";
+import Cookies from "js-cookie";
+
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_API,
@@ -24,6 +26,9 @@ export const useApi = () => ({
  try {
       const response = await api.post("/signIn", { email, password });
       console.log(response.data);
+
+      const token = response.data.token;
+      Cookies.set("authToken", token)
       return response.data;
     } catch (error) {
       console.error('Error signing in:', error);

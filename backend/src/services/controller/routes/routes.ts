@@ -13,6 +13,8 @@ import listAllDepartments from "../UserController/listAllDepartments";
 
 export const router = express.Router();
 
+
+
 // controles adm
 
 router.put("/users/:id", AuthMiddleware, updateUser);

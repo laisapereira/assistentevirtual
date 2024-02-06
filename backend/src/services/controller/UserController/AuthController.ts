@@ -15,6 +15,7 @@ export const loginController = async (req: Request, res: Response) => {
     },
   });
     if (!user) {
+    /* window.alert("Usuário não encontrado"); */
     return res.status(404).json({ message: "Usuário não encontrado" });
   }
   
@@ -25,11 +26,14 @@ export const loginController = async (req: Request, res: Response) => {
       }
       const token = jwt.sign({ id: user.id }, "secret", {expiresIn: "1d"}) // so a aplicacao sabe o secret 
       const {id} = user
+
+      res.cookie('token', token, { httpOnly: true });
       return res.json({user: {id, email}, token});
 
     } catch (error) {
         console.error(error);
-        return res.status(500).json({ error: "Senha incorreta" });
+        /* window.alert("Erro interno"); */ 
+        return res.status(500).json({ error: "erro interno" });
       }
 }
 

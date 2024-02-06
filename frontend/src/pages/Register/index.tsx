@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Department } from "../../types/types";
 
-
-
 export default function Register() {
   const [values, setValues] = useState({
     name: "",
