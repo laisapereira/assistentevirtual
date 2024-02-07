@@ -40,19 +40,20 @@ const Login = () => {
 
 
                 <section className="aside-login flex flex-col gap-36">
+                    
                     <h1 className='text-black relative top-12'>Fazer Login</h1>
                     <form action="" className='login-email-password flex flex-col gap-10 items-center justify-center'>
                         <div className="email flex flex-col w-[60%]">
-                                <label htmlFor="Email" className='text-black text-left'>Email</label>
-                                <input className='text-lg text-black outline-none text-sm border-b-2 border-customBlue' type="text" name="" id="" placeholder='Exemplo: test@email.com' />
+                            <label htmlFor="Email" className='text-black text-left'>Email</label>
+                            <input className='text-lg text-black outline-none text-sm border-b-2 border-customBlue' type="text" name="" id="" placeholder='Exemplo: test@email.com' />
                         </div>
                         <div className="password flex flex-col w-[60%]">
-                                <label htmlFor="Email" className='text-black text-left'>Senha</label>
-                                <input className='text-lg text-black outline-none text-sm border-b-2 border-customBlue' type="password" name="" id="" placeholder='Escreva sua senha aqui...' />
+                            <label htmlFor="Email" className='text-black text-left'>Senha</label>
+                            <input className='text-lg text-black outline-none text-sm border-b-2 border-customBlue' type="password" name="" id="" placeholder='Escreva sua senha aqui...' />
                         </div>
                         <div className="button gap-36">
-                                <button className='bg-black p-1.5 rounded-lg hover:bg-custom-black'><h1 className="text-white w-72">Entrar</h1></button>
-                                <h3 className='text-black text-sm p-8'>Novo usuário? <a href="" className='text-sm text-customBlue' target='_blank'>Crie uma conta</a></h3>
+                            <button className='bg-black p-1.5 rounded-lg hover:bg-custom-black'><h1 className="text-white w-72">Entrar</h1></button>
+                            <h3 className='text-black text-sm p-8'>Novo usuário? <a href="" className='text-sm text-customBlue' target='_blank'>Crie uma conta</a></h3>
                         </div>
                     </form>
                 </section>

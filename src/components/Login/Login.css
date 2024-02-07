@@ -4,6 +4,27 @@
     @apply font-montserrat font-bold;
 }
 
+.dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    border-radius: 50%;
+    right: 10px;
+}
+
+.dot:nth-child(1) {
+    top: 10px;
+}
+
+.dot:nth-child(2) {
+    top: 30px;
+}
+
+.dot:nth-child(3) {
+    top: 50px;
+}
+
 .main-container {
     @apply bg-white w-full h-screen flex justify-center px-4 mt-12 mb-12;
 }
