@@ -1,4 +1,4 @@
-import prisma from "../../../utils/prisma"
+import prisma from "../../../utils/prisma";
 import { Request, Response } from "express";
 
 const listAllUsers = async (req: Request, res: Response) => {
@@ -12,7 +12,6 @@ const listAllUsers = async (req: Request, res: Response) => {
 };
 
 export default listAllUsers;
-
 
 export async function getUserById(id: number) {
   try {

@@ -9,13 +9,15 @@ type TokenPayload = {
   exp: number
 }
 
+/* const secret = process.env.SECRET_KEY || 'secret' as string; */ 
+
 
 export async function AuthMiddleware(
   req: Request,
   res: Response,
   next: NextFunction
 ) {
-  const { authorization } = req?.cookies;
+  const { authorization } = req.headers;
 
   if (!authorization) {
     return res.status(401).json({ message: "Token não encontrado" });
@@ -23,7 +25,7 @@ export async function AuthMiddleware(
 
   const [, token] = authorization.split(" ");
   try {
-    const decode = jwt.verify(token, "secret");
+    const decode = jwt.verify(token, 'secret');
     const { id } = decode as TokenPayload; // id de quem ta acessando isso aqui
 
     const user = await getUserById(Number(id)); 
