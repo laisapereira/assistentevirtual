@@ -1,14 +1,8 @@
-
 import express, { Express } from "express";
 import dotenv from "dotenv";
 import { setupExpress } from "../processors/expressConfig";
 import { router } from "./routes/routes";
-import cookieParser from 'cookie-parser'; // Import the correct type for cookieParser
-
-
-
-
-
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 
