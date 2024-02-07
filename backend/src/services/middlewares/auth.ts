@@ -15,7 +15,7 @@ export async function AuthMiddleware(
   res: Response,
   next: NextFunction
 ) {
-  const { authorization } = req.cookies;
+  const { authorization } = req?.cookies;
 
   if (!authorization) {
     return res.status(401).json({ message: "Token não encontrado" });
