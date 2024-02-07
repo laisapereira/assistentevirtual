@@ -7,7 +7,6 @@ import { RetrievalQAChain } from "langchain/chains";
 import now from "performance-now";
 import prisma from "../../utils/prisma";
 import { AuthMiddleware } from "../middlewares/auth";
-import { Department } from "../../utils/types/types";
 
 let totalInteractions = 0;
 let resolvedInteractions = 0;
@@ -35,19 +34,24 @@ router.post(
       3: "Comercial",
     };
 
-    const departments = user.departments.map(
-        (department) => departmentMapping[department.department_id]
-    );
+    /*  const departments = user.departments.map(
+        (department) => departmentMapping[department.id]
+      ); */
 
     const startTime = now();
 
-    const normalizedDocs = await loadAndNormalizeDocuments(departments.map((name) => ({ name })));
+    const normalizedDocs = await loadAndNormalizeDocuments(
+      user.departments.map((department) => ({
+        id: department.id,
+        name: departmentMapping[department.id],
+      }))
+    );
     const vectorStore = await setupVectorStore(normalizedDocs);
 
     const openai = new OpenAI({
-        configuration: {
-            apiKey: process.env.OPENAI_API_KEY || "",
-        },
+      configuration: {
+        apiKey: process.env.OPENAI_API_KEY || "",
+      },
     });
 
     const chain = RetrievalQAChain.fromLLM(openai, vectorStore.asRetriever());

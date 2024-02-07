@@ -4,7 +4,7 @@ export interface Department {
 
 }
 
-export interface User_Department {
+export interface User_Department{
   id: number;
   user_id: number;
   department_id: number;
