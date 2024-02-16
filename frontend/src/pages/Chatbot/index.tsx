@@ -18,10 +18,9 @@ import { ChatEntry } from "../../types/types.ts";
 
 const Chatbot = () => {
   const [chatLog, setChatLog] = useState<ChatEntry[]>([]);
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const handleSubmit = async (userMessage: string) => {
-    const botResponse = await sendMessage(userMessage);
-
     setChatLog((prevChatLog: ChatEntry[]) => [
       ...prevChatLog,
       {
@@ -30,9 +29,22 @@ const Chatbot = () => {
       },
       {
         type: "bot",
-        message: botResponse.text,
+        message: "...",
       },
     ]);
+
+    setIsProcessing(true);
+    const botResponse = await sendMessage(userMessage);
+    setIsProcessing(false);
+
+    setChatLog((prevChatLog: ChatEntry[]) => {
+      const newChatLog = [...prevChatLog];
+      newChatLog[newChatLog.length - 1] = {
+        type: "bot",
+        message: botResponse.text,
+      };
+      return newChatLog;
+    });
   };
 
   const handleAlert = () => {
@@ -55,11 +67,6 @@ const Chatbot = () => {
       <aside className="aside-header">
         <img src={logoFjs} alt="Logo" className="img-logo" />
         <section className="banner-aside">
-          <button>
-            <Link to="/" className="font-fira-code text-2xl">
-              <strong>voltar à Home</strong>
-            </Link>
-          </button>
           <img src={bannerFjs} alt="Banner-Fjs" />
         </section>
 
