@@ -29,7 +29,7 @@ const Chatbot = () => {
       },
       {
         type: "bot",
-        message: "...",
+        message: ". . .",
       },
     ]);
 
@@ -76,7 +76,7 @@ const Chatbot = () => {
             <p>Usuário</p>
             <p>Setor</p>
           </section>
-          <div onClick={handleAlert}>
+          <div onClick={handleAlert} className="cursor">
             <GearFine size={40} color="white" />
           </div>
         </div>
@@ -104,14 +104,14 @@ const Chatbot = () => {
                 alt={entry.type === "user" ? "Foto do Usuário" : "Foto do Bot"}
               />
               <div
-                className={`flex w-[50%] max-w-[55%] mx-16 my-10 p-3 rounded-lg shadow-lg ${
+                className={`flex w-[65%] max-w-[75%] mx-16 my-10 p-3 rounded-lg shadow-lg ${
                   entry.type === "user"
                     ? "bg-main-white text-black"
                     : "bg-main-purple text-main-white ml-[0rem] mt-[4rem]"
                 }`}
               >
                 <div className="p-5 font-inter text-justify">
-                  <p className="text-[1.5rem] leading-[3rem]">
+                  <p className="text-[1.2rem] leading-[2.5rem]">
                     {entry.message}
                   </p>
                 </div>
