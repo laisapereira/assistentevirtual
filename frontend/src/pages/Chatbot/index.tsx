@@ -74,7 +74,7 @@ const Chatbot = () => {
           <img className="w-[50px]" src={iconUser} alt="user" />
           <section>
             <p>Usuário</p>
-            <p>Setor</p>
+            <p>FJS</p>
           </section>
           <div onClick={handleAlert}>
             <GearFine size={40} color="white" />
@@ -85,7 +85,6 @@ const Chatbot = () => {
       <section className="chat-box">
         <div className="chat-log">
           <div className="flex justify-between items-center max-w-full p-4 pt-10 px-12">
-            <ArrowLeft size={50} />
 
             <button onClick={handleAlert}>
               <DotsThreeVertical size={50} color="black" />
