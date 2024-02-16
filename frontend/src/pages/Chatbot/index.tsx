@@ -2,6 +2,8 @@ import { useState } from "react";
 import ChatForm from "../../components/Form/index.tsx";
 import { sendMessage } from "../../components/App/apiFunctions.ts";
 
+import Swal from "sweetalert2";
+
 import "./chatbot.css";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -10,7 +12,7 @@ import logoChat from "../../public/logo-chat.svg";
 
 import logoFjs from "../../public/logo.svg";
 import bannerFjs from "../../public/banner-fjs.svg";
-import iconUser from "../../public/user.svg";
+import iconUser from "../../public/generic-user.svg";
 import { ArrowLeft, DotsThreeVertical, GearFine } from "@phosphor-icons/react";
 import { ChatEntry } from "../../types/types.ts";
 
@@ -33,6 +35,21 @@ const Chatbot = () => {
     ]);
   };
 
+  const handleAlert = () => {
+    Swal.fire({
+      title: "Olá, obrigada por testar!",
+      text: "Essa é uma versão de demonstração da Jô, em breve teremos mais funcionalidades.",
+      icon: "info",
+      showCancelButton: false,
+      confirmButtonColor: "#5252F1",
+      confirmButtonText: "Voltar ao Chat",
+    }).then((result) => {
+      /*  if (result.isConfirmed) {
+        console.log("Voltar ao Chat");
+      } */
+    });
+  };
+
   return (
     <div className="main-chat">
       <aside className="aside-header">
@@ -47,12 +64,14 @@ const Chatbot = () => {
         </section>
 
         <div className="footer-aside">
-          <img src={iconUser} alt="user" />
+          <img className="w-[50px]" src={iconUser} alt="user" />
           <section>
-            <p>Paula</p>
-            <p>Ascom</p>
+            <p>Usuário</p>
+            <p>Setor</p>
           </section>
-          <GearFine size={60} color="white" />
+          <div onClick={handleAlert}>
+            <GearFine size={40} color="white" />
+          </div>
         </div>
       </aside>
 
@@ -60,7 +79,10 @@ const Chatbot = () => {
         <div className="chat-log">
           <div className="flex justify-between items-center max-w-full p-4 pt-10 px-12">
             <ArrowLeft size={50} />
-            <DotsThreeVertical size={50} color="black" />
+
+            <button onClick={handleAlert}>
+              <DotsThreeVertical size={50} color="black" />
+            </button>
           </div>
           {chatLog.map((entry, index) => (
             <div
@@ -70,7 +92,7 @@ const Chatbot = () => {
               }`}
             >
               <img
-                className="w-[150px] h-auto"
+                className="w-[110px] h-auto"
                 src={entry.type === "user" ? iconUser : logoChat}
                 alt={entry.type === "user" ? "Foto do Usuário" : "Foto do Bot"}
               />
@@ -82,7 +104,9 @@ const Chatbot = () => {
                 }`}
               >
                 <div className="p-5 font-inter text-justify">
-                  <p className="text-3xl leading-[3rem]">{entry.message}</p>
+                  <p className="text-[1.5rem] leading-[3rem]">
+                    {entry.message}
+                  </p>
                 </div>
               </div>
             </div>

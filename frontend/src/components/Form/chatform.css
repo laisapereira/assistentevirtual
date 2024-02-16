@@ -7,7 +7,7 @@
 
 
 .form-submit {
-  @apply bg-main-gray flex p-10 justify-center items-center h-1/6;
+  @apply bg-main-gray flex p-10  justify-center items-center h-[15%] max-w-[100%];
 }
 
 .form-submit button {
@@ -17,7 +17,7 @@
 
 
 .form-submit input { 
-  @apply h-[130px] bg-main-white rounded-[2rem] w-[85%] p-8 shadow-sm shadow-black
+  @apply h-[130px] bg-main-white rounded-[2rem] w-[85%] p-8 shadow-sm shadow-black text-2xl
 }
 
 

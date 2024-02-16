@@ -7,19 +7,19 @@
 }
 
 .aside-header {
-  @apply bg-main-black h-full min-h-full w-1/5 flex flex-col items-center justify-between gap-16;
+  @apply bg-main-black h-full min-h-full w-[15%] flex flex-col items-center justify-between gap-16;
 }
 
 .banner-aside {
-  @apply flex flex-col items-center justify-evenly gap-12 px-4
+  @apply flex flex-col items-center justify-evenly gap-12 px-4;
 }
 
 .aside-header button {
-  @apply bg-main-white text-xl w-4/5 p-4 rounded-3xl hover:bg-main-gray
+  @apply bg-main-white text-xl w-4/5 p-4 rounded-3xl hover:bg-main-gray;
 }
 
 .banner-aside img {
-  @apply w-[350px] h-auto min-h-48 flex items-center justify-center
+  @apply w-[350px] h-auto min-h-48 flex items-center justify-center;
 }
 
 .img-logo {
@@ -27,36 +27,34 @@
 }
 
 .footer-aside {
-  @apply bg-main-purple w-full h-1/6 flex items-center justify-center gap-8 border-white
+  @apply bg-main-purple w-full h-[15%] flex items-center justify-center gap-4 border-white;
 }
 
 .footer-aside p {
-  @apply text-white text-2xl font-bold font-fira-code 
+  @apply text-white text-base font-bold font-fira-code;
 }
 
 .footer-aside p:nth-child(1) {
-  @apply text-4xl
+  @apply text-xl;
 }
 
 .chat-container {
-  @apply bg-main-black
+  @apply bg-main-black;
 }
 
 .chat-box {
-  @apply w-4/5 h-full bg-main-white
+  @apply w-[85%] h-full bg-main-white;
 }
 
 .chat-log {
-
-  @apply w-full h-[83%] overflow-y-scroll pb-3
+  @apply w-full h-[85%] overflow-y-scroll pb-3
   /* min-height: 12rem;
   overflow-y: scroll;
   padding: 1rem;
   border: 8px solid #dddd;
   border-radius: 5px;
-  background-color: #fff; */
+  background-color: #fff; */;
 }
-
 
 .chatbot {
   display: flex;

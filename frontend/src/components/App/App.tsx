@@ -11,14 +11,16 @@ export default function App() {
       <section className="main-section">        
       </section>
 
-      <Routes>
+      <Chatbot /> 
+
+      {/* <Routes>
         <Route
           path="/private"
           element={
-            <Chatbot />            
+                       
           }
-        />
-      </Routes>
+        /> 
+      </Routes> */}
     </div>
   );
 }
