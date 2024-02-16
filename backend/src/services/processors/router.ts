@@ -5,8 +5,6 @@ import { OpenAI } from "langchain/llms/openai";
 import { RetrievalQAChain } from "langchain/chains";
 
 import now from "performance-now";
-import prisma from "../../utils/prisma";
-import { AuthMiddleware } from "../middlewares/auth";
 
 let totalInteractions = 0;
 let resolvedInteractions = 0;
@@ -14,25 +12,8 @@ let totalTimeSpent = 0;
 
 export const router = Router();
 
-router.post(
-  "/",
-  AuthMiddleware,
-  async (request: Request, response: Response) => {
+router.post("/", async (request: Request, response: Response) => {
     const { chats } = request.body;
-    const user = await prisma.user.findUnique({
-      where: { id: request.user?.id },
-      include: { departments: true },
-    });
-
-    if (!user) {
-      return response.status(404).json({ error: "User not found" });
-    }
-
-    const departmentMapping: Record<number, string> = {
-      1: "IT",
-      2: "RH",
-      3: "Comercial",
-    };
 
     /*  const departments = user.departments.map(
         (department) => departmentMapping[department.id]
@@ -40,12 +21,7 @@ router.post(
 
     const startTime = now();
 
-    const normalizedDocs = await loadAndNormalizeDocuments(
-      user.departments.map((department) => ({
-        id: department.id,
-        name: departmentMapping[department.id],
-      }))
-    );
+    const normalizedDocs = await loadAndNormalizeDocuments();
     const vectorStore = await setupVectorStore(normalizedDocs);
 
     const openai = new OpenAI({
