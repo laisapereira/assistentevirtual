@@ -50,7 +50,7 @@ const Chatbot = () => {
   const handleAlert = () => {
     Swal.fire({
       title: "Olá, obrigada por testar!",
-      text: "Essa é uma versão de demonstração da Jô, em breve teremos mais funcionalidades.",
+      text: "Essa é uma versão de demonstração da Jô! Em breve teremos mais funcionalidades.",
       icon: "info",
       showCancelButton: false,
       confirmButtonColor: "#5252F1",
