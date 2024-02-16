@@ -8,17 +8,7 @@ import { Link, Route, Routes } from "react-router-dom";
 export default function App() {
   return (
     <div>
-      <section className="main-section">        
-      </section>
-
-      <Routes>
-        <Route
-          path="/private"
-          element={
-            <Chatbot />            
-          }
-        />
-      </Routes>
+      <Chatbot />
     </div>
   );
 }

@@ -16,10 +16,9 @@ import { ChatEntry } from "../../types/types.ts";
 
 const Chatbot = () => {
   const [chatLog, setChatLog] = useState<ChatEntry[]>([]);
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const handleSubmit = async (userMessage: string) => {
-    const botResponse = await sendMessage(userMessage);
-
     setChatLog((prevChatLog: ChatEntry[]) => [
       ...prevChatLog,
       {
@@ -28,9 +27,22 @@ const Chatbot = () => {
       },
       {
         type: "bot",
-        message: botResponse.text,
+        message: "...",
       },
     ]);
+
+    setIsProcessing(true);
+    const botResponse = await sendMessage(userMessage);
+    setIsProcessing(false);
+
+    setChatLog((prevChatLog: ChatEntry[]) => {
+      const newChatLog = [...prevChatLog];
+      newChatLog[newChatLog.length - 1] = {
+        type: "bot",
+        message: botResponse.text,
+      };
+      return newChatLog;
+    });
   };
 
   return (
@@ -38,19 +50,14 @@ const Chatbot = () => {
       <aside className="aside-header">
         <img src={logoFjs} alt="Logo" className="img-logo" />
         <section className="banner-aside">
-          <button>
-            <Link to="/" className="font-fira-code text-2xl">
-              <strong>voltar à Home</strong>
-            </Link>
-          </button>
           <img src={bannerFjs} alt="Banner-Fjs" />
         </section>
 
         <div className="footer-aside">
           <img src={iconUser} alt="user" />
           <section>
-            <p>Paula</p>
-            <p>Ascom</p>
+            <p>Usuário</p>
+            <p>FJS</p>
           </section>
           <GearFine size={60} color="white" />
         </div>
@@ -59,8 +66,6 @@ const Chatbot = () => {
       <section className="chat-box">
         <div className="chat-log">
           <div className="flex justify-between items-center max-w-full p-4 pt-10 px-12">
-            <ArrowLeft size={50} />
-            <DotsThreeVertical size={50} color="black" />
           </div>
           {chatLog.map((entry, index) => (
             <div
