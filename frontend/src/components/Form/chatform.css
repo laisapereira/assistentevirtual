@@ -17,7 +17,7 @@
 
 
 .form-submit input { 
-  @apply h-[130px] bg-main-white rounded-[2rem] w-[85%] p-8 shadow-sm shadow-black text-2xl
+  @apply h-[90px] bg-main-white rounded-[2rem] w-[75%] p-8 shadow-sm shadow-black text-2xl
 }
 
 
@@ -78,7 +78,9 @@
 
 
 .user-message, .bot-message {
-  
+
+  font-size: 1rem; 
+  line-height: 1.5rem;
   max-width: 100%;
   word-wrap: break-word;
   display:flex;
@@ -124,11 +126,11 @@
   overflow-x: hidden;
   overflow-y: auto;
 
-
   max-height: 100rem;
   padding: 10px;
 
-  width: 100%;
+  width: 70%;
+  height: 70%;
 
   scrollbar-width: thin;
   scrollbar-color: #f0f0f0 transparent; 
