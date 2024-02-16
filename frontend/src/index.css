@@ -1,26 +1,6 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.body-page {
-  font-size: 23px;
-  font-family: 'Poppins', sans-serif;
-  color: #fff;
-  text-align: center;
-
-  background: radial-gradient(circle, rgba(148,25,80,1) 9%, rgba(45,39,39,1) 100%);
-  flex-direction: column;;
-  max-width: 100%;
-  min-height: 100vh;
-  margin: 0 auto;
-
-
-  display:block;
-
-  
-
-}
 
 ::-webkit-scrollbar {
 	width: 20px;
@@ -33,3 +13,55 @@
   min-width: 100%;
 
 }
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('./fonts/SourceSansPro/SourceSansPro-Regular.ttf') format('opentype');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro Bold';
+  src: url('./fonts/SourceSansPro/SourceSansPro-Bold.ttf') format('opentype');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro Black';
+  src: url('./fonts/SourceSansPro/SourceSansPro-Black.ttf') format('opentype');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./fonts/Montserrat/Montserrat-Regular.ttf') format('opentype');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat-bold';
+  src: url('./fonts/Montserrat/Montserrat-Bold.ttf') format('opentype');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ubuntu-bold';
+  src: url('./fonts/Ubuntu/Ubuntu-Bold.ttf') format('opentype');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ABeeZe';
+  src: url('./fonts/ABeeZe/ABeeZee-Regular.ttf') format('opentype');
+  font-style: normal;
+  font-display: swap;
+}
+
+
+

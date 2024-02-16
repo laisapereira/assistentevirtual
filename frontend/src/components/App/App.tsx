@@ -1,15 +1,14 @@
-import Footer from '../Footer/index.tsx'
 import '../../../src/index.css';
-import Chatbot from '../Chatbot/index.tsx';
 import React from 'react';
+
+import { Header }  from '../header.tsx';
+import { Main } from '../main.tsx';
 
 export default function App() {
   return (
-    <div className="body-page">
-      <section className="main-section">
-        <Chatbot />
-        <Footer />
-      </section>
-    </div>
+    <div className='container mx-auto'>      
+      <Header />
+      <Main />
+    </div>    
   );
 }
