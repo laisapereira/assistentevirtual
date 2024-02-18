@@ -1,14 +1,17 @@
 import '../../../src/index.css';
 import React from 'react';
 
-import { Header }  from '../header.tsx';
-import { Main } from '../main.tsx';
+import { Header }  from '../Header/header.tsx';
+import { Main } from '../Main/main.tsx';
+import { EmailSection } from '../EmailSection/emailSection.tsx';
 
 export default function App() {
   return (
-    <div className='container mx-auto'>      
+    <div className='h-screen'>      
       <Header />
       <Main />
+      <EmailSection />
+      
     </div>    
   );
 }
