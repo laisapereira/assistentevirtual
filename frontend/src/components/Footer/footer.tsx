@@ -12,9 +12,9 @@ import linkedinIcon from '../../assets/linkedin-icon.svg';
 export function Footer () {
   return (
 
-    <footer className='h-16'>
+    <footer >
 
-      <div className='container mx-auto flex justify-between items-center py-4'>
+      <div className='container mx-auto flex justify-between items-center py-6 xl:px-3 2xl:py-4'>
 
         <p className='font-montSerrat-bold'>Entre em contato com a gente</p>
         <img src={aceleraLogo} />

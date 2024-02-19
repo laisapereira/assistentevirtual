@@ -22,7 +22,7 @@ import bolinha144 from '../../assets/bolinha144.svg';
 
 export function Main () {
   return (
-    <main className='h-2/5 pt-16 mt-8 flex justify-between container mx-auto'>
+    <main className='h-1/2 pt-16 mt-3 flex justify-between container mx-auto xl:pt-14 xl:gap-0 2xl:gap-48 2xl:justify-normal'>
 
       <MainLeft />  
       <MainRight />  
