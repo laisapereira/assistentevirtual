@@ -58,7 +58,7 @@ const Chatbot = () => {
       text: "Esta é uma versão de demonstração da Jô. Em breve teremos mais funcionalidades.",
       icon: "info",
       showCancelButton: false,
-      confirmButtonColor: "#5252F1",
+      confirmButtonColor: "#6A1B44",
       confirmButtonText: "Voltar ao Chat",
     }).then((result) => {
       /*  if (result.isConfirmed) {
@@ -118,7 +118,7 @@ const Chatbot = () => {
                 className={`flex w-[63%] max-w-[75%] mx-16 my-10 p-3 rounded-lg shadow-lg ${
                   entry.type === "user"
                     ? "bg-main-white text-black"
-                    : "bg-main-purple text-main-white ml-[0rem] mt-[4rem]"
+                    : "bg-color-fjs text-main-white ml-[0rem] mt-[4rem]"
                 }`}
               >
                 <div className="p-5 font-inter text-justify">
