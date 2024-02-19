@@ -17,7 +17,7 @@ import { ArrowLeft, DotsThreeVertical, GearFine } from "@phosphor-icons/react";
 import { ChatEntry } from "../../types/types.ts";
 
 const Chatbot = () => {
-  const [chatLog, setChatLog] = useState<ChatEntry[]>([]);
+  const [chatLog, setChatLog] = useState<ChatEentry[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
 
   const handleSubmit = async (userMessage: string) => {
@@ -115,7 +115,7 @@ const Chatbot = () => {
                 alt={entry.type === "user" ? "Foto do Usuário" : "Foto do Bot"}
               />
               <div
-                className={`flex w-[63%] max-w-[75%] mx-16 my-10 p-3 rounded-lg shadow-lg ${
+                className={`flex w-[55%] max-w-[75%] mx-16 my-10 p-3 rounded-lg shadow-lg ${
                   entry.type === "user"
                     ? "bg-main-white text-black"
                     : "bg-main-purple text-main-white ml-[0rem] mt-[4rem]"
