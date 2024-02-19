@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { MainLeft } from './mainLeft.tsx';
-import { MainCenter } from './mainCenter.tsx';
 import { MainRight } from './mainRight.tsx';
 
 import Ellipse142 from '../../assets/Ellipse 142.svg';
@@ -23,12 +22,10 @@ import bolinha144 from '../../assets/bolinha144.svg';
 
 export function Main () {
   return (
-    <main className='h-1/2 pt-16 mt-8 flex flex-row-reverse justify-end container mx-auto'>
+    <main className='h-2/5 pt-16 mt-8 flex justify-between container mx-auto'>
 
-      <MainRight />        
-      <MainCenter /> 
       <MainLeft />  
-        
+      <MainRight />  
 
     </main>
   );
