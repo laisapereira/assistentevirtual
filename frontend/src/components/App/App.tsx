@@ -4,6 +4,7 @@ import React from 'react';
 import { Header }  from '../Header/header.tsx';
 import { Main } from '../Main/main.tsx';
 import { EmailSection } from '../EmailSection/emailSection.tsx';
+import { Footer } from '../Footer/footer.tsx';
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
       <Header />
       <Main />
       <EmailSection />
+      <Footer />
       
     </div>    
   );

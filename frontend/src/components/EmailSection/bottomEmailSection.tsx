@@ -5,7 +5,7 @@ import joLogoBranca from '../../assets/jo-logo-branca.svg'
 export function BottomEmailSection () {
   return (
 
-    <div className='mt-10 flex items-center container mx-auto'>
+    <div className='mt-8 flex items-center container mx-auto'>
       
       <div>
         <img src={joLogoBranca} alt="" />
