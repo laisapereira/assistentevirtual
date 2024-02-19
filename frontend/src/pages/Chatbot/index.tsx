@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import logoChat from "../../public/logo-chat.svg";
 
 import logoFjs from "../../public/logo.svg";
-import bannerFjs from "../../public/ban-fjs.png";
+import bannerFjs from "../../public/banner-fjs.svg";
 import iconUser from "../../public/generic-user.svg";
 import { ArrowLeft, DotsThreeVertical, GearFine } from "@phosphor-icons/react";
 import { ChatEntry } from "../../types/types.ts";
@@ -115,7 +115,7 @@ const Chatbot = () => {
                 alt={entry.type === "user" ? "Foto do Usuário" : "Foto do Bot"}
               />
               <div
-                className={`flex w-[55%] max-w-[75%] mx-16 my-10 p-3 rounded-lg shadow-lg ${
+                className={`flex w-[60%] max-w-[75%] mx-16 my-10 p-3 rounded-lg shadow-lg ${
                   entry.type === "user"
                     ? "bg-main-white text-black"
                     : "bg-color-fjs text-main-white ml-[0rem] mt-[4rem]"
