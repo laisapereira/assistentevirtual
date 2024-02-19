@@ -15,10 +15,6 @@ export const router = Router();
 router.post("/", async (request: Request, response: Response) => {
     const { chats } = request.body;
 
-    /*  const departments = user.departments.map(
-        (department) => departmentMapping[department.id]
-      ); */
-
     const startTime = now();
 
     const normalizedDocs = await loadAndNormalizeDocuments();

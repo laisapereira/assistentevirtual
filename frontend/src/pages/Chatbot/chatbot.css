@@ -27,7 +27,7 @@
 }
 
 .footer-aside {
-  @apply bg-main-purple w-full h-[15%] flex items-center justify-center gap-4 border-white;
+  @apply bg-color-fjs w-full h-[15%] flex items-center justify-center gap-4 border-white;
 }
 
 .footer-aside p {

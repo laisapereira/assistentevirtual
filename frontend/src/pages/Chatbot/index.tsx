@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import logoChat from "../../public/logo-chat.svg";
 
 import logoFjs from "../../public/logo.svg";
-import bannerFjs from "../../public/banner-fjs.svg";
+import bannerFjs from "../../public/ban-fjs.png";
 import iconUser from "../../public/generic-user.svg";
 import { ArrowLeft, DotsThreeVertical, GearFine } from "@phosphor-icons/react";
 import { ChatEntry } from "../../types/types.ts";
