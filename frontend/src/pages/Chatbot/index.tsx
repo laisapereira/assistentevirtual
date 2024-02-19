@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import logoChat from "../../public/logo-chat.svg";
 
 import logoFjs from "../../public/logo.svg";
-import bannerFjs from "../../public/banner-fjs.svg";
+import bannerFjs from "../../public/ban-fjs.png";
 import iconUser from "../../public/generic-user.svg";
 import { ArrowLeft, DotsThreeVertical, GearFine } from "@phosphor-icons/react";
 import { ChatEntry } from "../../types/types.ts";
@@ -58,7 +58,7 @@ const Chatbot = () => {
       text: "Esta é uma versão de demonstração da Jô. Em breve teremos mais funcionalidades.",
       icon: "info",
       showCancelButton: false,
-      confirmButtonColor: "#5252F1",
+      confirmButtonColor: "#6A1B44",
       confirmButtonText: "Voltar ao Chat",
     }).then((result) => {
       /*  if (result.isConfirmed) {
@@ -118,7 +118,7 @@ const Chatbot = () => {
                 className={`flex w-[55%] max-w-[75%] mx-16 my-10 p-3 rounded-lg shadow-lg ${
                   entry.type === "user"
                     ? "bg-main-white text-black"
-                    : "bg-main-purple text-main-white ml-[0rem] mt-[4rem]"
+                    : "bg-color-fjs text-main-white ml-[0rem] mt-[4rem]"
                 }`}
               >
                 <div className="p-5 font-inter text-justify">

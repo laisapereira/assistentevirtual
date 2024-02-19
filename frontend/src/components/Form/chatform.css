@@ -103,7 +103,7 @@
 .bot-message {
 
 
-  @apply bg-main-purple text-white mb-1
+  @apply bg-color-fjs text-white mb-1
  /*  background-color: #28a745;
   color: #fff;
   padding: 5px 10px;
