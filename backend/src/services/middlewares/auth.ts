@@ -35,4 +35,6 @@ export async function AuthMiddleware(
     return res.status(401).json({ message: "Token inválido" });
     
   }
+
+  next()
 }

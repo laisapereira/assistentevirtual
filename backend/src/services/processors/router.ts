@@ -18,61 +18,66 @@ router.post(
   "/",
   AuthMiddleware,
   async (request: Request, response: Response) => {
-    const { chats } = request.body;
-    const user = await prisma.user.findUnique({
-      where: { id: request.user?.id },
-      include: { departments: true },
-    });
+    console.log("Handling request....");
+    try {
+      const { chats } = request.body;
+      const user = await prisma.user.findUnique({
+        where: { id: request.user?.id },
+        include: { departments: true },
+      });
 
-    if (!user) {
-      return response.status(404).json({ error: "User not found" });
+      if (!user) {
+        return response.status(404).json({ error: "User not found" });
+      }
+
+      const departmentMapping: Record<number, string> = {
+        1: "IT",
+        2: "RH",
+        3: "Comercial",
+      };
+ 
+     
+      const startTime = now();
+
+      const normalizedDocs = await loadAndNormalizeDocuments(
+        user.departments.map((department) => ({
+          id: department.id,
+          name: departmentMapping[department.id],
+        }))
+      ); 
+
+      const vectorStore = await setupVectorStore(normalizedDocs);
+
+      const openai = new OpenAI({
+        configuration: {
+          apiKey: process.env.OPENAI_API_KEY || "",
+        },
+      });
+
+      const chain = RetrievalQAChain.fromLLM(openai, vectorStore.asRetriever());
+
+      console.log("Querying chain...");
+      const result = await chain.call({ query: chats });
+
+      // metricas
+      const endTime = now();
+      const elapsedTime = endTime - startTime;
+
+      totalInteractions++;
+      totalTimeSpent += elapsedTime;
+
+      if (result) {
+        resolvedInteractions++;
+      }
+
+      logMetrics();
+      console.log("Chain result:", result);
+
+      response.json({ output: result });
+    } catch (error) {
+      console.log("Error calling chain:", error);
+      return response.status(500).json({ message: "Erro interno do servidor" });
     }
-
-    const departmentMapping: Record<number, string> = {
-      1: "IT",
-      2: "RH",
-      3: "Comercial",
-    };
-
-    /*  const departments = user.departments.map(
-        (department) => departmentMapping[department.id]
-      ); */
-
-    const startTime = now();
-
-    const normalizedDocs = await loadAndNormalizeDocuments(
-      user.departments.map((department) => ({
-        id: department.id,
-        name: departmentMapping[department.id],
-      }))
-    );
-    const vectorStore = await setupVectorStore(normalizedDocs);
-
-    const openai = new OpenAI({
-      configuration: {
-        apiKey: process.env.OPENAI_API_KEY || "",
-      },
-    });
-
-    const chain = RetrievalQAChain.fromLLM(openai, vectorStore.asRetriever());
-
-    console.log("Querying chain...");
-    const result = await chain.call({ query: chats });
-
-    // metricas
-    const endTime = now();
-    const elapsedTime = endTime - startTime;
-
-    totalInteractions++;
-    totalTimeSpent += elapsedTime;
-
-    if (result) {
-      resolvedInteractions++;
-    }
-
-    logMetrics();
-
-    response.json({ output: result });
   }
 );
 
