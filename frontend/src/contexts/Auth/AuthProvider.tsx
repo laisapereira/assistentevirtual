@@ -25,15 +25,35 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   }, [api])
 
 
-  const signIn = async (email: string, password: string) => {
+  /* const signIn = async (email: string, password: string) => {
     const data = await api.signIn(email, password);
+    console.log(data)
+
     if (data.user && data.token) {
       setUser(data.user);
       setToken(data.token.toString());
       return true;
     }
     return false;
+  }; */
+
+
+  const signIn = async (email: string, password: string) => {
+    console.log('signIn is being called');  // Adicione esta linha
+    try {
+      const data = await api.signIn(email, password);
+      console.log(data);  // Adicione esta linha
+      if (data.user && data.token) {
+        setUser(data.user);
+        setToken(data.token.toString());
+        return true;
+      }
+    } catch (error) {
+      console.error('Error calling api.signIn:', error);  // Adicione esta linha
+    }
+    return false;
   };
+  
   const signOut = async () => {
     console.log("signout está sendo executada.");
     setToken('');

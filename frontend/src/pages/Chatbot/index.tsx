@@ -2,6 +2,8 @@ import { useState } from "react";
 import ChatForm from "../../components/Form/index.tsx";
 import { sendMessage } from "../../components/App/apiFunctions.ts";
 
+import Swal from "sweetalert2";
+
 import "./chatbot.css";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -16,10 +18,9 @@ import { ChatEntry } from "../../types/types.ts";
 
 const Chatbot = () => {
   const [chatLog, setChatLog] = useState<ChatEntry[]>([]);
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const handleSubmit = async (userMessage: string) => {
-    const botResponse = await sendMessage(userMessage);
-
     setChatLog((prevChatLog: ChatEntry[]) => [
       ...prevChatLog,
       {
@@ -28,9 +29,42 @@ const Chatbot = () => {
       },
       {
         type: "bot",
-        message: botResponse.text,
+        message: "...",
       },
     ]);
+
+    setIsProcessing(true);
+    const botResponse = await sendMessage(userMessage);
+    setIsProcessing(false);
+
+    const words = botResponse.text.split(" ");
+
+    for (let i = 0; i < words.length; i++) {
+      setTimeout(() => {
+        setChatLog((prevChatLog: ChatEntry[]) => [
+          ...prevChatLog.slice(0, -1),
+          {
+            type: "bot",
+            message: words.slice(0, i + 1).join(" "),
+          },
+        ]);
+      }, (i + 1) * 150);
+    }
+  };
+
+  const handleAlert = () => {
+    Swal.fire({
+      title: "Olá, obrigada por testar!",
+      text: "Esta é uma versão de demonstração da Jô. Em breve teremos mais funcionalidades.",
+      icon: "info",
+      showCancelButton: false,
+      confirmButtonColor: "#6A1B44",
+      confirmButtonText: "Voltar ao Chat",
+    }).then((result) => {
+      /*  if (result.isConfirmed) {
+        console.log("Voltar ao Chat");
+      } */
+    });
   };
 
   return (
@@ -39,29 +73,35 @@ const Chatbot = () => {
         <img src={logoFjs} alt="Logo" className="img-logo" />
         <section className="banner-aside">
           <button>
-            <Link to="/" className="font-fira-code text-2xl">
-              <strong>voltar à Home</strong>
-            </Link>
+            {" "}
+            <a href="/">voltar à Home </a>
           </button>
           <img src={bannerFjs} alt="Banner-Fjs" />
         </section>
 
         <div className="footer-aside">
-          <img src={iconUser} alt="user" />
+          <img className="w-[50px]" src={iconUser} alt="user" />
           <section>
-            <p>Paula</p>
-            <p>Ascom</p>
+            <p>Usuário</p>
+            <p>FJS</p>
           </section>
-          <GearFine size={60} color="white" />
+          <div onClick={handleAlert} className="icon-engine">
+            <GearFine size={40} color="white" />
+          </div>
         </div>
       </aside>
 
       <section className="chat-box">
         <div className="chat-log">
           <div className="flex justify-between items-center max-w-full p-4 pt-10 px-12">
-            <ArrowLeft size={50} />
-            <DotsThreeVertical size={50} color="black" />
+            <a href="/">
+              <ArrowLeft size={50} />
+            </a>
+            <button onClick={handleAlert}>
+              <DotsThreeVertical size={50} color="black" />
+            </button>
           </div>
+
           {chatLog.map((entry, index) => (
             <div
               key={index}
@@ -70,19 +110,21 @@ const Chatbot = () => {
               }`}
             >
               <img
-                className="w-[150px] h-auto"
+                className="w-[110px] h-auto"
                 src={entry.type === "user" ? iconUser : logoChat}
                 alt={entry.type === "user" ? "Foto do Usuário" : "Foto do Bot"}
               />
               <div
-                className={`flex w-[50%] max-w-[55%] mx-16 my-10 p-3 rounded-lg shadow-lg ${
+                className={`flex w-[63%] max-w-[75%] mx-16 my-10 p-3 rounded-lg shadow-lg ${
                   entry.type === "user"
                     ? "bg-main-white text-black"
-                    : "bg-main-purple text-main-white ml-[0rem] mt-[4rem]"
+                    : "bg-color-fjs text-main-purple ml-[0rem] mt-[4rem]"
                 }`}
               >
                 <div className="p-5 font-inter text-justify">
-                  <p className="text-3xl leading-[3rem]">{entry.message}</p>
+                  <p className="text-[1.2rem] leading-[2.5rem]">
+                    {entry.message}
+                  </p>
                 </div>
               </div>
             </div>
