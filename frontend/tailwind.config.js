@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'main-purple': '#5252F1',
+        'main-pink': '#822054',
         'main-black': '#000000',
         'main-gray': '#F1F1F1',
         'main-white': '#FFFFFF',
@@ -15,6 +15,7 @@ module.exports = {
       fontFamily: {
         'fira-code': ['Fira Code', 'monospace'],
         'inter': ['Inter', 'sans-serif'],
+        'montserrat': ['Montserrat', 'sans-serif'],
         'source-sans-3': ['Source Sans 3', 'sans-serif'],
       },
     },

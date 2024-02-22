@@ -1,20 +1,27 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext.tsx";
-import { yupResolver } from "@hookform/resolvers/yup"
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
-import * as yup from "yup"
+import * as yup from "yup";
+
+import joLogo from "../../public/logo.svg";
+
+import emojiIcon from "../../public/emoji.png";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 
-const schema = yup.object({
-  email: yup.string().email().required(),
-  password: yup.string().required(),
-}).required();
+import "./login.css";
+import { Eye, EyeClosed } from "@phosphor-icons/react";
+const schema = yup
+  .object({
+    email: yup.string().email().required(),
+    password: yup.string().required(),
+  })
+  .required();
 
 interface ILoginInput {
   email: string;
   password: string;
-
 }
 export const Login = () => {
   const auth = useContext(AuthContext);
@@ -22,9 +29,16 @@ export const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({resolver: yupResolver(schema)});
+  } = useForm({ resolver: yupResolver(schema) });
 
   const navigate = useNavigate();
+
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
 
   const onSubmit = async (data: ILoginInput) => {
     const { email, password } = data;
@@ -38,30 +52,82 @@ export const Login = () => {
     }
   };
   return (
-    <div>
-      <h1>Login</h1>
+    <div className="main-container h-[90vh]">
+      <div className="login-screen">
+        <section className="aside-left">
+          <div className="jo-Logo">
+            <img src={joLogo} alt="jo-logo"></img>
+          </div>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input
-          type="text"
-          placeholder="Email"
-          {...register("email", { required: true, maxLength: 50 })}
-        />
-        <p className="text-main-purple">{errors.email?.message}</p>
-        <input
-          type="password"
-          placeholder="Senha"
-          {...register("password", {
-            required: true,
-            maxLength: 20,
-            minLength: 8,
-          })}
-        />
-        <p>{errors.password?.message}</p>
+          <div className="pl-9 pt-8 flex flex-col gap-7">
+            <section className="flex gap-2">
+              <h1 className=" font-montserrat font-bold text-main-white text-5xl text-start w-[31%] leading-[3.8rem]">
+                Descubra Aqui!{" "}
+              </h1>
+              <img src={emojiIcon} alt="emoji" className="w-16 pt-14" />
+            </section>
 
-       {/*  {errors.email && errors.password && <span>This field is required</span>} */}
-        <button type="submit">Entrar</button>
-      </form>
+            <div>
+              <p className=" text-main-white text-lg font-extralight text-start w-[86%]">
+                A Jô, nossa assistente virtual, tem um jeitinho todo especial de
+                se expressar: ela adora interagir com emojis! Ao simplificar
+                buscas e fornecer informações sobre a fundação, a Jô também se
+                torna além de eficientes, mas também divertida e amigável para
+                você.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <aside className="aside-login flex flex-col gap-36">
+          <h1 className="text-center font-bold text-3xl font-montserrat text-black relative top-12">
+            Fazer login
+          </h1>
+
+          <form className="form-login" onSubmit={handleSubmit(onSubmit)}>
+            <div className="input-label">
+              <label htmlFor="email">Endereço de email</label>
+              <input
+                type="text"
+                {...register("email", { required: true, maxLength: 50 })}
+              />
+              <p className="text-main-pink">{errors.email?.message}</p>
+            </div>
+
+            <div className="input-label">
+              <label htmlFor="Senha">Senha</label>
+
+              <input
+                type={showPassword ? "text" : "password"}
+                {...register("password", {
+                  required: true,
+                  max: 20,
+                  min: 8,
+                })}
+              />
+              <button
+                className="absolute right-[14rem] bottom-[20rem]"
+                onClick={handleTogglePasswordVisibility}
+              >
+                {showPassword ? <EyeClosed size={20} /> : <Eye size={20} />}{" "}
+              </button>
+
+              <p className="text-main-pink">{errors.password?.message}</p>
+            </div>
+
+            {/*  {errors.email && errors.password && <span>This field is required</span>} */}
+            <div className="button-submit">
+              <button type="submit">Entrar</button>
+              <h3>
+                Novo usuário?{" "}
+                <a href="" className="text-sm text-main-pink" target="_blank">
+                  Crie uma conta
+                </a>
+              </h3>
+            </div>
+          </form>
+        </aside>
+      </div>
     </div>
   );
 };

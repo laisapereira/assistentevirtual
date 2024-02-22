@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+* {
+  @apply font-montserrat;
+}
+
+.main-container {
+  @apply bg-white w-full h-screen flex justify-center px-4 mt-12 mb-12;
+}
+
+.login-screen {
+  @apply w-full max-w-6xl flex items-start rounded-lg justify-start shadow-lg;
+}
+
+.aside-left {
+  @apply w-1/2 flex flex-col gap-y-20 h-full bg-main-pink p-12 rounded-lg shadow-xl;
+}
+
+.jo-Logo img {
+  @apply w-56 h-14;
+}
+
+.aside-login {
+  @apply w-1/2 h-full bg-white pt-24 rounded-lg shadow-xl;
+}
+
+.form-login {
+  @apply flex flex-col gap-10 items-center justify-center;
+}
+
+.button-submit {
+  @apply gap-36;
+}
+
+.button-submit button {
+  @apply bg-black p-1.5 rounded-lg hover:bg-slate-900 text-white w-[18rem] h-12;
+}
+
+.button-submit h3 {
+  @apply text-black text-sm p-8;
+}
+
+.input-label {
+  @apply flex flex-col w-[60%] gap-4;
+}
+
+.input-label label {
+  @apply text-gray-500 text-sm text-left;
+}
+
+.input-label input {
+  @apply text-black outline-none text-sm border-b-2 border-main-pink;
+}
+
+
+.dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  border-radius: 50%;
+  right: 10px;
+}
+
+.dot:nth-child(1) {
+  top: 10px;
+}
+
+.dot:nth-child(2) {
+  top: 30px;
+}
+
+.dot:nth-child(3) {
+  top: 50px;
+}

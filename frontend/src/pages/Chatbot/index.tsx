@@ -118,7 +118,7 @@ const Chatbot = () => {
                 className={`flex w-[63%] max-w-[75%] mx-16 my-10 p-3 rounded-lg shadow-lg ${
                   entry.type === "user"
                     ? "bg-main-white text-black"
-                    : "bg-color-fjs text-main-purple ml-[0rem] mt-[4rem]"
+                    : "bg-color-fjs text-main-pink ml-[0rem] mt-[4rem]"
                 }`}
               >
                 <div className="p-5 font-inter text-justify">
