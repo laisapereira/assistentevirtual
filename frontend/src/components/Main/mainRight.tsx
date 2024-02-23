@@ -1,19 +1,19 @@
 import React from 'react';
 
-import imagemMulher from '../../assets/mulherFundoAzul.svg'
+import imagemMulher from '../../assets/womanOrange.svg'
 
 export function MainRight() {
   return (
     <div className='flex flex-row-reverse relative'>
 
       <div>
-        <img className='w-72 mt-28 -ml-5 xl:w-96 xl:mt-20 2xl:mt-24 2xl:-ml-3' src={imagemMulher} alt="" />
-        <span className='absolute -right-28 top-28 text-xs font-ABeeZe -rotate-90 xl:text-sm xl:-right-36 2xl:-right-40'>Todos os direitos reservados ao Acelera FJS</span>
+        <img className='w-72 mt-28 -ml-5 md:mt-32 lg:mt-24 xl:w-96 xl:mt-20 2xl:mt-24 2xl:-ml-7' src={imagemMulher} alt="" />
+        <span className='absolute -right-28 top-28 text-xs font-ABeeZe -rotate-90 lg:top-24 xl:text-sm xl:-right-36 2xl:-right-40'>Todos os direitos reservados ao Acelera FJS</span>
       </div>
 
       <div className='flex flex-col pt-5'>
         <div className='justify-start'>
-          <div className='w-3/4 py-4 px-6 rounded-3xl rounded-tl-md bg-[#5252F1] text-xs text-white font-inter xl:text-base 2xl:text-lg '>
+          <div className='w-3/4 py-4 px-6 rounded-3xl rounded-tl-md bg-[#98194E] text-xs text-white font-inter xl:text-base 2xl:text-lg '>
             Olá eu sou a Jô! 👋 Como posso te ajudar hoje?
           </div>
         </div>
@@ -25,7 +25,7 @@ export function MainRight() {
         </div>
 
         <div className='justify-start'>
-          <div className='w-2/3 py-4 text-center mt-5 rounded-2xl rounded-tl-md bg-[#5252F1] text-xs text-white font-inter xl:text-base 2xl:text-lg'>
+          <div className='w-2/3 py-4 text-center mt-5 rounded-2xl rounded-tl-md bg-[#98194E] text-xs text-white font-inter xl:text-base 2xl:text-lg'>
             Aqui está! o número é 91435 😊
           </div>
         </div>
