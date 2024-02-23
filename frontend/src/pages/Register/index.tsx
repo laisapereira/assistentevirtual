@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Department } from "../../types/types";
 
+
+
 export default function Register() {
   const [values, setValues] = useState({
     name: "",
@@ -13,9 +15,10 @@ export default function Register() {
   const [departments, setDepartments] = useState<Department[]>([])
   const [error, setError] = useState("");
 
+  const baseUrl = process.env.REACT_APP_API_DEPARTMENTS || ''
   useEffect(() => {
     axios
-      .get("http://localhost:3333/departments")
+      .get(baseUrl)
       .then((response) => {
         console.log(response.data)
         setDepartments(response.data);

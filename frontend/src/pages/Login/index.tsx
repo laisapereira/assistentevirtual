@@ -12,6 +12,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 
 import "./login.css";
 import { Eye, EyeClosed } from "@phosphor-icons/react";
+import { NumberOfRegistered } from "../../components/Header/NumberOfRegisteres.tsx";
 const schema = yup
   .object({
     email: yup.string().email().required(),
@@ -71,10 +72,12 @@ export const Login = () => {
               <p className=" text-main-white text-lg font-extralight text-start w-[86%]">
                 A Jô, nossa assistente virtual, tem um jeitinho todo especial de
                 se expressar: ela adora interagir com emojis! Ao simplificar
-                buscas e fornecer informações sobre a fundação, a Jô também se
-                torna além de eficientes, mas também divertida e amigável para
+                buscas e fornecer informações sobre a fundação, a Jô se
+                torna além de eficiente, mais divertida e amigável para
                 você.
               </p>
+
+              <NumberOfRegistered backgroundColor="white" />
             </div>
           </div>
         </section>
@@ -106,7 +109,7 @@ export const Login = () => {
                 })}
               />
               <button
-                className="absolute right-[14rem] bottom-[20rem]"
+                className="absolute right-[25%] bottom-[42%]"
                 onClick={handleTogglePasswordVisibility}
               >
                 {showPassword ? <EyeClosed size={20} /> : <Eye size={20} />}{" "}
@@ -120,7 +123,7 @@ export const Login = () => {
               <button type="submit">Entrar</button>
               <h3>
                 Novo usuário?{" "}
-                <a href="" className="text-sm text-main-pink" target="_blank">
+                <a href="/register" className="text-sm text-main-pink" target="_blank">
                   Crie uma conta
                 </a>
               </h3>
