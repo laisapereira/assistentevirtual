@@ -3,33 +3,60 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('./fonts/SourceSansPro/SourceSans3-Regular.ttf') format('opentype');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro Bold';
+  src: url('./fonts/SourceSansPro/SourceSans3-Bold.ttf') format('opentype');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro SemiBold';
+  src: url('./fonts/SourceSansPro/SourceSans3-SemiBold.ttf') format('opentype');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat Bold';
+  src: url('./fonts/MontSerrat/Montserrat-Bold.ttf') format('opentype');
+  font-style: normal;
+  font-display: swap;
+}
+
 .body-page {
-  font-size: 23px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'SourceSansPro', sans-serif;
   color: #fff;
-  text-align: center;
 
-  background-color: #fff;
-  flex-direction: column;;
-  max-width: 100%;
-  min-height: 100vh;
-  margin: 0 auto;
+  height: 100vh;
 
+  display: grid;
+  place-items: center;
 
-  display:block;
+}
 
+.main {
+  width: min(1248px, 90%); 
+  height: 80%;
+  padding-top: 40px;
+
+  border-radius: 16px;
+
+  color: white;
+  box-shadow: 0 0px 45px 5px rgb(0 0 0 / 0.25);
 }
 
 ::-webkit-scrollbar {
 	width: 20px;
 	height: 10px;
   border-radius: 10px;
-}
-
-.main-section {
-  min-height: 100%;
-  min-width: 100%;
-
 }
 
 

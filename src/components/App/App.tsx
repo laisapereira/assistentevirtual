@@ -1,13 +1,23 @@
 import React from 'react';
-import Login from '../Login/LoginDiv.tsx';
-import Cadastro from '../cadastro/Cadastro.tsx';
+import { Header } from '../Header/header.tsx';
+import { Hero } from '../Hero/hero.tsx';
+import mainImg from '../../assets/Vector 641.jpg'
 
 export default function App() {
   return (
     <div className="body-page">
-      <section className="main-section">
-        <Cadastro/>
-      </section>
+
+      <div className='main shadow-2xl relative'>        
+        <Header /> 
+
+        
+       
+          
+        <Hero /> 
+        <img className='w-1/2 absolute -bottom-2 z-0' src={mainImg} /> 
+          
+      </div>
+
     </div>
   );
 }
