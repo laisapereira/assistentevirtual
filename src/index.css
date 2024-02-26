@@ -31,26 +31,47 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'ABeeZee';
+  src: url('./fonts/ABeeZee/ABeeZee-Regular.ttf') format('opentype');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ABeeZee Italic';
+  src: url('./fonts/ABeeZee/ABeeZee-Italic.ttf') format('opentype');
+  font-style: normal;
+  font-display: swap;
+}
+
+
 .body-page {
   font-family: 'SourceSansPro', sans-serif;
   color: #fff;
 
   height: 100vh;
-
-  display: grid;
-  place-items: center;
+  padding-top: 60px;
 
 }
 
 .main {
   width: min(1248px, 90%); 
-  height: 80%;
+  height: 85%;
   padding-top: 40px;
+  margin: 0 auto;
+  margin-top: 25px;
 
   border-radius: 16px;
 
   color: white;
   box-shadow: 0 0px 45px 5px rgb(0 0 0 / 0.25);
+}
+
+.my-container {
+  width: min(1300px, 90%);
+  margin: 0 auto;
+  padding: 10px 0px 10px 70px;
 }
 
 ::-webkit-scrollbar {

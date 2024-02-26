@@ -10,7 +10,9 @@ module.exports = {
         'montSerratBold': ['Montserrat Bold', 'sans-serif'],
         'sourceSansPro': ['Source Sans Pro', 'sans-serif'],
         'sourceSansProBold': ['Source Sans Pro Bold', 'sans-serif'],
-        'sourceSansProSemiBold': ['Source Sans Pro SemiBold', 'sans-serif']               
+        'sourceSansProSemiBold': ['Source Sans Pro SemiBold', 'sans-serif'],
+        'abeezee': ['ABeeZee', 'sans-serif'] ,
+        'abeezeeItalic': ['AbeeZee Italic', 'sans-serif']            
       },
       colors: {
         'customBlue': '#5252F1',

@@ -1,7 +1,9 @@
 import React from 'react';
 import { Header } from '../Header/header.tsx';
 import { Hero } from '../Hero/hero.tsx';
+import { Footer } from '../Footer/footer.tsx';
 import mainImg from '../../assets/Vector 641.jpg'
+import bolaGrande from '../../assets/bolaGrande.svg';
 
 export default function App() {
   return (
@@ -9,14 +11,14 @@ export default function App() {
 
       <div className='main shadow-2xl relative'>        
         <Header /> 
-
-        
-       
           
         <Hero /> 
-        <img className='w-1/2 absolute -bottom-2 z-0' src={mainImg} /> 
-          
+        <img className='w-1/2 absolute -bottom-2 z-0' src={mainImg} />  
+        
+                 
       </div>
+
+      <Footer />
 
     </div>
   );
