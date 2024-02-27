@@ -7,18 +7,35 @@ import { RetrievalQAChain } from "langchain/chains";
 import now from "performance-now";
 import fs from "fs";
 
-const addConsultaAoHistorico = (consulta: string, resposta: string) => {
+let contadorDeChamadas = 0;
 
-    const timestamp = new Date().toISOString();
+try {
+    const contadorString = fs.readFileSync('contador.txt', 'utf-8');
   
-    const logEntry = `${timestamp} - Consulta: ${consulta}\nResposta: ${resposta}\n\n`;
+    contadorDeChamadas = parseInt(contadorString, 10);
+  
+  } catch (err) {
+  
+    // Se o arquivo não existir, inicie o contador em 0
+  
+    contadorDeChamadas = 0;
+  
+}
+
+const addConsultaAoHistorico = (consulta: string, resposta: string) => {
+    const timestamp = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+  
+    const logEntry = `${timestamp} - Consulta: ${consulta}\nResposta: ${resposta}\n\n`;    
   
     fs.appendFile("consultas.log", logEntry, (err) => {
   
-      if (err) console.error("Erro ao adicionar consulta ao histórico:", err);
+      if (err) console.error("Erro ao adicionar consulta ao histórico:", err);      
   
     });
   
+    contadorDeChamadas++;
+
+    fs.writeFileSync('contador.txt', contadorDeChamadas.toString());
 };
 
 let totalInteractions = 0;
@@ -63,6 +80,8 @@ router.post('/', async (request: Request, response: Response) => {
 
     addConsultaAoHistorico(chats, resposta);
     logMetrics();
+
+    console.log(`Total de Consultas: ${contadorDeChamadas}`);
 
     response.json({ output: result });
 });
