@@ -25,7 +25,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
       - name: Install Dependencies BACKEND
-        run: npm install
+        run: npm install 
         working-directory: backend
 
  #     steps:
