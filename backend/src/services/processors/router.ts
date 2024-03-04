@@ -1,7 +1,7 @@
 import { Request, Response, Router } from 'express';
 import { setupVectorStore } from "./vectorStore";
 import { loadAndNormalizeDocuments } from "./documentLoader";
-import { OpenAI } from "langchain/llms/openai";
+import { OpenAI } from 'langchain/llms/openai';
 import { RetrievalQAChain } from "langchain/chains";
 
 import now from "performance-now";
@@ -51,10 +51,7 @@ router.post("/", async (request: Request, response: Response) => {
     const normalizedDocs = await loadAndNormalizeDocuments();
     const vectorStore = await setupVectorStore(normalizedDocs);
 
-    const openai = new OpenAI({
-      modelName: "gpt-4",
-      temperature: 0.7,
-    });
+    const openai = new OpenAI ({});    
 
     const chain = RetrievalQAChain.fromLLM(openai, vectorStore.asRetriever());
 
