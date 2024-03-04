@@ -15,29 +15,29 @@ export function Hero () {
           <div className='flex-1 z-50'>
             <div className='z-50 flex flex-col'>
               <label htmlFor=''>Nome completo</label>
-              <input className='mt-2 text-base border-b-2 border-secondaryColor' type="text" />
+              <input className='mt-2 text-base border-b-2 border-secondaryColor outline-none' type="text" />
             </div>
 
             <div className='flex flex-col my-10'>
               <label htmlFor=''>Setor</label>
-              <input className='mt-2 text-base border-b-2 border-secondaryColor' type="text" />
+              <input className='mt-2 text-base border-b-2 border-secondaryColor outline-none' type="text" />
             </div>
 
             <div className='flex flex-col'>
               <label htmlFor=''>Data de nascimento</label>
-              <input className='mt-2 text-base border-b-2 border-secondaryColor' type="text" />
+              <input className='mt-2 text-base border-b-2 border-secondaryColor outline-none' type="text" />
             </div>
           </div>
 
           <div className='flex-1 z-50'>
             <div className='flex flex-col'>
               <label htmlFor=''>Endereço de email</label>
-              <input className='mt-2 text-base border-b-2 border-secondaryColor' type="text" />
+              <input className='mt-2 text-base border-b-2 border-secondaryColor outline-none' type="email" />
             </div>
 
             <div className='flex flex-col my-10'>
               <label htmlFor=''>Senha</label>
-              <input className='mt-2 text-base border-b-2 border-secondaryColor' type="text" />
+              <input className='mt-2 text-base border-b-2 border-secondaryColor outline-none' type="password" />
             </div>
 
             <div className='flex flex-col items-center justify-center'>
