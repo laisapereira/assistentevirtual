@@ -53,8 +53,8 @@ router.post("/", async (request: Request, response: Response) => {
     const vectorStore = await setupVectorStore(normalizedDocs);
 
     const openai = new OpenAI ({
-      modelName: "gpt-3.5-turbo",
-      temperature: 0.5,
+      modelName: "gpt-4-turbo-preview",
+      temperature: 0.7,
       maxTokens: 4096,
     }); 
 
