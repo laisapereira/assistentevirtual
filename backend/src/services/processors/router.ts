@@ -44,6 +44,7 @@ let totalTimeSpent = 0;
 export const router = Router();
 
 router.post("/", async (request: Request, response: Response) => {
+
     const { chats } = request.body;
 
     const startTime = now();
@@ -51,7 +52,11 @@ router.post("/", async (request: Request, response: Response) => {
     const normalizedDocs = await loadAndNormalizeDocuments();
     const vectorStore = await setupVectorStore(normalizedDocs);
 
-    const openai = new OpenAI ({});    
+    const openai = new OpenAI ({
+      modelName: "gpt-3.5-turbo",
+      temperature: 0.5,
+      maxTokens: 4096,
+    }); 
 
     const chain = RetrievalQAChain.fromLLM(openai, vectorStore.asRetriever());
 

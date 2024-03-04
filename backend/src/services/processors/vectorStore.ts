@@ -15,7 +15,7 @@ export const setupVectorStore = async (docs: string[]): Promise<HNSWLib> => {
         console.log("Vector store loaded.");
     } else {
         console.log("Creating new vector store...");
-        const textSplitter = new RecursiveCharacterTextSplitter({ chunkSize: 1000 });
+        const textSplitter = new RecursiveCharacterTextSplitter({ chunkSize: 10000 });
         const splitDocs = await textSplitter.createDocuments(docs);
 
         vectorStore = await HNSWLib.fromDocuments(splitDocs, new OpenAIEmbeddings());
