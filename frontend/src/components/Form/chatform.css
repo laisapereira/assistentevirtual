@@ -16,8 +16,8 @@
 }
 
 
-.form-submit input { 
-  @apply h-[90px] bg-main-white rounded-[2rem] w-[75%] p-8 shadow-sm shadow-black text-2xl
+.form-submit textarea { 
+  @apply h-[90px] resize-none bg-main-white rounded-[2rem] w-[75%] p-8 shadow-sm shadow-black text-2xl
 }
 
 

@@ -19,8 +19,7 @@ const ChatForm: React.FC<ChatFormProps> = ({ onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit}  className="form-submit">
-      <input
-        type="text"
+      <textarea
         id="user-input"
         name="user-input"
         placeholder="Digite aqui sua dúvida..."

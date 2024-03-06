@@ -74,7 +74,7 @@ const Chatbot = () => {
         <section className="banner-aside">
           <button>
             {" "}
-            <a href="/">voltar à Home </a>
+            <a href="/">Limpar </a>
           </button>
           <img src={bannerFjs} alt="Banner-Fjs" />
         </section>
@@ -115,7 +115,7 @@ const Chatbot = () => {
                 alt={entry.type === "user" ? "Foto do Usuário" : "Foto do Bot"}
               />
               <div
-                className={`flex w-[63%] max-w-[75%] mx-16 my-10 p-3 rounded-lg shadow-lg ${
+                className={`flex w-[70%] max-w-[75%] mx-16 my-10 p-3 rounded-lg shadow-lg ${
                   entry.type === "user"
                     ? "bg-main-white text-black"
                     : "bg-color-fjs text-main-white ml-[0rem] mt-[4rem]"
