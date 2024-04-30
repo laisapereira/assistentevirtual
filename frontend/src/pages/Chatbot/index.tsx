@@ -17,7 +17,7 @@ import { ArrowLeft, DotsThreeVertical, GearFine } from "@phosphor-icons/react";
 import { ChatEntry } from "../../types/types.ts";
 
 const Chatbot = () => {
-  const [chatLog, setChatLog] = useState<ChatEentry[]>([]);
+  const [chatLog, setChatLog] = useState<ChatEntry[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
 
   const handleSubmit = async (userMessage: string) => {
