@@ -3,6 +3,7 @@ version: '3.8'
 services:
   backend:
     container_name: backend_c
+    image: aceleraprojetosfjs/assistentevirtual-backend:latest
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -20,9 +21,10 @@ services:
 
   frontend:
     container_name: frontend_c
+    image: aceleraprojetosfjs/assistentevirtual-frontend:latest
     build:
       context: ./frontend    
       dockerfile: Dockerfile
     ports:
       - "3000:80"
-
+   

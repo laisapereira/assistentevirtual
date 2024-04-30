@@ -1,0 +1,41 @@
+name: Assistente-CI-CD Workflow
+
+on:
+  push:
+    branches:
+      - prod
+  pull_request:
+    branches:
+      - prod
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v3
+      - name: Login to DockerHub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and Push Docker Images
+        run: docker-compose -f compose.yml build
+             docker-compose -f compose.yml push
+
+  deploy:
+    needs: build-and-push
+    runs-on: self-hosted
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v3
+
+      - name: Login to DockerHub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Pull Docker Images
+        run: docker-compose -f compose.yml pull
+
+      - name: Stop and Remove Old Containers
+        run: docker-compose -f compose.yml down
+
+      - name: Deploy Docker Containers
+        run: docker-compose -f compose.yml up -d
