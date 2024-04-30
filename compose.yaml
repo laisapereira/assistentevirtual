@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  backend:
+    container_name: backend_c
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      args:
+        OPENAI_API_KEY: ${OPENAI_API_KEY}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+
+    environment:
+      - PYTHON=/usr/bin/python3
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+
+  frontend:
+    container_name: frontend_c
+    build:
+      context: ./frontend    
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+
