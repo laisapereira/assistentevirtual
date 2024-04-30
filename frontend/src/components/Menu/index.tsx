@@ -1,10 +1,9 @@
 import React, { useContext, useState } from "react";
 
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../contexts/Auth/AuthContext.tsx";
 import { List } from "@phosphor-icons/react";
 
-const auth = useContext(AuthContext);
+
 
 export default function Menu() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -29,16 +28,7 @@ export default function Menu() {
               <Link to="/register" onClick={toggleMenu}>
                 Register
               </Link>
-              {auth.user && (
-                <button
-                  onClick={() => {
-                    auth.signOut();
-                    toggleMenu();
-                  }}
-                >
-                  Sair
-                </button>
-              )}
+          
             </div>
           )}
 
