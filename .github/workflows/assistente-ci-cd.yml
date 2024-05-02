@@ -3,10 +3,10 @@ name: Assistente-CI-CD Workflow
 on:
   push:
     branches:
-      - prod
+      - 08-jo-mvp
   pull_request:
     branches:
-      - prod
+      - 08-jo-mvp
 
 jobs:
   build-and-push:
@@ -14,12 +14,15 @@ jobs:
     steps:
       - name: Checkout Source
         uses: actions/checkout@v3
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v1
+      - name: Create env file
+        run: echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" > .env
       - name: Login to DockerHub
-        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Build and Push Docker Images
-        run: docker-compose -f compose.yml build
-             docker-compose -f compose.yml push
+        run:  docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: Building and Pushing Docker Images
+        run: docker-compose -f compose.yml build && docker-compose -f compose.yml push
+      
 
   deploy:
     needs: build-and-push
@@ -27,6 +30,16 @@ jobs:
     steps:
       - name: Checkout Source
         uses: actions/checkout@v3
+
+      - name: Install Docker Compose (if not already installed)
+        run: |
+          if ! command -v docker-compose &> /dev/null; then
+            sudo curl -L "https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+            sudo chmod +x /usr/local/bin/docker-compose
+            sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+          else
+            echo "Docker Compose is already installed."
+          fi
 
       - name: Login to DockerHub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
