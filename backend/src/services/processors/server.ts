@@ -10,7 +10,7 @@ const app: Express = express();
 
 app.get("/", (_req, res) => res.send("Hello World!"));
 
-const PORT = 8000;
+const PORT = 5000;
 app.use(cookieParser());
 
 setupExpress(app);
