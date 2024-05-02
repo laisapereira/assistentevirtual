@@ -8,7 +8,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
       args:
-        OPENAI_API_KEY: "sk-proj-NODA3aVW9BhJFQh1Kn48T3BlbkFJlWqbjSw2buIx2ngOAhfP"
+        OPENAI_API_KEY: "sk-proj-Cvloj7at5DQIKGzXcwcET3BlbkFJCMjT9JfPqljK1SGPBrLG"
 
     ports:
       - "8000:8000"
@@ -18,7 +18,7 @@ services:
 
     environment:
       - PYTHON=/usr/bin/python3
-      - OPENAI_API_KEY="sk-proj-NODA3aVW9BhJFQh1Kn48T3BlbkFJlWqbjSw2buIx2ngOAhfP"
+      - OPENAI_API_KEY="sk-proj-Cvloj7at5DQIKGzXcwcET3BlbkFJCMjT9JfPqljK1SGPBrLG"
 
   frontend:
     container_name: frontend_c

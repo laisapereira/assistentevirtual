@@ -51,7 +51,7 @@ router.post("/", async (request: Request, response: Response) => {
     modelName: "gpt-4",
     temperature: 0.7,
     configuration: {
-      apiKey: "sk-proj-NODA3aVW9BhJFQh1Kn48T3BlbkFJlWqbjSw2buIx2ngOAhfP",
+      apiKey: "sk-proj-Cvloj7at5DQIKGzXcwcET3BlbkFJCMjT9JfPqljK1SGPBrLG",
     },
   });
 
