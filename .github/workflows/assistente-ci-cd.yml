@@ -17,7 +17,7 @@ jobs:
       - name: Set up Docker
         uses: docker/setup-buildx-action@v1
       - name: Create env file
-        run: echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" > .env
+        run: echo "OPENAI_API_KEY="sk-proj-0j1Fyd1ojTVWbhQXUZ5KT3BlbkFJnVAi8fB1gGbO5rfTUaOg"" > .env
       - name: Login to DockerHub
         run:  docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Building and Pushing Docker Images
