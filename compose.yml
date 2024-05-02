@@ -9,8 +9,7 @@ services:
       dockerfile: Dockerfile
       args:
         OPENAI_API_KEY: "sk-proj-0j1Fyd1ojTVWbhQXUZ5KT3BlbkFJnVAi8fB1gGbO5rfTUaOg"
-      enviroments:
-        - OPENAI_API_KEY="sk-proj-0j1Fyd1ojTVWbhQXUZ5KT3BlbkFJnVAi8fB1gGbO5rfTUaOg"
+
     ports:
       - "8000:8000"
     volumes:
