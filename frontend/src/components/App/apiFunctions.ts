@@ -24,7 +24,7 @@ API.interceptors.request.use((config) => {
 export const sendMessage = async (message: string) => {
   const token = Cookies.get("authToken");
   const response = await API.post(
-    "/",
+    process.env.BASE_URL || "",
     { chats: message },
     {
       headers: {
