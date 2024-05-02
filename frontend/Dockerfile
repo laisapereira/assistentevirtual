@@ -1,6 +1,6 @@
 FROM node:20-alpine AS build
 
-WORKDIR /app
+WORKDIR /frontend
 
 COPY package.json .
 
@@ -19,7 +19,7 @@ WORKDIR /usr/share/nginx/html
 
 RUN rm -rf *
 
-COPY --from=build /app/build .
+COPY --from=build /frontend/build .
 
 EXPOSE 80
 
