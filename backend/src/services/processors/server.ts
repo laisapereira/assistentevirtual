@@ -10,10 +10,12 @@ const app: Express = express();
 
 app.get("/", (_req, res) => res.send("Hello World!"));
 
-const PORT = process.env.PORT || 8000;
+const PORT = 8000;
 app.use(cookieParser());
 
 setupExpress(app);
 app.use(router);
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () =>
+  console.log(`Server running on port ${PORT}`, `Base URL: ${PORT}`)
+);

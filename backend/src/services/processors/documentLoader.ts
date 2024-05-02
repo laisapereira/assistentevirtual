@@ -13,7 +13,6 @@ export const loadAndNormalizeDocuments = async (): Promise<string[]> => {
   });
 
   console.log("Loading docs...");
-  console.log('API Key:', process.env.OPENAI_API_KEY);
   const docs: Document[] = await loader.load();
   console.log("Docs loaded.");
 
