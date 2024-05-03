@@ -17,7 +17,7 @@ jobs:
       - name: Set up Docker
         uses: docker/setup-buildx-action@v1
       - name: Create env file
-        run: echo "sk-proj-Cvloj7at5DQIKGzXcwcET3BlbkFJCMjT9JfPqljK1SGPBrLG" > .env
+        run: echo "OPENAI_API_KEY=sk-proj-Cvloj7at5DQIKGzXcwcET3BlbkFJCMjT9JfPqljK1SGPBrLG" > .env
       - name: Login to DockerHub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Building and Pushing Docker Images
