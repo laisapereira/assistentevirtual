@@ -7,6 +7,8 @@ import { RetrievalQAChain } from "langchain/chains";
 import now from "performance-now";
 import fs from "fs";
 
+import os from "os";
+
 let contadorDeConsultas = 0;
 
 try {
@@ -50,9 +52,7 @@ router.post("/", async (request: Request, response: Response) => {
   const openai = new OpenAI({
     modelName: "gpt-4",
     temperature: 0.7,
-    configuration: {
-      apiKey: "sk-proj-Cvloj7at5DQIKGzXcwcET3BlbkFJCMjT9JfPqljK1SGPBrLG",
-    },
+    openAIApiKey: "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"    
   });
 
   const chain = RetrievalQAChain.fromLLM(openai, vectorStore.asRetriever());
