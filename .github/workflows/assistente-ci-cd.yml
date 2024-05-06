@@ -1,12 +1,12 @@
-name: Assistente CI-CD Workflow
+##name: Assistente CI-CD Workflow
 
 on:
   push:
     branches:
-      - 08-jo-mvp
+      - 08-jo-s-compose
   pull_request:
     branches:
-      - 08-jo-mvp
+      - 08-jo-s-compose
 
 jobs:
   build-and-push:
@@ -20,34 +20,21 @@ jobs:
         run: echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" > .env
       - name: Login to DockerHub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-      - name: Building and Pushing Docker Images
-        run: docker-compose -f compose.yaml build && docker-compose -f compose.yaml push
-
+      - name: Building Docker Image for Backend
+        run: docker build -t aceleraprojetosfjs/assistentevirtual-backend:latest ./backend
+      - name: Pushing Docker Image for Backend
+        run: docker push aceleraprojetosfjs/assistentevirtual-backend:latest
   deploy:
     needs: build-and-push
     runs-on: self-hosted
     steps:
       - name: Checkout Source
         uses: actions/checkout@v3
-
-      - name: Install Docker Compose (if not already installed)
-        run: |
-          if ! command -v docker-compose &> /dev/null; then
-            sudo curl -L "https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-            sudo chmod +x /usr/local/bin/docker-compose
-            sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-          else
-            echo "Docker Compose is already installed."
-          fi
-
       - name: Login to DockerHub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Pull Docker Images
-        run: docker-compose -f compose.yaml pull
-
-      - name: Stop and Remove Old Containers
-        run: docker-compose -f compose.yaml down
-
-      - name: Deploy Docker Containers
-        run: docker-compose -f compose.yaml up -d
+      - name: Pull Docker Image for Backend
+        run: docker pull aceleraprojetosfjs/assistentevirtual-backend:latest
+      - name: Stop and Remove Old Backend Container
+        run: docker rm -f backend-container || true
+      - name: Deploy Docker Container for Backend
+        run: docker run -d --name backend-container --env-file .env -p 8000:8000 aceleraprojetosfjs/assistentevirtual-backend:latest
