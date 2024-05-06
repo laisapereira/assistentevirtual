@@ -35,6 +35,6 @@ jobs:
       - name: Pull Docker Image for Backend
         run: docker pull aceleraprojetosfjs/assistentevirtual-backend:latest
       - name: Stop and Remove Old Backend Container
-        run: docker rm -f backend-container || true
+        run: docker rm -f backend-container
       - name: Deploy Docker Container for Backend
-        run: docker run -d --name backend-container --env-file .env -p 8000:8000 aceleraprojetosfjs/assistentevirtual-backend:latest
+        run: docker run -d -p 8000:8000 --name backend-container --env-file .env  aceleraprojetosfjs/assistentevirtual-backend:latest
