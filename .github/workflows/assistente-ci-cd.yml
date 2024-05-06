@@ -14,17 +14,28 @@ jobs:
     steps:
       - name: Checkout Source
         uses: actions/checkout@v3
+
       - name: Set up Docker
         uses: docker/setup-buildx-action@v1
+
       - name: Create env file
         run: |
           echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" > .env
+
       - name: Login to DockerHub
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+
       - name: Building Docker Image for Backend
-        run: docker build -t aceleraprojetosfjs/assistentevirtual-backend:latest .
+        run: docker build -t aceleraprojetosfjs/assistentevirtual-backend:latest ./backend
+
       - name: Pushing Docker Image for Backend
         run: docker push aceleraprojetosfjs/assistentevirtual-backend:latest
+
+      - name: Building Docker Image for Frontend
+        run: docker build -t aceleraprojetosfjs/assistentevirtual-frontend:latest ./frontend
+
+      - name: Pushing Docker Image for Frontend
+        run: docker push aceleraprojetosfjs/assistentevirtual-frontend:latest
 
   deploy:
     needs: build-and-push
@@ -32,14 +43,28 @@ jobs:
     steps:
       - name: Checkout Source
         uses: actions/checkout@v3
+
       - name: Re-create .env file
         run: |
           echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" > .env
+
       - name: Login to DockerHub
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+
+      - name: Pull Docker Image for Backend
+        run: docker pull aceleraprojetosfjs/assistentevirtual-backend:latest
+
+      - name: Stop and Remove Old Backend Container
+        run: docker rm -f backend-container 
+
+      - name: Deploy Docker Container for Backend
+        run: docker run -d --name backend-container --env-file .env -p 8000:8000 aceleraprojetosfjs/assistentevirtual-backend:latest
+
       - name: Pull Docker Image for Frontend
-        run: docker pull aceleraprojetosfjs/assistentevirtual-frontend:latest .
-      - name: Stop and Remosve Old Frontend Container
-        run: docker rm -f frontend-container || true
-      - name: Deploy Docker Container for frontend
-        run: docker run -d --name frontend-container --env-file .env -p 8000:8000 aceleraprojetosfjs/assistentevirtual-frontend
+        run: docker pull aceleraprojetosfjs/assistentevirtual-frontend:latest
+
+      - name: Stop and Remove Old Frontend Container
+        run: docker rm -f frontend-container 
+
+      - name: Deploy Docker Container for Frontend
+        run: docker run -d --name frontend-container --env-file .env -p 3000:80 aceleraprojetosfjs/assistentevirtual-frontend:latest
