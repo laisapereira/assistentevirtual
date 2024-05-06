@@ -1,8 +1,12 @@
 import { Request, Response, Router } from "express";
+import dotenv from "dotenv";
 import { setupVectorStore } from "./vectorStore.js";
 import { loadAndNormalizeDocuments } from "./documentLoader.js";
 import { OpenAI } from "langchain/llms/openai";
 import { RetrievalQAChain } from "langchain/chains";
+
+
+
 
 import now from "performance-now";
 import fs from "fs";
@@ -47,15 +51,16 @@ router.post("/", async (request: Request, response: Response) => {
   const normalizedDocs = await loadAndNormalizeDocuments();
   const vectorStore = await setupVectorStore(normalizedDocs);
 
-  const openai = new OpenAI({
+  const openaitt = new OpenAI({
     modelName: "gpt-4",
     temperature: 0.7,
-    openAIApiKey: "sk-proj-Cvloj7at5DQIKGzXcwcET3BlbkFJCMjT9JfPqljK1SGPBrLG"    
+    openAIApiKey: process.env.OPENAI_API_KEY
   });
 
-  const chain = RetrievalQAChain.fromLLM(openai, vectorStore.asRetriever());
+  const chain = RetrievalQAChain.fromLLM(openaitt, vectorStore.asRetriever());
 
   console.log("Querying chain...");
+  console.log(openaitt.openAIApiKey)
   const result = await chain.call({ query: chats });
 
   // metricas

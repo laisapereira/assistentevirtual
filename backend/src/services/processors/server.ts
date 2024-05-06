@@ -7,14 +7,12 @@ import cookieParser from "cookie-parser";
 dotenv.config();
 
 const app: Express = express();
-
-app.get("/", (_req, res) => res.send("Hello World!"));
-
-const PORT = 8000;
+app.use(express.json()); 
 app.use(cookieParser());
-
 setupExpress(app);
 app.use(router);
+
+const PORT = 8000;
 
 app.listen(PORT, () =>
   console.log(`Server running on port ${PORT}`, `Base URL: ${PORT}`)

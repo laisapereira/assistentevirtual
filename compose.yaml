@@ -7,18 +7,15 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-      args:
-        OPENAI_API_KEY: "sk-proj-Cvloj7at5DQIKGzXcwcET3BlbkFJCMjT9JfPqljK1SGPBrLG"
 
     ports:
       - "8000:8000"
+    env_file:
+      - .env
     volumes:
       - ./backend:/app
       - /app/node_modules
 
-    environment:
-      - PYTHON=/usr/bin/python3
-      - OPENAI_API_KEY="sk-proj-Cvloj7at5DQIKGzXcwcET3BlbkFJCMjT9JfPqljK1SGPBrLG"
 
   frontend:
     container_name: frontend_c
@@ -27,5 +24,5 @@ services:
       context: ./frontend    
       dockerfile: Dockerfile
     ports:
-      - "3001:80"
+      - "3000:80"
    
