@@ -14,7 +14,7 @@ RUN apk add --no-cache git
 ENV PYTHON=/usr/bin/python3
 
 ARG OPENAI_API_KEY
-ENV OPENAI_API_KEY="sk-proj-Cvloj7at5DQIKGzXcwcET3BlbkFJCMjT9JfPqljK1SGPBrLG" 
+ENV OPENAI_API_KEY="sk-proj-Lnl8Lt6bzedjvC9lhaKuT3BlbkFJpfNzfHJBf5cIlBjLKjqV" 
 
 RUN npm install -g node-gyp@latest
 
