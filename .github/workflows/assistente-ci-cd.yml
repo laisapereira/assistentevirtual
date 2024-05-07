@@ -31,12 +31,6 @@ jobs:
       - name: Pushing Docker Image for Backend
         run: docker push aceleraprojetosfjs/assistentevirtual-backend:latest
 
-      - name: Building Docker Image for Frontend
-        run: docker build -t aceleraprojetosfjs/assistentevirtual-frontend:latest ./frontend
-
-      - name: Pushing Docker Image for Frontend
-        run: docker push aceleraprojetosfjs/assistentevirtual-frontend:latest
-
   deploy:
     needs: build-and-push
     runs-on: self-hosted
@@ -59,12 +53,3 @@ jobs:
 
       - name: Deploy Docker Container for Backend
         run: docker run -d --name backend-container --env-file .env -p 8000:8000 aceleraprojetosfjs/assistentevirtual-backend:latest
-
-      - name: Pull Docker Image for Frontend
-        run: docker pull aceleraprojetosfjs/assistentevirtual-frontend:latest
-
-      - name: Stop and Remove Old Frontend Container
-        run: docker rm -f frontend-container 
-
-      - name: Deploy Docker Container for Frontend
-        run: docker run -d --name frontend-container --env-file .env -p 3000:80 aceleraprojetosfjs/assistentevirtual-frontend:latest
