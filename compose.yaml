@@ -15,13 +15,4 @@ services:
       - ./backend:/app
       - /app/node_modules
 
-
-  frontend:
-    container_name: frontend_c
-    image: aceleraprojetosfjs/assistentevirtual-frontend:latest
-    build:
-      context: ./frontend    
-      dockerfile: Dockerfile
-    ports:
-      - "3000:80"
    
