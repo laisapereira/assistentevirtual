@@ -49,11 +49,13 @@
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "express-jwt": "^8.4.1",
+    "faiss-node": "^0.5.1",
     "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",
     "mysql": "^2.18.1",
     "mysql2": "^3.9.1",
     "performance-now": "^2.1.0",
+    "pickleparser": "^0.2.1",
     "prisma": "^5.9.0",
     "ts-node": "^10.9.2",
     "whatwg-streams": "^0.1.1"
