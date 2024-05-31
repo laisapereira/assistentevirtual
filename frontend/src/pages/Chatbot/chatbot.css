@@ -7,7 +7,7 @@
 }
 
 .aside-header {
-  @apply bg-main-black h-full min-h-full w-[15%] flex flex-col items-center justify-between gap-16;
+  @apply bg-main-black h-full min-h-full w-[16%] flex flex-col items-center justify-between gap-16;
 }
 
 .banner-aside {
@@ -35,12 +35,12 @@
 }
 
 .icon-engine {
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 .icon-engine:hover,
 button:hover {
- transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .footer-aside p:nth-child(1) {
