@@ -5,9 +5,6 @@ import { loadAndNormalizeDocuments } from "./documentLoader.js";
 import { OpenAI } from "langchain/llms/openai";
 import { RetrievalQAChain } from "langchain/chains";
 
-
-
-
 import now from "performance-now";
 import fs from "fs";
 
@@ -54,13 +51,14 @@ router.post("/", async (request: Request, response: Response) => {
   const openaitt = new OpenAI({
     modelName: "gpt-4",
     temperature: 0.7,
-    openAIApiKey: process.env.OPENAI_API_KEY
+    openAIApiKey: "sk-proj-6O81Z26N70ki7limAFGUT3BlbkFJDii622KGBCzfW9cYgY5C",
   });
+
+  console.log(openaitt.openAIApiKey)
 
   const chain = RetrievalQAChain.fromLLM(openaitt, vectorStore.asRetriever());
 
   console.log("Querying chain...");
-  console.log(openaitt.openAIApiKey)
   const result = await chain.call({ query: chats });
 
   // metricas
