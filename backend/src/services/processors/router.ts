@@ -1,41 +1,11 @@
 import { Request, Response, Router } from "express";
-import dotenv from "dotenv";
-import { setupVectorStore } from "./vectorStore.js";
-import { loadAndNormalizeDocuments } from "./documentLoader.js";
-import { OpenAI } from "langchain/llms/openai";
-import { RetrievalQAChain } from "langchain/chains";
-
-
-
-
+import { loadAndNormalizeDocuments, setupVectorStore } from "./vectorStore.js";
+import { similarVectorStore } from "./documentLoader.js";
 import now from "performance-now";
-import fs from "fs";
-
-let contadorDeConsultas = 0;
-
-try {
-  const contadorString = fs.readFileSync("contador.txt", "utf-8");
-
-  contadorDeConsultas = parseInt(contadorString, 10);
-} catch (err) {
-  contadorDeConsultas = 0;
-}
-
-const addConsultaAoHistorico = (consulta: string, resposta: string) => {
-  const timestamp = new Date().toLocaleString("pt-BR", {
-    timeZone: "America/Sao_Paulo",
-  });
-
-  const logEntry = `${timestamp} - Consulta: ${consulta}\nResposta: ${resposta}\n\n`;
-
-  fs.appendFile("consultas.log", logEntry, (err) => {
-    if (err) console.error("Erro ao adicionar consulta ao histórico:", err);
-  });
-
-  contadorDeConsultas++;
-
-  fs.writeFileSync("contador.txt", contadorDeConsultas.toString());
-};
+import { ChatPromptTemplate } from "@langchain/core/prompts";
+import { ChatOpenAI } from "@langchain/openai";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 let totalInteractions = 0;
 let resolvedInteractions = 0;
@@ -45,27 +15,48 @@ export const router = Router();
 
 router.post("/", async (request: Request, response: Response) => {
   const { chats } = request.body;
-
   const startTime = now();
 
+  // Load and normalize documents
   const normalizedDocs = await loadAndNormalizeDocuments();
-  const vectorStore = await setupVectorStore(normalizedDocs);
 
-  const openaitt = new OpenAI({
-    modelName: "gpt-4",
-    temperature: 0.7,
-    openAIApiKey: process.env.OPENAI_API_KEY
+  // Set up vector store with embeddings
+  await setupVectorStore(normalizedDocs);
+
+  // Find similar chunks for the query
+  const similarChunks = await similarVectorStore(normalizedDocs, chats);
+
+  // Initialize ChatOpenAI model
+  const model = new ChatOpenAI({
+    openAIApiKey: process.env.OPENAI_API_KEY as string,
+    modelName: "gpt-4o-2024-05-13",
   });
 
-  const chain = RetrievalQAChain.fromLLM(openaitt, vectorStore.asRetriever());
+  // Create a prompt template
+  const promptTemplate = ChatPromptTemplate.fromTemplate(`
+    Quero que você atue como uma assistente da empresa Fundação José Silveira, ou FJS.
+    Você é a Jô, a assistente virtual que veio para facilitar informações para os colaboradores.
+    Um exemplo de informação que você pode dar é acerca dos ramais da Fundação, sobre a história ou
+    sobre as principais sedes da empresa.
 
-  console.log("Querying chain...");
-  console.log(openaitt.openAIApiKey)
-  const result = await chain.call({ query: chats });
+    Pergunta do Usuário: {query}
 
-  // metricas
+    As descrições sobre alguns setores da FJS: {chunks}
+    Se limite a responder com base nessas informações fornecidas. Tente não trazer outras informações na sua resposta.
+    Não responda em mais do que 300 palavras.
+  `);
+
+  // Generate the prompt with the chunks and user query
+  const formattedPrompt = await promptTemplate.format({
+    query: chats,
+    chunks: similarChunks.join("\n")
+  });
+
+  // Generate response using the formatted prompt
+  const result = await model.invoke(formattedPrompt);
+  // Record metrics
   const endTime = now();
-  const elapsedTime = endTime - startTime;
+  const elapsedTime = Number(endTime) - Number(startTime);
 
   totalInteractions++;
   totalTimeSpent += elapsedTime;
@@ -74,9 +65,6 @@ router.post("/", async (request: Request, response: Response) => {
     resolvedInteractions++;
   }
 
-  const resposta = result?.text?.toString() || "Nenhuma resposta encontrada.";
-
-  addConsultaAoHistorico(chats, resposta);
   logMetrics();
 
   response.json({ output: result });
