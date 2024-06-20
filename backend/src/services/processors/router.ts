@@ -54,7 +54,7 @@ router.post("/", async (request: Request, response: Response) => {
   const openaitt = new OpenAI({
     modelName: "gpt-4",
     temperature: 0.7,
-    openAIApiKey: "sk-proj-2UfrTm5l82UPv9kNBQeDT3BlbkFJN2kmnnsLq4CHhdrueD9h" || process.env.OPENAI_API_KEY
+    openAIApiKey: process.env.OPENAI_API_KEY
   });
 
   const chain = RetrievalQAChain.fromLLM(openaitt, vectorStore.asRetriever());
