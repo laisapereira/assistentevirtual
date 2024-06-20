@@ -53,7 +53,7 @@ export const setupVectorStore = async (docs: string[]): Promise<Chroma> => {
     splitDocs,
     new OpenAIEmbeddings(),
     {
-      url: "http://localhost:8000",
+      url: "http://chromadb:8000",
     }
   );
   console.log("Vectorized and stored documents:", ChromaVectorStore);
