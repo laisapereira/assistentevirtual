@@ -1,42 +1,43 @@
+import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
+import { DirectoryLoader } from "langchain/document_loaders/fs/directory";
+import { TextLoader } from "langchain/document_loaders/fs/text";
+import { PDFLoader } from "langchain/document_loaders/fs/pdf";
+// import { loadAndNormalizeDocuments } from "./vectorStore.js";
 
-import { OpenAIEmbeddingFunction } from "chromadb";
-import { ChromaClient } from "chromadb";
+interface IDocument {
+  pageContent: string | string[];
+}
 
-
-const client = new ChromaClient({
-  path: "http://chromadb:8000"
-});
-
-
-export const similarVectorStore = async (
-  normalizedDocs: string[],
-  userQuery: string
-) => {
-  const collection = await client.getOrCreateCollection({
-    name: "langchain",
-    embeddingFunction: new OpenAIEmbeddingFunction({
-      openai_api_key: process.env.OPENAI_API_KEY as string,
-    }),
+export const loadAndNormalizeDocuments = async (): Promise<string[]> => {
+  const loader = new DirectoryLoader("./documents", {
+    ".pdf": (path: string) => new PDFLoader(path),
+    ".txt": (path: string) => new TextLoader(path),
   });
 
-  /* adicionar cada documento individualmente ao banco de dados vetorial*/
+  console.log("Loading docs...");
+  const docs: IDocument[] = await loader.load();
+  console.log("Docs loaded.");
 
-  for (const doc of normalizedDocs) {
-    await collection.add({
-      documents: [doc],
-      ids: [
-        Math.random()
-          .toString(36)
-          .substring(7),
-      ],
-    });
-  }
+  const normalizedDocs = docs
+    .map((doc: IDocument) => {
+      if (typeof doc.pageContent === "string") {
+        return doc.pageContent;
+      } else if (Array.isArray(doc.pageContent)) {
+        return doc.pageContent.join("\n");
+      }
+      return "";
+    })
+    .filter((doc) => doc !== "");
 
-  const results = await collection.query({
-    queryTexts: [userQuery],
-    nResults: 10,
+  const textSplitter = new RecursiveCharacterTextSplitter({
+    separators: ["\n\n", "\n", ".", "!", "?", ";", " ", ""],
+    chunkSize: 200,
+    chunkOverlap: 50,
+    lengthFunction: (str: string) => str.length,
   });
 
-  // Retornar os chunks como uma lista de strings
-  return results["documents"][0];
+  const combinedText = normalizedDocs.join("\n");
+  const chunks = await textSplitter.splitText(combinedText);
+
+  return chunks;
 };
