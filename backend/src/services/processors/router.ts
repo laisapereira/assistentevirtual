@@ -35,7 +35,7 @@ router.post("/", async (request: Request, response: Response) => {
 
       Pergunta do Usuário: {query}
 
-      As descrições sobre alguns setores da FJS: {chunks}
+      As descrições sobre alguns setores da FJS: {chunks}. Não precisa colocar "Assistente" ou "Jô" antes de cada resposta.
       Se limite a responder com base nessas informações fornecidas. Não traga outras informações na sua resposta.
       Não responda em mais do que 150 palavras.`
     );
