@@ -5192,3 +5192,4 @@
 [32mINFO[0m:     [21-06-2024 15:44:08] ::1:49955 - "POST /api/v1/collections/86d9827d-73fa-46a6-9203-c0a6cfe9698b/query HTTP/1.1" 200
 [32mINFO[0m:     [21-06-2024 15:45:04] Collection langchain is not created.
 [32mINFO[0m:     [21-06-2024 15:45:04] ::1:49992 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [21-06-2024 15:45:04] ::1:49992 - "POST /api/v1/collections/86d9827d-73fa-46a6-9203-c0a6cfe9698b/query HTTP/1.1" 200
