@@ -1,7 +1,12 @@
-import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
-import { DirectoryLoader } from "langchain/document_loaders/fs/directory";
-import { TextLoader } from "langchain/document_loaders/fs/text";
 import { PDFLoader } from "langchain/document_loaders/fs/pdf";
+import { DirectoryLoader } from "langchain/document_loaders/fs/directory";
+import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
+/* import { DirectoryLoader } from "@langchain/community/document_loaders/fs/pdf" */
+import { TextLoader } from "langchain/document_loaders/fs/text";
+import { OpenAIEmbeddings } from "@langchain/openai";
+
+import { Chroma } from "@langchain/community/vectorstores/chroma";
+
 // import { loadAndNormalizeDocuments } from "./vectorStore.js";
 
 interface IDocument {
@@ -9,7 +14,7 @@ interface IDocument {
 }
 
 export const loadAndNormalizeDocuments = async (): Promise<string[]> => {
-  const loader = new DirectoryLoader("./documents", {
+  const loader = new DirectoryLoader("./app/documents", {
     ".pdf": (path: string) => new PDFLoader(path),
     ".txt": (path: string) => new TextLoader(path),
   });
@@ -30,14 +35,25 @@ export const loadAndNormalizeDocuments = async (): Promise<string[]> => {
     .filter((doc) => doc !== "");
 
   const textSplitter = new RecursiveCharacterTextSplitter({
-    separators: ["\n\n", "\n", ".", "!", "?", ";", " ", ""],
+    separators: [".", "!", "?", ";", " ", ""],
     chunkSize: 200,
     chunkOverlap: 50,
     lengthFunction: (str: string) => str.length,
   });
 
   const combinedText = normalizedDocs.join("\n");
-  const chunks = await textSplitter.splitText(combinedText);
+  const documents = await textSplitter.splitText(combinedText);
 
-  return chunks;
+  const documentsForChroma = documents.map((doc: string) => ({
+    content: doc,
+    pageContent: doc,
+    metadata: {},
+  }));
+
+  const database = Chroma.fromDocuments(documentsForChroma, new OpenAIEmbeddings(), {
+    collectionName: "jo-langchain",
+    url: "http://chromadb:8000",
+  });
+
+  return documents;
 };

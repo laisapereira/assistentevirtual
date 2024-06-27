@@ -21,10 +21,13 @@ router.post("/", async (request: Request, response: Response) => {
 
   const startTime = Date.now();
 
-  const promptLLM = async (userQuery: string, chunks: string): Promise<string> => {
+  const promptLLM = async (
+    userQuery: string,
+    chunks: string
+  ): Promise<string> => {
     const model = new ChatOpenAI({
       openAIApiKey: process.env.OPENAI_API_KEY as string,
-      modelName: "gpt-4", // Certifique-se de usar o modelo correto
+      modelName: "gpt-4o", // Certifique-se de usar o modelo correto
     });
 
     const promptTemplate = ChatPromptTemplate.fromTemplate(
@@ -80,8 +83,9 @@ router.post("/", async (request: Request, response: Response) => {
     logMetrics();
 
     response.json({ output: userResponse });
-  } catch (error) {
-    console.error("Erro ao processar a consulta:", error);
+  } catch (error: any) {
+    console.log(history)
+    console.error("Erro ao processar a consulta:", error.message);
     response.status(500).send("Erro ao processar a consulta.");
   }
 
