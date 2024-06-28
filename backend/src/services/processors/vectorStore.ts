@@ -2,7 +2,7 @@ import { ChromaClient, OpenAIEmbeddingFunction } from "chromadb";
 
 export const similarChunks = async (userQuery: string): Promise<string> => {
   const client = new ChromaClient({
-    path: "http://localhost:8000",
+    path: "http://chromadb:8000",
   });
   const collection = await client.getOrCreateCollection({
     name: "mvp-jo",
