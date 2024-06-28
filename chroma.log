@@ -6713,3 +6713,459 @@
 [36mDEBUG[0m:    [27-06-2024 14:38:36] Stopping component OpenTelemetryClient
 [32mINFO[0m:     [27-06-2024 14:38:36] Application shutdown complete.
 [32mINFO[0m:     [27-06-2024 14:38:36] Finished server process [[36m22264[0m]
+[33mWARNING[0m:  [27-06-2024 16:40:00] chroma_server_nofile is not supported on Windows. chroma_server_nofile will not be set.
+[32mINFO[0m:     [27-06-2024 16:40:00] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+[36mDEBUG[0m:    [27-06-2024 16:40:00] Starting component System
+[36mDEBUG[0m:    [27-06-2024 16:40:00] Starting component OpenTelemetryClient
+[36mDEBUG[0m:    [27-06-2024 16:40:00] Starting component SqliteDB
+[36mDEBUG[0m:    [27-06-2024 16:40:00] Starting component QuotaEnforcer
+[36mDEBUG[0m:    [27-06-2024 16:40:00] Starting component Posthog
+[36mDEBUG[0m:    [27-06-2024 16:40:00] Starting component LocalSegmentManager
+[36mDEBUG[0m:    [27-06-2024 16:40:00] Starting component SegmentAPI
+[32mINFO[0m:     [27-06-2024 16:40:00] Started server process [[36m2540[0m]
+[32mINFO[0m:     [27-06-2024 16:40:00] Waiting for application startup.
+[32mINFO[0m:     [27-06-2024 16:40:00] Application startup complete.
+[32mINFO[0m:     [27-06-2024 16:40:00] Uvicorn running on [1mhttp://localhost:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     [27-06-2024 16:41:01] ::1:58038 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [27-06-2024 16:41:02] Starting component PersistentLocalHnswSegment
+[32mINFO[0m:     [27-06-2024 16:41:02] ::1:58038 - "POST /api/v1/collections/7c68fbf3-faa5-4056-b000-3c22ca7e2e12/query HTTP/1.1" 200
+[32mINFO[0m:     [27-06-2024 16:41:18] Collection jo-langchain is not created.
+[32mINFO[0m:     [27-06-2024 16:41:18] ::1:58055 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [27-06-2024 16:41:19] ::1:58055 - "POST /api/v1/collections/7c68fbf3-faa5-4056-b000-3c22ca7e2e12/query HTTP/1.1" 200
+[32mINFO[0m:     [27-06-2024 16:42:03] Collection jo-langchain is not created.
+[32mINFO[0m:     [27-06-2024 16:42:03] ::1:58085 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [27-06-2024 16:42:04] ::1:58085 - "POST /api/v1/collections/7c68fbf3-faa5-4056-b000-3c22ca7e2e12/query HTTP/1.1" 200
+[32mINFO[0m:     [27-06-2024 16:51:24] Collection jo-langchain is not created.
+[32mINFO[0m:     [27-06-2024 16:51:24] ::1:58388 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [27-06-2024 16:51:25] ::1:58388 - "POST /api/v1/collections/7c68fbf3-faa5-4056-b000-3c22ca7e2e12/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 08:42:31] Shutting down
+[32mINFO[0m:     [28-06-2024 08:42:31] Waiting for application shutdown.
+[36mDEBUG[0m:    [28-06-2024 08:42:31] Stopping component System
+[36mDEBUG[0m:    [28-06-2024 08:42:31] Stopping component SegmentAPI
+[36mDEBUG[0m:    [28-06-2024 08:42:31] Stopping component PersistentLocalHnswSegment
+[36mDEBUG[0m:    [28-06-2024 08:42:31] Stopping component LocalSegmentManager
+[36mDEBUG[0m:    [28-06-2024 08:42:31] Stopping component Posthog
+[36mDEBUG[0m:    [28-06-2024 08:42:31] Stopping component QuotaEnforcer
+[36mDEBUG[0m:    [28-06-2024 08:42:31] Stopping component SqliteDB
+[36mDEBUG[0m:    [28-06-2024 08:42:31] Stopping component OpenTelemetryClient
+[32mINFO[0m:     [28-06-2024 08:42:31] Application shutdown complete.
+[32mINFO[0m:     [28-06-2024 08:42:31] Finished server process [[36m2540[0m]
+[33mWARNING[0m:  [28-06-2024 08:44:48] chroma_server_nofile is not supported on Windows. chroma_server_nofile will not be set.
+[32mINFO[0m:     [28-06-2024 08:44:48] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+[36mDEBUG[0m:    [28-06-2024 08:44:48] Starting component System
+[36mDEBUG[0m:    [28-06-2024 08:44:48] Starting component OpenTelemetryClient
+[36mDEBUG[0m:    [28-06-2024 08:44:48] Starting component SqliteDB
+[36mDEBUG[0m:    [28-06-2024 08:44:49] Starting component QuotaEnforcer
+[36mDEBUG[0m:    [28-06-2024 08:44:49] Starting component Posthog
+[36mDEBUG[0m:    [28-06-2024 08:44:49] Starting component LocalSegmentManager
+[36mDEBUG[0m:    [28-06-2024 08:44:49] Starting component SegmentAPI
+[32mINFO[0m:     [28-06-2024 08:44:49] Started server process [[36m15012[0m]
+[32mINFO[0m:     [28-06-2024 08:44:49] Waiting for application startup.
+[32mINFO[0m:     [28-06-2024 08:44:49] Application startup complete.
+[32mINFO[0m:     [28-06-2024 08:44:49] Uvicorn running on [1mhttp://localhost:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     [28-06-2024 08:45:09] ::1:63071 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [28-06-2024 08:45:10] Starting component PersistentLocalHnswSegment
+[32mINFO[0m:     [28-06-2024 08:45:10] ::1:63071 - "POST /api/v1/collections/affeb404-8efe-4789-8c80-1d9db546ca6a/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 08:45:48] Shutting down
+[32mINFO[0m:     [28-06-2024 08:45:48] Waiting for application shutdown.
+[36mDEBUG[0m:    [28-06-2024 08:45:48] Stopping component System
+[36mDEBUG[0m:    [28-06-2024 08:45:48] Stopping component SegmentAPI
+[36mDEBUG[0m:    [28-06-2024 08:45:48] Stopping component PersistentLocalHnswSegment
+[36mDEBUG[0m:    [28-06-2024 08:45:48] Stopping component LocalSegmentManager
+[36mDEBUG[0m:    [28-06-2024 08:45:48] Stopping component Posthog
+[36mDEBUG[0m:    [28-06-2024 08:45:48] Stopping component QuotaEnforcer
+[36mDEBUG[0m:    [28-06-2024 08:45:48] Stopping component SqliteDB
+[36mDEBUG[0m:    [28-06-2024 08:45:48] Stopping component OpenTelemetryClient
+[32mINFO[0m:     [28-06-2024 08:45:48] Application shutdown complete.
+[32mINFO[0m:     [28-06-2024 08:45:48] Finished server process [[36m15012[0m]
+[33mWARNING[0m:  [28-06-2024 08:45:51] chroma_server_nofile is not supported on Windows. chroma_server_nofile will not be set.
+[32mINFO[0m:     [28-06-2024 08:45:52] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+[36mDEBUG[0m:    [28-06-2024 08:45:52] Starting component System
+[36mDEBUG[0m:    [28-06-2024 08:45:52] Starting component OpenTelemetryClient
+[36mDEBUG[0m:    [28-06-2024 08:45:52] Starting component SqliteDB
+[36mDEBUG[0m:    [28-06-2024 08:45:52] Starting component QuotaEnforcer
+[36mDEBUG[0m:    [28-06-2024 08:45:52] Starting component Posthog
+[36mDEBUG[0m:    [28-06-2024 08:45:52] Starting component LocalSegmentManager
+[36mDEBUG[0m:    [28-06-2024 08:45:52] Starting component SegmentAPI
+[32mINFO[0m:     [28-06-2024 08:45:52] Started server process [[36m23056[0m]
+[32mINFO[0m:     [28-06-2024 08:45:52] Waiting for application startup.
+[32mINFO[0m:     [28-06-2024 08:45:52] Application startup complete.
+[32mINFO[0m:     [28-06-2024 08:45:52] Uvicorn running on [1mhttp://localhost:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     [28-06-2024 08:46:07] Collection jo-mvp is not created.
+[32mINFO[0m:     [28-06-2024 08:46:07] ::1:63111 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [28-06-2024 08:46:08] Starting component PersistentLocalHnswSegment
+[32mINFO[0m:     [28-06-2024 08:46:08] ::1:63111 - "POST /api/v1/collections/affeb404-8efe-4789-8c80-1d9db546ca6a/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 08:46:23] Collection jo-mvp is not created.
+[32mINFO[0m:     [28-06-2024 08:46:23] ::1:63124 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 08:46:24] ::1:63124 - "POST /api/v1/collections/affeb404-8efe-4789-8c80-1d9db546ca6a/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 08:47:12] Shutting down
+[32mINFO[0m:     [28-06-2024 08:47:12] Waiting for application shutdown.
+[36mDEBUG[0m:    [28-06-2024 08:47:12] Stopping component System
+[36mDEBUG[0m:    [28-06-2024 08:47:12] Stopping component SegmentAPI
+[36mDEBUG[0m:    [28-06-2024 08:47:12] Stopping component PersistentLocalHnswSegment
+[36mDEBUG[0m:    [28-06-2024 08:47:12] Stopping component LocalSegmentManager
+[36mDEBUG[0m:    [28-06-2024 08:47:12] Stopping component Posthog
+[36mDEBUG[0m:    [28-06-2024 08:47:12] Stopping component QuotaEnforcer
+[36mDEBUG[0m:    [28-06-2024 08:47:12] Stopping component SqliteDB
+[36mDEBUG[0m:    [28-06-2024 08:47:12] Stopping component OpenTelemetryClient
+[32mINFO[0m:     [28-06-2024 08:47:12] Application shutdown complete.
+[32mINFO[0m:     [28-06-2024 08:47:12] Finished server process [[36m23056[0m]
+[33mWARNING[0m:  [28-06-2024 08:47:14] chroma_server_nofile is not supported on Windows. chroma_server_nofile will not be set.
+[32mINFO[0m:     [28-06-2024 08:47:15] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+[36mDEBUG[0m:    [28-06-2024 08:47:15] Starting component System
+[36mDEBUG[0m:    [28-06-2024 08:47:15] Starting component OpenTelemetryClient
+[36mDEBUG[0m:    [28-06-2024 08:47:15] Starting component SqliteDB
+[36mDEBUG[0m:    [28-06-2024 08:47:15] Starting component QuotaEnforcer
+[36mDEBUG[0m:    [28-06-2024 08:47:15] Starting component Posthog
+[36mDEBUG[0m:    [28-06-2024 08:47:15] Starting component LocalSegmentManager
+[36mDEBUG[0m:    [28-06-2024 08:47:15] Starting component SegmentAPI
+[32mINFO[0m:     [28-06-2024 08:47:15] Started server process [[36m21432[0m]
+[32mINFO[0m:     [28-06-2024 08:47:15] Waiting for application startup.
+[32mINFO[0m:     [28-06-2024 08:47:15] Application startup complete.
+[32mINFO[0m:     [28-06-2024 08:47:15] Uvicorn running on [1mhttp://localhost:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     [28-06-2024 08:47:25] Collection jo-mvp is not created.
+[32mINFO[0m:     [28-06-2024 08:47:25] ::1:63165 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [28-06-2024 08:47:26] Starting component PersistentLocalHnswSegment
+[32mINFO[0m:     [28-06-2024 08:47:26] ::1:63165 - "POST /api/v1/collections/affeb404-8efe-4789-8c80-1d9db546ca6a/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 08:47:45] Collection jo-mvp is not created.
+[32mINFO[0m:     [28-06-2024 08:47:45] ::1:63181 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 08:47:45] ::1:63181 - "POST /api/v1/collections/affeb404-8efe-4789-8c80-1d9db546ca6a/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 08:47:58] Collection jo-mvp is not created.
+[32mINFO[0m:     [28-06-2024 08:47:58] ::1:63193 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 08:47:58] ::1:63193 - "POST /api/v1/collections/affeb404-8efe-4789-8c80-1d9db546ca6a/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 08:48:16] Collection jo-mvp is not created.
+[32mINFO[0m:     [28-06-2024 08:48:16] ::1:63206 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 08:48:17] ::1:63206 - "POST /api/v1/collections/affeb404-8efe-4789-8c80-1d9db546ca6a/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 08:48:54] Collection jo-mvp is not created.
+[32mINFO[0m:     [28-06-2024 08:48:54] ::1:63231 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 08:48:55] ::1:63231 - "POST /api/v1/collections/affeb404-8efe-4789-8c80-1d9db546ca6a/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 08:49:41] Shutting down
+[32mINFO[0m:     [28-06-2024 08:49:41] Waiting for application shutdown.
+[36mDEBUG[0m:    [28-06-2024 08:49:41] Stopping component System
+[36mDEBUG[0m:    [28-06-2024 08:49:41] Stopping component SegmentAPI
+[36mDEBUG[0m:    [28-06-2024 08:49:41] Stopping component PersistentLocalHnswSegment
+[36mDEBUG[0m:    [28-06-2024 08:49:41] Stopping component LocalSegmentManager
+[36mDEBUG[0m:    [28-06-2024 08:49:41] Stopping component Posthog
+[36mDEBUG[0m:    [28-06-2024 08:49:41] Stopping component QuotaEnforcer
+[36mDEBUG[0m:    [28-06-2024 08:49:41] Stopping component SqliteDB
+[36mDEBUG[0m:    [28-06-2024 08:49:41] Stopping component OpenTelemetryClient
+[32mINFO[0m:     [28-06-2024 08:49:41] Application shutdown complete.
+[32mINFO[0m:     [28-06-2024 08:49:41] Finished server process [[36m21432[0m]
+[33mWARNING[0m:  [28-06-2024 08:49:46] chroma_server_nofile is not supported on Windows. chroma_server_nofile will not be set.
+[32mINFO[0m:     [28-06-2024 08:49:46] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+[36mDEBUG[0m:    [28-06-2024 08:49:46] Starting component System
+[36mDEBUG[0m:    [28-06-2024 08:49:46] Starting component OpenTelemetryClient
+[36mDEBUG[0m:    [28-06-2024 08:49:46] Starting component SqliteDB
+[36mDEBUG[0m:    [28-06-2024 08:49:46] Starting component QuotaEnforcer
+[36mDEBUG[0m:    [28-06-2024 08:49:46] Starting component Posthog
+[36mDEBUG[0m:    [28-06-2024 08:49:46] Starting component LocalSegmentManager
+[36mDEBUG[0m:    [28-06-2024 08:49:46] Starting component SegmentAPI
+[32mINFO[0m:     [28-06-2024 08:49:46] Started server process [[36m12804[0m]
+[32mINFO[0m:     [28-06-2024 08:49:46] Waiting for application startup.
+[32mINFO[0m:     [28-06-2024 08:49:46] Application startup complete.
+[32mINFO[0m:     [28-06-2024 08:49:46] Uvicorn running on [1mhttp://localhost:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     [28-06-2024 08:52:06] Collection jo-mvp is not created.
+[32mINFO[0m:     [28-06-2024 08:52:06] ::1:63338 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [28-06-2024 08:52:07] Starting component PersistentLocalHnswSegment
+[32mINFO[0m:     [28-06-2024 08:52:07] ::1:63338 - "POST /api/v1/collections/affeb404-8efe-4789-8c80-1d9db546ca6a/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 08:59:20] Shutting down
+[32mINFO[0m:     [28-06-2024 08:59:20] Waiting for application shutdown.
+[36mDEBUG[0m:    [28-06-2024 08:59:20] Stopping component System
+[36mDEBUG[0m:    [28-06-2024 08:59:20] Stopping component SegmentAPI
+[36mDEBUG[0m:    [28-06-2024 08:59:20] Stopping component PersistentLocalHnswSegment
+[36mDEBUG[0m:    [28-06-2024 08:59:20] Stopping component LocalSegmentManager
+[36mDEBUG[0m:    [28-06-2024 08:59:20] Stopping component Posthog
+[36mDEBUG[0m:    [28-06-2024 08:59:20] Stopping component QuotaEnforcer
+[36mDEBUG[0m:    [28-06-2024 08:59:20] Stopping component SqliteDB
+[36mDEBUG[0m:    [28-06-2024 08:59:20] Stopping component OpenTelemetryClient
+[32mINFO[0m:     [28-06-2024 08:59:20] Application shutdown complete.
+[32mINFO[0m:     [28-06-2024 08:59:20] Finished server process [[36m12804[0m]
+[33mWARNING[0m:  [28-06-2024 08:59:24] chroma_server_nofile is not supported on Windows. chroma_server_nofile will not be set.
+[32mINFO[0m:     [28-06-2024 08:59:24] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+[36mDEBUG[0m:    [28-06-2024 08:59:24] Starting component System
+[36mDEBUG[0m:    [28-06-2024 08:59:24] Starting component OpenTelemetryClient
+[36mDEBUG[0m:    [28-06-2024 08:59:24] Starting component SqliteDB
+[36mDEBUG[0m:    [28-06-2024 08:59:24] Starting component QuotaEnforcer
+[36mDEBUG[0m:    [28-06-2024 08:59:24] Starting component Posthog
+[36mDEBUG[0m:    [28-06-2024 08:59:24] Starting component LocalSegmentManager
+[36mDEBUG[0m:    [28-06-2024 08:59:24] Starting component SegmentAPI
+[32mINFO[0m:     [28-06-2024 08:59:24] Started server process [[36m23756[0m]
+[32mINFO[0m:     [28-06-2024 08:59:24] Waiting for application startup.
+[32mINFO[0m:     [28-06-2024 08:59:24] Application startup complete.
+[32mINFO[0m:     [28-06-2024 08:59:24] Uvicorn running on [1mhttp://localhost:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     [28-06-2024 09:00:06] Collection jo-mvp is not created.
+[32mINFO[0m:     [28-06-2024 09:00:06] ::1:63669 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [28-06-2024 09:00:07] Starting component PersistentLocalHnswSegment
+[32mINFO[0m:     [28-06-2024 09:00:07] ::1:63669 - "POST /api/v1/collections/affeb404-8efe-4789-8c80-1d9db546ca6a/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:04:39] Shutting down
+[32mINFO[0m:     [28-06-2024 09:04:39] Waiting for application shutdown.
+[36mDEBUG[0m:    [28-06-2024 09:04:39] Stopping component System
+[36mDEBUG[0m:    [28-06-2024 09:04:39] Stopping component SegmentAPI
+[36mDEBUG[0m:    [28-06-2024 09:04:39] Stopping component PersistentLocalHnswSegment
+[36mDEBUG[0m:    [28-06-2024 09:04:39] Stopping component LocalSegmentManager
+[36mDEBUG[0m:    [28-06-2024 09:04:39] Stopping component Posthog
+[36mDEBUG[0m:    [28-06-2024 09:04:39] Stopping component QuotaEnforcer
+[36mDEBUG[0m:    [28-06-2024 09:04:39] Stopping component SqliteDB
+[36mDEBUG[0m:    [28-06-2024 09:04:39] Stopping component OpenTelemetryClient
+[32mINFO[0m:     [28-06-2024 09:04:39] Application shutdown complete.
+[32mINFO[0m:     [28-06-2024 09:04:39] Finished server process [[36m23756[0m]
+[33mWARNING[0m:  [28-06-2024 09:04:53] chroma_server_nofile is not supported on Windows. chroma_server_nofile will not be set.
+[32mINFO[0m:     [28-06-2024 09:04:53] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+[36mDEBUG[0m:    [28-06-2024 09:04:53] Starting component System
+[36mDEBUG[0m:    [28-06-2024 09:04:53] Starting component OpenTelemetryClient
+[36mDEBUG[0m:    [28-06-2024 09:04:53] Starting component SqliteDB
+[36mDEBUG[0m:    [28-06-2024 09:04:53] Starting component QuotaEnforcer
+[36mDEBUG[0m:    [28-06-2024 09:04:53] Starting component Posthog
+[36mDEBUG[0m:    [28-06-2024 09:04:53] Starting component LocalSegmentManager
+[36mDEBUG[0m:    [28-06-2024 09:04:53] Starting component SegmentAPI
+[32mINFO[0m:     [28-06-2024 09:04:53] Started server process [[36m23968[0m]
+[32mINFO[0m:     [28-06-2024 09:04:53] Waiting for application startup.
+[32mINFO[0m:     [28-06-2024 09:04:53] Application startup complete.
+[32mINFO[0m:     [28-06-2024 09:04:53] Uvicorn running on [1mhttp://localhost:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     [28-06-2024 09:05:05] Collection jo-mvp is not created.
+[32mINFO[0m:     [28-06-2024 09:05:05] ::1:63846 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [28-06-2024 09:05:06] Starting component PersistentLocalHnswSegment
+[32mINFO[0m:     [28-06-2024 09:05:06] ::1:63846 - "POST /api/v1/collections/affeb404-8efe-4789-8c80-1d9db546ca6a/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:05:26] Collection jo-mvp is not created.
+[32mINFO[0m:     [28-06-2024 09:05:26] ::1:63865 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:05:27] ::1:63865 - "POST /api/v1/collections/affeb404-8efe-4789-8c80-1d9db546ca6a/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:10:10] Shutting down
+[32mINFO[0m:     [28-06-2024 09:10:10] Waiting for application shutdown.
+[36mDEBUG[0m:    [28-06-2024 09:10:10] Stopping component System
+[36mDEBUG[0m:    [28-06-2024 09:10:10] Stopping component SegmentAPI
+[36mDEBUG[0m:    [28-06-2024 09:10:10] Stopping component PersistentLocalHnswSegment
+[36mDEBUG[0m:    [28-06-2024 09:10:10] Stopping component LocalSegmentManager
+[36mDEBUG[0m:    [28-06-2024 09:10:10] Stopping component Posthog
+[36mDEBUG[0m:    [28-06-2024 09:10:10] Stopping component QuotaEnforcer
+[36mDEBUG[0m:    [28-06-2024 09:10:10] Stopping component SqliteDB
+[36mDEBUG[0m:    [28-06-2024 09:10:10] Stopping component OpenTelemetryClient
+[32mINFO[0m:     [28-06-2024 09:10:10] Application shutdown complete.
+[32mINFO[0m:     [28-06-2024 09:10:10] Finished server process [[36m23968[0m]
+[33mWARNING[0m:  [28-06-2024 09:10:13] chroma_server_nofile is not supported on Windows. chroma_server_nofile will not be set.
+[32mINFO[0m:     [28-06-2024 09:10:13] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+[36mDEBUG[0m:    [28-06-2024 09:10:13] Starting component System
+[36mDEBUG[0m:    [28-06-2024 09:10:13] Starting component OpenTelemetryClient
+[36mDEBUG[0m:    [28-06-2024 09:10:13] Starting component SqliteDB
+[36mDEBUG[0m:    [28-06-2024 09:10:13] Starting component QuotaEnforcer
+[36mDEBUG[0m:    [28-06-2024 09:10:13] Starting component Posthog
+[36mDEBUG[0m:    [28-06-2024 09:10:13] Starting component LocalSegmentManager
+[36mDEBUG[0m:    [28-06-2024 09:10:13] Starting component SegmentAPI
+[32mINFO[0m:     [28-06-2024 09:10:13] Started server process [[36m19512[0m]
+[32mINFO[0m:     [28-06-2024 09:10:13] Waiting for application startup.
+[32mINFO[0m:     [28-06-2024 09:10:13] Application startup complete.
+[32mINFO[0m:     [28-06-2024 09:10:13] Uvicorn running on [1mhttp://localhost:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     [28-06-2024 09:10:26] Collection jo-mvp is not created.
+[32mINFO[0m:     [28-06-2024 09:10:26] ::1:64037 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [28-06-2024 09:10:27] Starting component PersistentLocalHnswSegment
+[32mINFO[0m:     [28-06-2024 09:10:27] ::1:64037 - "POST /api/v1/collections/affeb404-8efe-4789-8c80-1d9db546ca6a/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:28:32] Shutting down
+[32mINFO[0m:     [28-06-2024 09:28:32] Waiting for application shutdown.
+[36mDEBUG[0m:    [28-06-2024 09:28:32] Stopping component System
+[36mDEBUG[0m:    [28-06-2024 09:28:32] Stopping component SegmentAPI
+[36mDEBUG[0m:    [28-06-2024 09:28:32] Stopping component PersistentLocalHnswSegment
+[36mDEBUG[0m:    [28-06-2024 09:28:32] Stopping component LocalSegmentManager
+[36mDEBUG[0m:    [28-06-2024 09:28:32] Stopping component Posthog
+[36mDEBUG[0m:    [28-06-2024 09:28:32] Stopping component QuotaEnforcer
+[36mDEBUG[0m:    [28-06-2024 09:28:32] Stopping component SqliteDB
+[36mDEBUG[0m:    [28-06-2024 09:28:32] Stopping component OpenTelemetryClient
+[32mINFO[0m:     [28-06-2024 09:28:32] Application shutdown complete.
+[32mINFO[0m:     [28-06-2024 09:28:32] Finished server process [[36m19512[0m]
+[33mWARNING[0m:  [28-06-2024 09:28:36] chroma_server_nofile is not supported on Windows. chroma_server_nofile will not be set.
+[32mINFO[0m:     [28-06-2024 09:28:36] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+[36mDEBUG[0m:    [28-06-2024 09:28:36] Starting component System
+[36mDEBUG[0m:    [28-06-2024 09:28:36] Starting component OpenTelemetryClient
+[36mDEBUG[0m:    [28-06-2024 09:28:36] Starting component SqliteDB
+[36mDEBUG[0m:    [28-06-2024 09:28:36] Starting component QuotaEnforcer
+[36mDEBUG[0m:    [28-06-2024 09:28:36] Starting component Posthog
+[36mDEBUG[0m:    [28-06-2024 09:28:36] Starting component LocalSegmentManager
+[36mDEBUG[0m:    [28-06-2024 09:28:36] Starting component SegmentAPI
+[32mINFO[0m:     [28-06-2024 09:28:36] Started server process [[36m16644[0m]
+[32mINFO[0m:     [28-06-2024 09:28:36] Waiting for application startup.
+[32mINFO[0m:     [28-06-2024 09:28:36] Application startup complete.
+[32mINFO[0m:     [28-06-2024 09:28:36] Uvicorn running on [1mhttp://localhost:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     [28-06-2024 09:35:24] Shutting down
+[32mINFO[0m:     [28-06-2024 09:35:24] Waiting for application shutdown.
+[36mDEBUG[0m:    [28-06-2024 09:35:24] Stopping component System
+[36mDEBUG[0m:    [28-06-2024 09:35:24] Stopping component SegmentAPI
+[36mDEBUG[0m:    [28-06-2024 09:35:24] Stopping component LocalSegmentManager
+[36mDEBUG[0m:    [28-06-2024 09:35:24] Stopping component Posthog
+[36mDEBUG[0m:    [28-06-2024 09:35:24] Stopping component QuotaEnforcer
+[36mDEBUG[0m:    [28-06-2024 09:35:24] Stopping component SqliteDB
+[36mDEBUG[0m:    [28-06-2024 09:35:24] Stopping component OpenTelemetryClient
+[32mINFO[0m:     [28-06-2024 09:35:24] Application shutdown complete.
+[32mINFO[0m:     [28-06-2024 09:35:24] Finished server process [[36m16644[0m]
+[33mWARNING[0m:  [28-06-2024 09:35:27] chroma_server_nofile is not supported on Windows. chroma_server_nofile will not be set.
+[32mINFO[0m:     [28-06-2024 09:35:28] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+[36mDEBUG[0m:    [28-06-2024 09:35:28] Starting component System
+[36mDEBUG[0m:    [28-06-2024 09:35:28] Starting component OpenTelemetryClient
+[36mDEBUG[0m:    [28-06-2024 09:35:28] Starting component SqliteDB
+[36mDEBUG[0m:    [28-06-2024 09:35:28] Starting component QuotaEnforcer
+[36mDEBUG[0m:    [28-06-2024 09:35:28] Starting component Posthog
+[36mDEBUG[0m:    [28-06-2024 09:35:28] Starting component LocalSegmentManager
+[36mDEBUG[0m:    [28-06-2024 09:35:28] Starting component SegmentAPI
+[32mINFO[0m:     [28-06-2024 09:35:28] Started server process [[36m3000[0m]
+[32mINFO[0m:     [28-06-2024 09:35:28] Waiting for application startup.
+[32mINFO[0m:     [28-06-2024 09:35:28] Application startup complete.
+[32mINFO[0m:     [28-06-2024 09:35:28] Uvicorn running on [1mhttp://localhost:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     [28-06-2024 09:36:26] Shutting down
+[32mINFO[0m:     [28-06-2024 09:36:26] Waiting for application shutdown.
+[36mDEBUG[0m:    [28-06-2024 09:36:26] Stopping component System
+[36mDEBUG[0m:    [28-06-2024 09:36:26] Stopping component SegmentAPI
+[36mDEBUG[0m:    [28-06-2024 09:36:26] Stopping component LocalSegmentManager
+[36mDEBUG[0m:    [28-06-2024 09:36:26] Stopping component Posthog
+[36mDEBUG[0m:    [28-06-2024 09:36:26] Stopping component QuotaEnforcer
+[36mDEBUG[0m:    [28-06-2024 09:36:26] Stopping component SqliteDB
+[36mDEBUG[0m:    [28-06-2024 09:36:26] Stopping component OpenTelemetryClient
+[32mINFO[0m:     [28-06-2024 09:36:26] Application shutdown complete.
+[32mINFO[0m:     [28-06-2024 09:36:26] Finished server process [[36m3000[0m]
+[33mWARNING[0m:  [28-06-2024 09:36:30] chroma_server_nofile is not supported on Windows. chroma_server_nofile will not be set.
+[32mINFO[0m:     [28-06-2024 09:36:30] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+[36mDEBUG[0m:    [28-06-2024 09:36:30] Starting component System
+[36mDEBUG[0m:    [28-06-2024 09:36:30] Starting component OpenTelemetryClient
+[36mDEBUG[0m:    [28-06-2024 09:36:30] Starting component SqliteDB
+[36mDEBUG[0m:    [28-06-2024 09:36:30] Starting component QuotaEnforcer
+[36mDEBUG[0m:    [28-06-2024 09:36:30] Starting component Posthog
+[36mDEBUG[0m:    [28-06-2024 09:36:30] Starting component LocalSegmentManager
+[36mDEBUG[0m:    [28-06-2024 09:36:30] Starting component SegmentAPI
+[32mINFO[0m:     [28-06-2024 09:36:30] Started server process [[36m23020[0m]
+[32mINFO[0m:     [28-06-2024 09:36:30] Waiting for application startup.
+[32mINFO[0m:     [28-06-2024 09:36:30] Application startup complete.
+[32mINFO[0m:     [28-06-2024 09:36:30] Uvicorn running on [1mhttp://localhost:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     [28-06-2024 09:36:48] Collection jo-mvp is not created.
+[32mINFO[0m:     [28-06-2024 09:36:48] ::1:65052 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [28-06-2024 09:36:49] Starting component PersistentLocalHnswSegment
+[32mINFO[0m:     [28-06-2024 09:36:49] ::1:65053 - "POST /api/v1/collections/affeb404-8efe-4789-8c80-1d9db546ca6a/upsert HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:36:49] Collection jo-mvp is not created.
+[32mINFO[0m:     [28-06-2024 09:36:49] ::1:65052 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:36:50] ::1:65052 - "POST /api/v1/collections/affeb404-8efe-4789-8c80-1d9db546ca6a/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:40:09] Shutting down
+[32mINFO[0m:     [28-06-2024 09:40:09] Waiting for application shutdown.
+[36mDEBUG[0m:    [28-06-2024 09:40:09] Stopping component System
+[36mDEBUG[0m:    [28-06-2024 09:40:09] Stopping component SegmentAPI
+[36mDEBUG[0m:    [28-06-2024 09:40:09] Stopping component PersistentLocalHnswSegment
+[36mDEBUG[0m:    [28-06-2024 09:40:09] Stopping component LocalSegmentManager
+[36mDEBUG[0m:    [28-06-2024 09:40:09] Stopping component Posthog
+[36mDEBUG[0m:    [28-06-2024 09:40:09] Stopping component QuotaEnforcer
+[36mDEBUG[0m:    [28-06-2024 09:40:09] Stopping component SqliteDB
+[36mDEBUG[0m:    [28-06-2024 09:40:09] Stopping component OpenTelemetryClient
+[32mINFO[0m:     [28-06-2024 09:40:09] Application shutdown complete.
+[32mINFO[0m:     [28-06-2024 09:40:09] Finished server process [[36m23020[0m]
+[33mWARNING[0m:  [28-06-2024 09:40:25] chroma_server_nofile is not supported on Windows. chroma_server_nofile will not be set.
+[32mINFO[0m:     [28-06-2024 09:40:25] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+[36mDEBUG[0m:    [28-06-2024 09:40:25] Starting component System
+[36mDEBUG[0m:    [28-06-2024 09:40:25] Starting component OpenTelemetryClient
+[36mDEBUG[0m:    [28-06-2024 09:40:25] Starting component SqliteDB
+[36mDEBUG[0m:    [28-06-2024 09:40:25] Starting component QuotaEnforcer
+[36mDEBUG[0m:    [28-06-2024 09:40:25] Starting component Posthog
+[36mDEBUG[0m:    [28-06-2024 09:40:25] Starting component LocalSegmentManager
+[36mDEBUG[0m:    [28-06-2024 09:40:25] Starting component SegmentAPI
+[32mINFO[0m:     [28-06-2024 09:40:25] Started server process [[36m14928[0m]
+[32mINFO[0m:     [28-06-2024 09:40:25] Waiting for application startup.
+[32mINFO[0m:     [28-06-2024 09:40:25] Application startup complete.
+[32mINFO[0m:     [28-06-2024 09:40:25] Uvicorn running on [1mhttp://localhost:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     [28-06-2024 09:40:35] Collection jo-mvp is not created.
+[32mINFO[0m:     [28-06-2024 09:40:35] ::1:65197 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [28-06-2024 09:40:35] Starting component PersistentLocalHnswSegment
+[32mINFO[0m:     [28-06-2024 09:40:35] ::1:65198 - "POST /api/v1/collections/affeb404-8efe-4789-8c80-1d9db546ca6a/upsert HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:40:55] Collection jo-mvp is not created.
+[32mINFO[0m:     [28-06-2024 09:40:55] ::1:65215 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:40:56] ::1:65215 - "POST /api/v1/collections/affeb404-8efe-4789-8c80-1d9db546ca6a/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:41:12] Collection jo-mvp is not created.
+[32mINFO[0m:     [28-06-2024 09:41:12] ::1:65228 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:41:13] ::1:65228 - "POST /api/v1/collections/affeb404-8efe-4789-8c80-1d9db546ca6a/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:41:45] Shutting down
+[32mINFO[0m:     [28-06-2024 09:41:45] Waiting for application shutdown.
+[36mDEBUG[0m:    [28-06-2024 09:41:45] Stopping component System
+[36mDEBUG[0m:    [28-06-2024 09:41:45] Stopping component SegmentAPI
+[36mDEBUG[0m:    [28-06-2024 09:41:45] Stopping component PersistentLocalHnswSegment
+[36mDEBUG[0m:    [28-06-2024 09:41:45] Stopping component LocalSegmentManager
+[36mDEBUG[0m:    [28-06-2024 09:41:45] Stopping component Posthog
+[36mDEBUG[0m:    [28-06-2024 09:41:45] Stopping component QuotaEnforcer
+[36mDEBUG[0m:    [28-06-2024 09:41:45] Stopping component SqliteDB
+[36mDEBUG[0m:    [28-06-2024 09:41:45] Stopping component OpenTelemetryClient
+[32mINFO[0m:     [28-06-2024 09:41:45] Application shutdown complete.
+[32mINFO[0m:     [28-06-2024 09:41:45] Finished server process [[36m14928[0m]
+[33mWARNING[0m:  [28-06-2024 09:42:33] chroma_server_nofile is not supported on Windows. chroma_server_nofile will not be set.
+[32mINFO[0m:     [28-06-2024 09:42:33] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+[36mDEBUG[0m:    [28-06-2024 09:42:33] Starting component System
+[36mDEBUG[0m:    [28-06-2024 09:42:33] Starting component OpenTelemetryClient
+[36mDEBUG[0m:    [28-06-2024 09:42:33] Starting component SqliteDB
+[36mDEBUG[0m:    [28-06-2024 09:42:33] Starting component QuotaEnforcer
+[36mDEBUG[0m:    [28-06-2024 09:42:33] Starting component Posthog
+[36mDEBUG[0m:    [28-06-2024 09:42:33] Starting component LocalSegmentManager
+[36mDEBUG[0m:    [28-06-2024 09:42:33] Starting component SegmentAPI
+[32mINFO[0m:     [28-06-2024 09:42:33] Started server process [[36m23716[0m]
+[32mINFO[0m:     [28-06-2024 09:42:33] Waiting for application startup.
+[32mINFO[0m:     [28-06-2024 09:42:33] Application startup complete.
+[32mINFO[0m:     [28-06-2024 09:42:33] Uvicorn running on [1mhttp://localhost:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     [28-06-2024 09:42:44] ::1:65288 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[36mDEBUG[0m:    [28-06-2024 09:42:44] Starting component PersistentLocalHnswSegment
+[32mINFO[0m:     [28-06-2024 09:42:45] ::1:65290 - "POST /api/v1/collections/3964be1e-1355-4485-811e-761b92d980ea/upsert HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:43:15] Collection mvp-jo is not created.
+[32mINFO[0m:     [28-06-2024 09:43:15] ::1:65315 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:43:16] ::1:65315 - "POST /api/v1/collections/3964be1e-1355-4485-811e-761b92d980ea/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:43:23] Collection mvp-jo is not created.
+[32mINFO[0m:     [28-06-2024 09:43:23] ::1:65324 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:43:24] ::1:65324 - "POST /api/v1/collections/3964be1e-1355-4485-811e-761b92d980ea/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:43:51] Collection mvp-jo is not created.
+[32mINFO[0m:     [28-06-2024 09:43:51] ::1:65344 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:43:52] ::1:65344 - "POST /api/v1/collections/3964be1e-1355-4485-811e-761b92d980ea/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:44:22] Collection mvp-jo is not created.
+[32mINFO[0m:     [28-06-2024 09:44:22] ::1:65365 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:44:23] ::1:65365 - "POST /api/v1/collections/3964be1e-1355-4485-811e-761b92d980ea/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:45:27] Collection mvp-jo is not created.
+[32mINFO[0m:     [28-06-2024 09:45:27] ::1:65446 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:45:28] ::1:65447 - "POST /api/v1/collections/3964be1e-1355-4485-811e-761b92d980ea/upsert HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:45:41] Collection mvp-jo is not created.
+[32mINFO[0m:     [28-06-2024 09:45:41] ::1:65456 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:45:41] ::1:65456 - "POST /api/v1/collections/3964be1e-1355-4485-811e-761b92d980ea/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:45:51] Collection mvp-jo is not created.
+[32mINFO[0m:     [28-06-2024 09:45:51] ::1:65466 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:45:52] ::1:65466 - "POST /api/v1/collections/3964be1e-1355-4485-811e-761b92d980ea/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:46:05] Collection mvp-jo is not created.
+[32mINFO[0m:     [28-06-2024 09:46:05] ::1:65479 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:46:05] ::1:65479 - "POST /api/v1/collections/3964be1e-1355-4485-811e-761b92d980ea/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:46:23] Collection mvp-jo is not created.
+[32mINFO[0m:     [28-06-2024 09:46:23] ::1:65494 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:46:24] ::1:65494 - "POST /api/v1/collections/3964be1e-1355-4485-811e-761b92d980ea/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:51:45] Collection mvp-jo is not created.
+[32mINFO[0m:     [28-06-2024 09:51:45] ::1:49282 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:51:46] ::1:49283 - "POST /api/v1/collections/3964be1e-1355-4485-811e-761b92d980ea/upsert HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:51:58] Collection mvp-jo is not created.
+[32mINFO[0m:     [28-06-2024 09:51:58] ::1:49295 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:51:59] ::1:49295 - "POST /api/v1/collections/3964be1e-1355-4485-811e-761b92d980ea/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:52:20] Collection mvp-jo is not created.
+[32mINFO[0m:     [28-06-2024 09:52:20] ::1:49313 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:52:21] ::1:49313 - "POST /api/v1/collections/3964be1e-1355-4485-811e-761b92d980ea/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:52:47] Collection mvp-jo is not created.
+[32mINFO[0m:     [28-06-2024 09:52:47] ::1:49331 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:52:48] ::1:49331 - "POST /api/v1/collections/3964be1e-1355-4485-811e-761b92d980ea/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:53:08] Collection mvp-jo is not created.
+[32mINFO[0m:     [28-06-2024 09:53:08] ::1:49353 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:53:09] ::1:49353 - "POST /api/v1/collections/3964be1e-1355-4485-811e-761b92d980ea/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:53:56] Collection mvp-jo is not created.
+[32mINFO[0m:     [28-06-2024 09:53:56] ::1:49386 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:53:58] ::1:49388 - "POST /api/v1/collections/3964be1e-1355-4485-811e-761b92d980ea/upsert HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:54:03] Collection mvp-jo is not created.
+[32mINFO[0m:     [28-06-2024 09:54:03] ::1:49395 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:54:03] ::1:49395 - "POST /api/v1/collections/3964be1e-1355-4485-811e-761b92d980ea/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:54:19] Collection mvp-jo is not created.
+[32mINFO[0m:     [28-06-2024 09:54:19] ::1:49407 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:54:19] ::1:49407 - "POST /api/v1/collections/3964be1e-1355-4485-811e-761b92d980ea/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:55:07] Collection mvp-jo is not created.
+[32mINFO[0m:     [28-06-2024 09:55:07] ::1:49439 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:55:08] ::1:49439 - "POST /api/v1/collections/3964be1e-1355-4485-811e-761b92d980ea/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:55:31] Collection mvp-jo is not created.
+[32mINFO[0m:     [28-06-2024 09:55:31] ::1:49457 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:55:32] ::1:49457 - "POST /api/v1/collections/3964be1e-1355-4485-811e-761b92d980ea/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:55:44] Collection mvp-jo is not created.
+[32mINFO[0m:     [28-06-2024 09:55:44] ::1:49468 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:55:44] ::1:49468 - "POST /api/v1/collections/3964be1e-1355-4485-811e-761b92d980ea/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:56:09] Collection mvp-jo is not created.
+[32mINFO[0m:     [28-06-2024 09:56:09] ::1:49490 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:56:10] ::1:49490 - "POST /api/v1/collections/3964be1e-1355-4485-811e-761b92d980ea/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:58:21] Collection mvp-jo is not created.
+[32mINFO[0m:     [28-06-2024 09:58:21] ::1:49575 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:58:21] ::1:49575 - "POST /api/v1/collections/3964be1e-1355-4485-811e-761b92d980ea/query HTTP/1.1" 200
+[32mINFO[0m:     [28-06-2024 09:59:02] Collection mvp-jo is not created.
+[32mINFO[0m:     [28-06-2024 09:59:02] ::1:49602 - "POST /api/v1/collections?tenant=default_tenant&database=default_database HTTP/1.1" 200

@@ -4,6 +4,7 @@ import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { ChatOpenAI } from "@langchain/openai";
 import * as dotenv from "dotenv";
 import { similarChunks } from "./vectorStore.js";
+
 dotenv.config();
 
 let totalInteractions = 0;
@@ -27,7 +28,7 @@ router.post("/", async (request: Request, response: Response) => {
   ): Promise<string> => {
     const model = new ChatOpenAI({
       openAIApiKey: process.env.OPENAI_API_KEY as string,
-      modelName: "gpt-4o", // Certifique-se de usar o modelo correto
+      modelName: "gpt-4o-2024-05-13",
     });
 
     const promptTemplate = ChatPromptTemplate.fromTemplate(
@@ -83,8 +84,8 @@ router.post("/", async (request: Request, response: Response) => {
     logMetrics();
 
     response.json({ output: userResponse });
-  } catch (error: any) {
-    console.log(history)
+  } catch (error) {
+    console.log(history);
     console.error("Erro ao processar a consulta:", error.message);
     response.status(500).send("Erro ao processar a consulta.");
   }
