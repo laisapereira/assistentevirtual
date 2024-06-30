@@ -3,10 +3,10 @@ name: Assistente CI-CD Workflow
 on:
   push:
     branches:
-      - 08-jo-s-compose
+      - main-chromadb-compose
   pull_request:
     branches:
-      - 08-jo-s-compose
+      - main-chromadb-compose
 
 jobs:
   build-and-push:
@@ -28,8 +28,14 @@ jobs:
       - name: Building Docker Image for Frontend
         run: docker build -t aceleraprojetosfjs/assistentevirtual-frontend:latest ./frontend
 
+      - name: Building Docker Image for Backend
+        run: docker build -t aceleraprojetosfjs/assistentevirtual-backend:latest ./backend
+
       - name: Pushing Docker Image for Frontend
         run: docker push aceleraprojetosfjs/assistentevirtual-frontend:latest
+
+      - name: Pushing Docker Image for Backend
+        run: docker push aceleraprojetosfjs/assistentevirtual-backend:latest
 
   deploy:
     needs: build-and-push
@@ -45,11 +51,12 @@ jobs:
       - name: Login to DockerHub
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
-      - name: Pull Docker Image for Frontend
-        run: docker pull aceleraprojetosfjs/assistentevirtual-frontend:latest
+      - name: Pull Docker Images
+        run: |
+          docker pull aceleraprojetosfjs/assistentevirtual-frontend:latest
+          docker pull aceleraprojetosfjs/assistentevirtual-backend:latest
 
-      - name: Stop and Remove Old Frontend Container
-        run: docker rm -f frontend-container 
-
-      - name: Deploy Docker Container for Frontend
-        run: docker run -d --name frontend-container --env-file .env -p 3000:80 aceleraprojetosfjs/assistentevirtual-frontend:latest
+      - name: Deploy using Docker Compose
+        run: |
+          docker-compose down
+          docker-compose up -d --build

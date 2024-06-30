@@ -7,8 +7,6 @@ import { OpenAIEmbeddings } from "@langchain/openai";
 
 import { Chroma } from "@langchain/community/vectorstores/chroma";
 
-// import { loadAndNormalizeDocuments } from "./vectorStore.js";
-
 interface IDocument {
   pageContent: string | string[];
 }
