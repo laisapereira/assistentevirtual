@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import ChatForm from "../../components/Form/index.tsx";
 import { sendMessage } from "../../components/App/apiFunctions.ts";
 
@@ -19,6 +19,7 @@ import { ChatEntry } from "../../types/types.ts";
 const Chatbot = () => {
   const [chatLog, setChatLog] = useState<ChatEntry[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
+  const chatLogRef = useRef<HTMLDivElement>(null);
 
   const handleSubmit = async (userMessage: string) => {
     setChatLog((prevChatLog: ChatEntry[]) => [
@@ -68,13 +69,18 @@ const Chatbot = () => {
     });
   };
 
+  useEffect(() => {
+    if (chatLogRef.current) {
+      chatLogRef.current.scrollTop = chatLogRef.current.scrollHeight;
+    }
+  }, [chatLog]);
+
   return (
     <div className="main-chat">
       <aside className="aside-header">
         <img src={logoFjs} alt="Logo" className="img-logo" />
         <section className="banner-aside">
           <button>
-            {" "}
             <a href="/">voltar à Home </a>
           </button>
           <img src={bannerFjs} alt="Banner-Fjs" />
@@ -93,7 +99,7 @@ const Chatbot = () => {
       </aside>
 
       <section className="chat-box">
-        <div className="chat-log">
+        <div className="chat-log" ref={chatLogRef}>
           <div className="flex justify-between items-center max-w-full p-4 pt-10 px-12">
             <a href="/">
               <ArrowLeft size={50} />
