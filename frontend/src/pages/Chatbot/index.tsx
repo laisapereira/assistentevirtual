@@ -38,7 +38,7 @@ const Chatbot = () => {
     const botResponse = await sendMessage(userMessage);
     setIsProcessing(false);
 
-    const words = botResponse.text.split(" ");
+    const words = botResponse.text.kwargs.split(" ")
 
     for (let i = 0; i < words.length; i++) {
       setTimeout(() => {
