@@ -61,7 +61,7 @@ export const loadAndNormalizeDocuments = async (): Promise<string[]> => {
     new OpenAIEmbeddings(),
     {
       collectionName: "mvp-jo",
-      url: "http://localhost:8000",
+      url: "http://chromadb:8000",
     }
   );
 
