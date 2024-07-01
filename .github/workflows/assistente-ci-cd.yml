@@ -1,4 +1,4 @@
-name: Assistente-Docker CI-CD Workflow.
+name: Assistente CI-CD Workflow.
 
 on:
   push:
