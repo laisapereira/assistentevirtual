@@ -81,7 +81,7 @@ const Chatbot = () => {
         <img src={logoFjs} alt="Logo" className="img-logo" />
         <section className="banner-aside">
           <button>
-            <a href="/">voltar à Home </a>
+            <a href="/">Limpar Chat </a>
           </button>
           <img src={bannerFjs} alt="Banner-Fjs" />
         </section>
