@@ -1,4 +1,4 @@
-name: Assistente CI-CD Workflow
+name: Assistente CI-CD Workflow.
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   build-and-push:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout Source
         uses: actions/checkout@v3
@@ -59,4 +59,4 @@ jobs:
       - name: Deploy using Docker Compose
         run: |
           docker-compose down
-          docker-compose up -d --build
+          docker-compose up --build
