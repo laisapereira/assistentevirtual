@@ -40,7 +40,7 @@ router.post("/", async (request: Request, response: Response) => {
       Pergunta do Usuário: {query}
 
       As descrições sobre alguns setores da FJS: {chunks}. Não precisa colocar "Assistente" ou "Jô" antes de cada resposta.
-      Se limite a responder com base nessas informações fornecidas. Não traga outras informações na sua resposta.
+      Se limite a responder com base nessas informações fornecidas. Não traga outras informações na sua resposta. Se o usuário perguntar coisas que fujam do escopo de contexto, assunto ou informações contidos nos documentos, você diz "Não sou treinada pra responder esse tipo de pergunta. No que mais posso ajudar?"
       Não responda em mais do que 150 palavras.`
     );
 
