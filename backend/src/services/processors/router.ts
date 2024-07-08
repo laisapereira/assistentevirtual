@@ -1,3 +1,4 @@
+import fs from "fs";
 import { Request, Response, Router } from "express";
 
 import { ChatPromptTemplate } from "@langchain/core/prompts";
@@ -7,9 +8,45 @@ import { similarChunks } from "./vectorStore.js";
 
 dotenv.config();
 
+let contadorDeChamadas = 0;
+
+try {
+    const contadorString = fs.readFileSync('contador.txt', 'utf-8');
+  
+    contadorDeChamadas = parseInt(contadorString, 10);
+  
+  } catch (err) {
+  
+    // Se o arquivo não existir, inicie o contador em 0
+  
+    contadorDeChamadas = 0;
+  
+}
+
+const addConsultaAoHistorico = (consulta: string, resposta: string) => {
+    const timestamp = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+  
+    const logEntry = `${timestamp} - Consulta: ${consulta}\nResposta: ${resposta}\n\n`  
+  
+    fs.appendFile("consultas.log", logEntry, (err) => {
+  
+      if (err) console.error("Erro ao adicionar consulta ao histórico:", err);      
+  
+    });
+  
+    contadorDeChamadas++;
+
+    fs.writeFileSync('contador.txt', contadorDeChamadas.toString());
+};
+
+
+
 let totalInteractions = 0;
 let resolvedInteractions = 0;
 let totalTimeSpent = 0;
+
+
+
 
 export const router = Router();
 
@@ -62,6 +99,7 @@ router.post("/", async (request: Request, response: Response) => {
     const response = await promptLLM(userQuery, chunks);
 
     history.push(response);
+   
     console.log(response);
     console.log(history);
 
@@ -80,7 +118,7 @@ router.post("/", async (request: Request, response: Response) => {
     if (userResponse) {
       resolvedInteractions++;
     }
-
+    addConsultaAoHistorico(chats, userResponse)
     logMetrics();
 
     response.json({ output: userResponse });
