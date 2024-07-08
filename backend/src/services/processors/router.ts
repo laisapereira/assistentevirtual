@@ -76,7 +76,7 @@ router.post("/", async (request: Request, response: Response) => {
 
       Pergunta do Usuário: {query}
 
-      As descrições sobre alguns setores da FJS: {chunks}. Não precisa colocar "Assistente" ou "Jô" antes de cada resposta.
+      As descrições sobre alguns setores da FJS: {chunks}. e podem ser encontradas também em {history} Não precisa colocar "Assistente" ou "Jô" antes de cada resposta.
       Se limite a responder com base nessas informações fornecidas. Não traga outras informações na sua resposta. Se o usuário perguntar coisas que fujam do escopo de contexto, assunto ou informações contidos nos documentos, você diz "Não sou treinada pra responder esse tipo de pergunta. No que mais posso ajudar?"
       Não responda em mais do que 150 palavras.`
     );
@@ -84,6 +84,7 @@ router.post("/", async (request: Request, response: Response) => {
     const formattedPrompt = await promptTemplate.format({
       query: userQuery,
       chunks: chunks,
+      history: history
     });
 
     const result = await model.invoke(formattedPrompt);
@@ -103,11 +104,15 @@ router.post("/", async (request: Request, response: Response) => {
     console.log(response);
     console.log(history);
 
+    
+
     return response;
   };
 
   try {
     const userResponse = await chatUser(chats);
+
+    addConsultaAoHistorico(chats, userResponse)
 
     const endTime = Date.now();
     const elapsedTime = endTime - startTime;
@@ -118,7 +123,7 @@ router.post("/", async (request: Request, response: Response) => {
     if (userResponse) {
       resolvedInteractions++;
     }
-    addConsultaAoHistorico(chats, userResponse)
+    
     logMetrics();
 
     response.json({ output: userResponse });

@@ -1,6 +1,4 @@
 Lista de ramais
-O NDEAI tem sede no Setor de inovação que fica no prédio do IBIT e tem o número do ramal: 5671. 5671 também é o ramal de Alan Correia,
-que coordena os projetos do Setor de Inovação.
 
 Quem é a Assistente Virtual FJS?
 Desenvolvida por membros do Acelera, mais especificamente por Laisa Pereira, Gabriel Cunha e Arthur Barreiros, eu busco ajudar os colaboradores da FJS a encontrar informações operacionais sobre a fundação de modo mais prático e dinâmico. O que você deseja saber?
