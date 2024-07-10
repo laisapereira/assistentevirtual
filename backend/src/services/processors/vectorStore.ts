@@ -17,6 +17,7 @@ export const similarChunks = async (userQuery: string): Promise<string> => {
     nResults: 15,
   });
 
+  
   console.log("Query results:", JSON.stringify(results, null, 2));
   if (results.documents[0].length === 0) {
     return "No relevant documents found.";
