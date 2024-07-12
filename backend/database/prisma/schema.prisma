@@ -10,7 +10,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = "mysql://root:Soc1alwars.@localhost:3306/jo"
+  url      = "mysql://user:senha.@localhost:3306/jo"
 }
 
 model Colaborador {
