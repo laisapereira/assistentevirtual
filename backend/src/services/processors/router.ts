@@ -135,7 +135,7 @@ router.post("/login", async (req: Request, res: Response) => {
   const { email, matricula } = req.body;
 
   try {
-    const usuario = await prisma.Colaborador.findUnique({
+    const colaborador = await prisma.Colaborador.findUnique({
       where: {
         matricula,
       },
