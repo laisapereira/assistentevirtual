@@ -4,6 +4,7 @@ import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { ChatOpenAI } from "@langchain/openai";
 import * as dotenv from "dotenv";
 import { similarChunks } from "./vectorStore.js";
+import prisma from "@prisma/client";
 
 dotenv.config();
 
@@ -130,4 +131,21 @@ router.post("/", async (request: Request, response: Response) => {
 });
 
 
-router.post("/login", )
+router.post("/login", async (req: Request, res: Response) => {
+  const { email, matricula } = req.body;
+
+  try {
+    const usuario = await prisma.Colaborador.findUnique({
+      where: {
+        matricula,
+      },
+    });
+
+    if (!usuario) {
+      return res.status(401).json({ message: 'Usuário não encontrado.' });
+    }
+} catch (error: any) {
+    console.error('Erro ao processar a consulta:', error.message);
+    return res.status(500).send('Erro ao processar a consulta.');
+  }
+})
