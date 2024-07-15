@@ -1,8 +1,11 @@
 import { ChromaClient, OpenAIEmbeddingFunction } from "chromadb";
 
+import * as dotenv from "dotenv";
+dotenv.config();
+
 export const similarChunks = async (userQuery: string): Promise<string> => {
   const client = new ChromaClient({
-    path: "http://chromadb:8000",
+    path: process.env.CHROMADB_PATH,
   });
   const collection = await client.getOrCreateCollection({
     name: "mvp-jo",

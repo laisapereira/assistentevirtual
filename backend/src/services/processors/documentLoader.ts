@@ -3,9 +3,13 @@ import { DirectoryLoader } from "langchain/document_loaders/fs/directory";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 /* import { DirectoryLoader } from "@langchain/community/document_loaders/fs/pdf" */
 import { TextLoader } from "langchain/document_loaders/fs/text";
+import * as dotenv from "dotenv";
 import { OpenAIEmbeddings } from "@langchain/openai";
 
+
 import { Chroma } from "@langchain/community/vectorstores/chroma";
+
+dotenv.config();
 
 interface IDocument {
   pageContent: string | string[];
@@ -61,7 +65,7 @@ export const loadAndNormalizeDocuments = async (): Promise<string[]> => {
     new OpenAIEmbeddings(),
     {
       collectionName: "mvp-jo",
-      url: "http://chromadb:8000",
+      url: process.env.CHROMADB_PATH,
     }
   );
 

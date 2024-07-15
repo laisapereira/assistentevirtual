@@ -1,8 +1,12 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
+import * as dotenv from "dotenv";
+
+dotenv.config();
+
 const API = axios.create({
-  baseURL: "http://172.16.1.66:9000/",
+  baseURL: process.env.BASE_URL
 });
 
 /* // interceptador de solicitação adicionado à instância do axios:
