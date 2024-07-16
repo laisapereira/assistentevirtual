@@ -2,10 +2,10 @@ import { Client } from 'pg';
 import { OpenAIEmbeddings } from '@langchain/openai';
 
 const client = new Client({
-  user: 'yourusername',
-  host: 'yourhost',
-  database: 'yourdatabase',
-  password: 'yourpassword',
+  user: 'postgres',
+  host: 'localhost',
+  database: 'jovector',
+  password: 'Soc1alwars.',
   port: 5432,
 });
 
