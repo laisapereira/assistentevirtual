@@ -7,40 +7,37 @@ import { similarChunks } from "./vectorStore.js";
 
 dotenv.config();
 
+import path from "path";
+
 let contadorDeChamadas = 0;
 
-try {
-  const contadorString = fs.readFileSync('contador.txt', 'utf-8');
-  contadorDeChamadas = parseInt(contadorString, 10);
-} catch (err) {
-  // Se o arquivo não existir, inicie o contador em 0
-  contadorDeChamadas = 0;
-  console.error("Erro ao ler o contador de chamadas:", err);
-}
+let totalInteractions = 0;
+let resolvedInteractions = 0;
+let totalTimeSpent = 0;
 
-const addConsultaAoHistorico = (consulta: string, resposta: string) => {
-  const timestamp = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+/* onst addConsultaAoHistorico = (consulta: string, resposta: string) => {
+  const timestamp = new Date().toLocaleString("pt-BR", {
+    timeZone: "America/Sao_Paulo",
+  });
   const logEntry = `${timestamp} - Consulta: ${consulta}\nResposta: ${resposta}\n\n`;
 
   fs.appendFile("consultas.log", logEntry, (err) => {
     if (err) {
       console.error("Erro ao adicionar consulta ao histórico:", err);
     } else {
-      console.log("Consulta adicionada ao histórico com sucesso.");
+      console.log(
+        `Consulta adicionada ao histórico com sucesso: ${contadorDeChamadas} e ${logEntry}`
+      );
     }
   });
 
   contadorDeChamadas++;
-  fs.writeFileSync('contador.txt', contadorDeChamadas.toString(), (err) => {
+  fs.writeFile("contador.txt", contadorDeChamadas.toString(), (err) => {
     if (err) {
       console.error("Erro ao escrever no arquivo contador.txt:", err);
     }
   });
-};
-
-let totalInteractions = 0;
-let resolvedInteractions = 0;
-let totalTimeSpent = 0;
+}; */
 
 export const router = Router();
 
@@ -53,7 +50,10 @@ router.post("/", async (request: Request, response: Response) => {
 
   const startTime = Date.now();
 
-  const promptLLM = async (userQuery: string, chunks: string): Promise<string> => {
+  const promptLLM = async (
+    userQuery: string,
+    chunks: string
+  ): Promise<string> => {
     const model = new ChatOpenAI({
       openAIApiKey: process.env.OPENAI_API_KEY as string,
       modelName: "gpt-4o-2024-05-13",
@@ -75,7 +75,7 @@ router.post("/", async (request: Request, response: Response) => {
     const formattedPrompt = await promptTemplate.format({
       query: userQuery,
       chunks: chunks,
-      history: history
+      history: history,
     });
 
     const result = await model.invoke(formattedPrompt);
@@ -92,6 +92,15 @@ router.post("/", async (request: Request, response: Response) => {
 
     history.push(response);
 
+    try {
+      const contadorString = fs.readFileSync("contador.txt", "utf-8");
+      contadorDeChamadas = parseInt(contadorString, 10);
+    } catch (err) {
+      // Se o arquivo não existir, inicie o contador em 0
+      contadorDeChamadas = 0;
+      console.error("Erro ao ler o contador de chamadas:", err);
+    }
+
     console.log(response);
     console.log(history);
 
@@ -100,8 +109,6 @@ router.post("/", async (request: Request, response: Response) => {
 
   try {
     const userResponse = await chatUser(chats);
-
-    addConsultaAoHistorico(chats, userResponse);
 
     const endTime = Date.now();
     const elapsedTime = endTime - startTime;
@@ -123,8 +130,18 @@ router.post("/", async (request: Request, response: Response) => {
   }
 
   function logMetrics() {
-    console.log(`Total Interactions: ${totalInteractions}`);
-    console.log(`Resolved Interactions: ${resolvedInteractions}`);
-    console.log(`Total Time Spent: ${totalTimeSpent} ms`);
+    const logPath = path.join(__dirname, "logs", "consultas.log");
+    const logMessage = `${new Date().toISOString()} - ${response}\n`;
+
+    fs.appendFile(logPath, logMessage, (err) => {
+      if (err) {
+        console.error("Erro ao escrever no arquivo de log:", err);
+      } else {
+        console.log("Consulta registrada no log.");
+      }
+    });
   }
+  console.log(`Total Interactions: ${totalInteractions}`);
+  console.log(`Resolved Interactions: ${resolvedInteractions}`);
+  console.log(`Total Time Spent: ${totalTimeSpent} ms`);
 });

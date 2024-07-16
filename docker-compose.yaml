@@ -14,6 +14,7 @@ services:
       - ./backend:/app
       - /app/node_modules
       - ./backend/documents:/app/documents
+      - ./backend/logs:/app/logs  
     environment:
       - NODE_ENV=development
       - OPENAI_API_KEY=${OPENAI_API_KEY}
@@ -36,6 +37,7 @@ services:
       - backend
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - BASE_URL=${BASE_URL}
     networks:
       - app-network
 
