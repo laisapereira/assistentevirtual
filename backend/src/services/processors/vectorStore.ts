@@ -1,8 +1,12 @@
 import { ChromaClient, OpenAIEmbeddingFunction } from "chromadb";
 
+import * as dotenv from "dotenv";
+
+dotenv.config();
+
 export const similarChunks = async (userQuery: string): Promise<string> => {
   const client = new ChromaClient({
-    path: "http://chromadb:8000",
+    path: process.env.CHROMADB_PATH,
   });
   const collection = await client.getOrCreateCollection({
     name: "mvp-jo",
@@ -14,10 +18,9 @@ export const similarChunks = async (userQuery: string): Promise<string> => {
   console.log(`Querying for: ${userQuery}`);
   const results = await collection.query({
     queryTexts: [userQuery],
-    nResults: 15,
+    nResults: 10,
   });
 
-  
   console.log("Query results:", JSON.stringify(results, null, 2));
   if (results.documents[0].length === 0) {
     return "No relevant documents found.";
@@ -25,4 +28,3 @@ export const similarChunks = async (userQuery: string): Promise<string> => {
 
   return results.documents[0].join("\n");
 };
-

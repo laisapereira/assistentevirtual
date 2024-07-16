@@ -5,6 +5,10 @@ import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import { TextLoader } from "langchain/document_loaders/fs/text";
 import { OpenAIEmbeddings } from "@langchain/openai";
 
+import * as dotenv from "dotenv";
+
+dotenv.config();
+
 import { Chroma } from "@langchain/community/vectorstores/chroma";
 
 interface IDocument {
@@ -61,7 +65,7 @@ export const loadAndNormalizeDocuments = async (): Promise<string[]> => {
     new OpenAIEmbeddings(),
     {
       collectionName: "mvp-jo",
-      url: "http://chromadb:8000",
+      url: process.env.CHROMADB_PATH,
     }
   );
 
