@@ -6,7 +6,7 @@ dotenv.config();
 
 export const similarChunks = async (userQuery: string): Promise<string> => {
   const client = new ChromaClient({
-    path: process.env.CHROMADB_PATH,
+    path: "http://chromadb:8000",
   });
   const collection = await client.getOrCreateCollection({
     name: "mvp-jo",
