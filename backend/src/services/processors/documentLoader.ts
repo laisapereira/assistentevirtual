@@ -56,7 +56,7 @@ export const loadAndNormalizeDocuments = async (): Promise<string[]> => {
     JSON.stringify(documentsForChroma, null, 2)
   );
 
-  const vectorStore = await Chroma.fromDocuments(
+  const vectorStores = await Chroma.fromDocuments(
     documentsForChroma,
     new OpenAIEmbeddings(),
     {
