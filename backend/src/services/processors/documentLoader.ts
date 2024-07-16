@@ -1,70 +1,39 @@
-import { PDFLoader } from "langchain/document_loaders/fs/pdf";
-import { DirectoryLoader } from "langchain/document_loaders/fs/directory";
-import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
-/* import { DirectoryLoader } from "@langchain/community/document_loaders/fs/pdf" */
-import { TextLoader } from "langchain/document_loaders/fs/text";
-import { OpenAIEmbeddings } from "@langchain/openai";
-
-import { Chroma } from "@langchain/community/vectorstores/chroma";
-
-interface IDocument {
-  pageContent: string | string[];
-}
+import { PDFLoader } from 'langchain/document_loaders/fs/pdf';
+import { DirectoryLoader } from 'langchain/document_loaders/fs/directory';
+import { TextLoader } from 'langchain/document_loaders/fs/text';
+import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
+import { IDocument } from './types'; // Certifique-se de criar um arquivo types.ts com a interface IDocument
+import { indexDocuments } from './vectorstore';
 
 export const loadAndNormalizeDocuments = async (): Promise<string[]> => {
-  const loader = new DirectoryLoader("./documents", {
-    ".pdf": (path: string) => new PDFLoader(path),
-    ".txt": (path: string) => new TextLoader(path),
+  const loader = new DirectoryLoader('./documents', {
+    '.pdf': (path: string) => new PDFLoader(path),
+    '.txt': (path: string) => new TextLoader(path),
   });
 
-  console.log("Loading docs...");
   const docs: IDocument[] = await loader.load();
-  console.log("Docs loaded:", JSON.stringify(docs, null, 2));
-
   const normalizedDocs = docs
     .map((doc: IDocument) => {
-      if (typeof doc.pageContent === "string") {
+      if (typeof doc.pageContent === 'string') {
         return doc.pageContent;
       } else if (Array.isArray(doc.pageContent)) {
-        return doc.pageContent.join("\n");
+        return doc.pageContent.join('\n');
       }
-      return "";
+      return '';
     })
-    .filter((doc) => doc !== "");
-
-  console.log("Normalized docs:", JSON.stringify(normalizedDocs, null, 2));
+    .filter((doc) => doc !== '');
 
   const textSplitter = new RecursiveCharacterTextSplitter({
-    separators: ["\n", ".", "!", "?", ";", " ", ""],
+    separators: ['\n', '.', '!', '?', ';', ' ', ''],
     chunkSize: 200,
     chunkOverlap: 50,
     lengthFunction: (str: string) => str.length,
   });
 
-  const combinedText = normalizedDocs.join("\n");
+  const combinedText = normalizedDocs.join('\n');
   const documents = await textSplitter.splitText(combinedText);
-  console.log("Text chunks:", JSON.stringify(documents, null, 2));
 
-  const documentsForChroma = documents.map((doc: string) => ({
-    content: doc,
-    pageContent: doc,
-    metadata: {},
-  }));
+  await indexDocuments(documents);
 
-  console.log(
-    "Documents for Chroma:",
-    JSON.stringify(documentsForChroma, null, 2)
-  );
-
-  const vectorStore = await Chroma.fromDocuments(
-    documentsForChroma,
-    new OpenAIEmbeddings(),
-    {
-      collectionName: "mvp-jo",
-      url: "http://chromadb:8000",
-    }
-  );
-
-  console.log("Vector store created and documents indexed.");
   return documents;
 };
