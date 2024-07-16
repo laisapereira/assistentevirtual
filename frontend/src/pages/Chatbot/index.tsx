@@ -79,22 +79,24 @@ const Chatbot = () => {
     <div className="main-chat">
       <aside className="aside-header">
         <img src={logoFjs} alt="Logo" className="img-logo" />
+        <button>
+          <a href="/">Limpar Chat </a>
+        </button>
         <section className="banner-aside">
-          <button>
-            <a href="/">Limpar Chat </a>
-          </button>
           <img src={bannerFjs} alt="Banner-Fjs" />
         </section>
 
         <div className="footer-aside">
-          <img className="w-[50px]" src={iconUser} alt="user" />
-          <section>
-            <p>Usuário</p>
-            <p>FJS</p>
-          </section>
-          <div onClick={handleAlert} className="icon-engine">
-            <GearFine size={40} color="white" />
-          </div>
+          <aside>
+            <img className="w-[50px]" src={iconUser} alt="user" />
+            <section>
+              <p>Usuário</p>
+              <p>FJS</p>
+            </section>
+            <div onClick={handleAlert} className="icon-engine">
+              <GearFine size={40} color="white" />
+            </div>
+          </aside>
         </div>
       </aside>
 
