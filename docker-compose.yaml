@@ -18,7 +18,7 @@ services:
     environment:
       - NODE_ENV=development
       - OPENAI_API_KEY=${OPENAI_API_KEY}
-      - CHROMA_DB_URL=http://chromadb:8000
+      - CHROMA_DB_URL=${CHROMADB_PATH}
     depends_on:
       - chromadb
     networks:

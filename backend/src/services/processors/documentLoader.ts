@@ -11,6 +11,7 @@ dotenv.config();
 
 import { Chroma } from "@langchain/community/vectorstores/chroma";
 
+
 interface IDocument {
   pageContent: string | string[];
 }
