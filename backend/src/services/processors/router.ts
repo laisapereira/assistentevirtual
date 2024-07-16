@@ -92,14 +92,14 @@ router.post("/", async (request: Request, response: Response) => {
 
     history.push(response);
 
-    try {
+  /*   try {
       const contadorString = fs.readFileSync("contador.txt", "utf-8");
       contadorDeChamadas = parseInt(contadorString, 10);
     } catch (err) {
       // Se o arquivo não existir, inicie o contador em 0
       contadorDeChamadas = 0;
       console.error("Erro ao ler o contador de chamadas:", err);
-    }
+    } */
 
     console.log(response);
     console.log(history);
@@ -130,16 +130,7 @@ router.post("/", async (request: Request, response: Response) => {
   }
 
   function logMetrics() {
-    const logPath = path.join(__dirname, "logs", "consultas.log");
-    const logMessage = `${new Date().toISOString()} - ${response}\n`;
-
-    fs.appendFile(logPath, logMessage, (err) => {
-      if (err) {
-        console.error("Erro ao escrever no arquivo de log:", err);
-      } else {
-        console.log("Consulta registrada no log.");
-      }
-    });
+    
   }
   console.log(`Total Interactions: ${totalInteractions}`);
   console.log(`Resolved Interactions: ${resolvedInteractions}`);

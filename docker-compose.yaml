@@ -37,7 +37,7 @@ services:
       - backend
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
-      - BASE_URL=${BASE_URL}
+      - REACT_APP_API_URL=${REACT_APP_API_URL} 
     networks:
       - app-network
 
