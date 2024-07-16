@@ -1,28 +1,34 @@
-import { ChromaClient, OpenAIEmbeddingFunction } from "chromadb";
+import { Client } from 'pg';
+import { OpenAIEmbeddings } from '@langchain/openai';
 
-export const similarChunks = async (userQuery: string): Promise<string> => {
-  const client = new ChromaClient({
-    path: "http://chromadb:8000",
-  });
-  const collection = await client.getOrCreateCollection({
-    name: "mvp-jo",
-    embeddingFunction: new OpenAIEmbeddingFunction({
-      openai_api_key: process.env.OPENAI_API_KEY as string,
-    }),
-  });
+const client = new Client({
+  user: 'yourusername',
+  host: 'yourhost',
+  database: 'yourdatabase',
+  password: 'yourpassword',
+  port: 5432,
+});
 
-  console.log(`Querying for: ${userQuery}`);
-  const results = await collection.query({
-    queryTexts: [userQuery],
-    nResults: 15,
-  });
+await client.connect();
 
-  
-  console.log("Query results:", JSON.stringify(results, null, 2));
-  if (results.documents[0].length === 0) {
-    return "No relevant documents found.";
+const embeddings = new OpenAIEmbeddings({
+  openai_api_key: process.env.OPENAI_API_KEY as string,
+});
+
+export const indexDocuments = async (documents: string[]) => {
+  for (const doc of documents) {
+    const embedding = await embeddings.embed([doc]);
+    await client.query('INSERT INTO documents (content, embedding) VALUES ($1, $2)', [doc, embedding]);
   }
-
-  return results.documents[0].join("\n");
 };
 
+export const similarChunks = async (userQuery: string): Promise<string> => {
+  const queryEmbedding = await embeddings.embed([userQuery]);
+  const res = await client.query('SELECT content FROM documents ORDER BY embedding <-> $1 LIMIT 15', [queryEmbedding]);
+
+  if (res.rows.length === 0) {
+    return 'documentos relevantes não encontrados';
+  }
+
+  return res.rows.map((row: any) => row.content).join('\n');
+};

@@ -15,6 +15,8 @@ ENV PYTHON=/usr/bin/python3
 
 RUN npm install -g node-gyp@latest
 
+RUN npm install pg pgvector
+
 RUN npm install
 
 COPY . .
