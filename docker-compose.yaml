@@ -35,10 +35,11 @@ services:
       - "3000:80"
     depends_on:
       - backend
+    env_file:
+      - ./.env
     environment:
-      - env_file: .env
       - OPENAI_API_KEY=${OPENAI_API_KEY}
-      - REACT_APP_API_URL=http://172.16.1.66:9000/
+      - REACT_APP_API_URL=${REACT_APP_API_URL}
     networks:
       - app-network
 
