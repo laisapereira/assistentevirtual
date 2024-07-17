@@ -59,4 +59,4 @@ jobs:
       - name: Deploy using Docker Compose
         run: |
           docker-compose down
-          docker-compose up --build -d
+          REACT_APP_API_URL=${{ vars.REACT_APP_API_URL }} docker-compose up --build -d
