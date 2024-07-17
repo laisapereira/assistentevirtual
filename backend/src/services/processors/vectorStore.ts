@@ -4,8 +4,8 @@ import { OpenAIEmbeddings } from '@langchain/openai';
 const { Client } = pg;
 
 const client = new Client({
-  user: 'user',
-  host: 'localhost',
+  user: 'postgres',
+  host: 'host.docker.internal',
   database: 'vector_db',
   password: 'sua senha',
   port: 5432,
