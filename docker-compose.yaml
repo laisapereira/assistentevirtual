@@ -36,7 +36,7 @@ services:
     depends_on:
       - backend
     env_file: 
-      - ./.env
+      - .env
     environment:     
       - REACT_APP_API_URL=${REACT_APP_API_URL}
     networks:
