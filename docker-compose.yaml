@@ -29,7 +29,9 @@ services:
     container_name: frontend_c
     image: aceleraprojetosfjs/assistentevirtual-frontend:latest
     build:
-      context: ./frontend  
+      context: ./frontend 
+      args:
+        REACT_APP_API_URL: ${REACT_APP_API_URL}
       dockerfile: Dockerfile
     ports:
       - "3000:80"
