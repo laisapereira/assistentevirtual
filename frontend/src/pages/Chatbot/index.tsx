@@ -37,7 +37,7 @@ const Chatbot = () => {
     setIsProcessing(true);
     const botResponse = await sendMessage(userMessage);
     setIsProcessing(false);
-    console.log(botResponse);
+    
 
     const words = botResponse.split(" ");
 
@@ -64,7 +64,7 @@ const Chatbot = () => {
       confirmButtonText: "Voltar ao Chat",
     }).then((result) => {
       /*  if (result.isConfirmed) {
-        console.log("Voltar ao Chat");
+        console.log("oi, curioso que tá olhando o log do navegador!");
       } */
     });
   };
