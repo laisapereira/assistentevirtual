@@ -63,8 +63,8 @@ const Chatbot = () => {
       confirmButtonColor: "#6A1B44",
       confirmButtonText: "Voltar ao Chat",
     }).then((result) => {
-      /*  if (result.isConfirmed) {
-        console.log("oi, curioso que tá olhando o log do navegador!");
+      /* if (result.isConfirmed) {
+        console.log("teste");
       } */
     });
   };
