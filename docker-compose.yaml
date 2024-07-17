@@ -31,14 +31,12 @@ services:
     build:
       context: ./frontend 
       args:
-        REACT_APP_API_URL=True
+        REACT_APP_API_URL=${REACT_APP_API_URL}
       dockerfile: Dockerfile
     ports:
       - "3000:80"
     depends_on:
       - backend
-    environment:
-      - REACT_APP_API_URL
     env_file:
       - ./.env
     volumes:
