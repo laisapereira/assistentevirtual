@@ -31,14 +31,16 @@ services:
     build:
       context: ./frontend  
       dockerfile: Dockerfile
-    env_file:
-      - ./.env 
     ports:
       - "3000:80"
     depends_on:
       - backend
-    environment:     
+    environment:
       - REACT_APP_API_URL=${REACT_APP_API_URL}
+    env_file:
+      - ./.env
+    volumes:
+      - ./frontend/.env:/usr/share/nginx/html/.env
     networks:
       - app-network
 
