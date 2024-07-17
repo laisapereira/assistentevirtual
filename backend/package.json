@@ -6,7 +6,7 @@
     "test": "jest",
     "coverage": "jest --coverage",
     "build": "rimraf dist && tsc",
-    "dev": "npx tsx ./src/services/processors/server.ts",
+    "dev": "npx tsx ./src/services/processors/vectorStore.ts",
     "start": "npx tsx ./src/services/controller/server.ts",
     "lint": "prettier --write \"{src,test}/**/*.ts\""
   },
@@ -58,6 +58,7 @@
     "mysql": "^2.18.1",
     "mysql2": "^3.9.1",
     "performance-now": "^2.1.0",
+    "pg": "^8.12.0",
     "prisma": "^5.9.0",
     "ts-node": "^10.9.2"
   },
