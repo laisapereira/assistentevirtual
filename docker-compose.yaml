@@ -29,14 +29,14 @@ services:
     container_name: frontend_c
     image: aceleraprojetosfjs/assistentevirtual-frontend:latest
     build:
-      context: ./frontend    
+      context: ./frontend  
+      args:
+        REACT_APP_API_URL=http://172.16.1.66:9000/
       dockerfile: Dockerfile
     ports:
       - "3000:80"
     depends_on:
       - backend
-    env_file: 
-      - .env
     environment:     
       - REACT_APP_API_URL=${REACT_APP_API_URL}
     networks:
