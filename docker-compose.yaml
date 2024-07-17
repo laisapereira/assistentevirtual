@@ -30,8 +30,6 @@ services:
     image: aceleraprojetosfjs/assistentevirtual-frontend:latest
     build:
       context: ./frontend  
-      args:
-        REACT_APP_API_URL=http://172.16.1.66:9000/
       dockerfile: Dockerfile
     ports:
       - "3000:80"
