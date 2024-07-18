@@ -7,41 +7,6 @@ import { similarChunks } from "./vectorStore.js";
 
 dotenv.config();
 
-let contadorDeChamadas = 0;
-
-try {
-  const contadorString = fs.readFileSync('contador.txt', 'utf-8');
-  contadorDeChamadas = parseInt(contadorString, 10);
-} catch (err) {
-  // Se o arquivo não existir, inicie o contador em 0
-  contadorDeChamadas = 0;
-  console.error("Erro ao ler o contador de chamadas:", err);
-}
-
-const addConsultaAoHistorico = (consulta: string, resposta: string) => {
-  const timestamp = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
-  const logEntry = `${timestamp} - Consulta: ${consulta}\nResposta: ${resposta}\n\n`;
-
-  fs.appendFile("consultas.log", logEntry, (err) => {
-    if (err) {
-      console.error("Erro ao adicionar consulta ao histórico:", err);
-    } else {
-      console.log("Consulta adicionada ao histórico com sucesso.");
-    }
-  });
-
-  contadorDeChamadas++;
-  fs.writeFileSync('contador.txt', contadorDeChamadas.toString(), (err) => {
-    if (err) {
-      console.error("Erro ao escrever no arquivo contador.txt:", err);
-    }
-  });
-};
-
-let totalInteractions = 0;
-let resolvedInteractions = 0;
-let totalTimeSpent = 0;
-
 export const router = Router();
 
 router.post("/", async (request: Request, response: Response) => {
@@ -101,30 +66,10 @@ router.post("/", async (request: Request, response: Response) => {
   try {
     const userResponse = await chatUser(chats);
 
-    addConsultaAoHistorico(chats, userResponse);
-
-    const endTime = Date.now();
-    const elapsedTime = endTime - startTime;
-
-    totalInteractions++;
-    totalTimeSpent += elapsedTime;
-
-    if (userResponse) {
-      resolvedInteractions++;
-    }
-
-    logMetrics();
-
     response.json({ output: userResponse });
   } catch (error) {
     console.log(history);
     console.error("Erro ao processar a consulta:", error.message);
     response.status(500).send("Erro ao processar a consulta.");
-  }
-
-  function logMetrics() {
-    console.log(`Total Interactions: ${totalInteractions}`);
-    console.log(`Resolved Interactions: ${resolvedInteractions}`);
-    console.log(`Total Time Spent: ${totalTimeSpent} ms`);
   }
 });

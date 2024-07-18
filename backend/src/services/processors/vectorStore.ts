@@ -7,7 +7,7 @@ const client = new Client({
   user: 'postgres',
   host: 'host.docker.internal',
   database: 'vector_db',
-  password: 'sua senha',
+  password: 'sua senha.',
   port: 5432,
 });
 
@@ -24,11 +24,15 @@ const embeddings = new OpenAIEmbeddings({
 
 export const indexDocuments = async (documents: string[]) => {
   for (const doc of documents) {
-    const embedding = await embeddings.embedDocuments([doc]);
-    await client.query('INSERT INTO documents (content, embedding) VALUES ($1, $2)', [doc, embedding]);
+    const embeddingObject = await embeddings.embedDocuments([doc]);
+    // convertendo o objeto de embedding para um array
+    const embeddingArray = Object.values(embeddingObject);
+
+    // convertendo o array para uma string no formato correto para PostgreSQL
+    const embeddingArrayString = `[${embeddingArray.join(',')}]`;
+    await client.query('INSERT INTO documents (content, embedding) VALUES ($1, $2)', [doc, embeddingArrayString]);
   }
 };
-
 export const similarChunks = async (userQuery: string): Promise<string> => {
   const queryEmbedding = await embeddings.embedDocuments([userQuery]);
   const res = await client.query('SELECT content FROM documents ORDER BY embedding <-> $1 LIMIT 15', [queryEmbedding]);
