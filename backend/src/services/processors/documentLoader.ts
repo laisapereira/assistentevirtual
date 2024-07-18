@@ -3,7 +3,8 @@ import { DirectoryLoader } from 'langchain/document_loaders/fs/directory';
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 import { TextLoader } from 'langchain/document_loaders/fs/text';
 import * as dotenv from 'dotenv';
-import { indexDocuments } from '../processors/vectorStore.js';
+import { client, embeddings} from '../processors/vectorStore.js';
+import { OpenAIEmbeddings } from '@langchain/openai';
 
 dotenv.config();
 
@@ -45,9 +46,18 @@ export const loadAndNormalizeDocuments = async (): Promise<string[]> => {
   const documents = await textSplitter.splitText(combinedText);
   console.log('Text chunks:', JSON.stringify(documents, null, 2));
 
-  // Criação e indexação dos embeddings no PostgreSQL
-  await indexDocuments(documents);
 
+  const indexDocuments = async (documents: string[]) => {
+    for (const doc of documents) {
+      const embeddingObject = await embeddings.embedDocuments([doc]);
+      // convertendo o objeto de embedding para um array
+      const embeddingArray = Object.values(embeddingObject);
+  
+      // convertendo o array para uma string no formato correto para PostgreSQL
+      const embeddingArrayString = `[${embeddingArray.join(',')}]`;
+      await client.query('INSERT INTO documents (content, embedding) VALUES ($1, $2)', [doc, embeddingArrayString]);
+    }
+  };
   console.log('Documents indexed.');
   return documents;
 };

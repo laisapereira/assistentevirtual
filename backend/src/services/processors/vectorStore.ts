@@ -3,42 +3,35 @@ import { OpenAIEmbeddings } from '@langchain/openai';
 
 const { Client } = pg;
 
-const client = new Client({
+export const client = new Client({
   user: 'postgres',
   host: 'host.docker.internal',
-  database: 'vector_db',
-  password: 'sua senha.',
+  database: 'teste-jodb',
+  password: '1234!',
   port: 5432,
+});
+
+// Inicialize OpenAIEmbeddings
+export const embeddings = new OpenAIEmbeddings({
+  openAIApiKey: "sk-proj-PcZrHx3E8vsaNYh2rA5nT3BlbkFJ21otWJTFCDTFwTxBnI7b"
 });
 
 try {
   await client.connect();
-  console.log('conexão realizada com sucesso');
+  console.log('Conexão realizada com sucesso');
 } catch (err: any) {
-  console.error('erro ao tentar realizar a conexão', err.stack);
+  console.error('Erro ao tentar realizar a conexão', err.stack);
 }
 
-const embeddings = new OpenAIEmbeddings({
-  openAIApiKey: "sk-proj-PcZrHx3E8vsaNYh2rA5nT3BlbkFJ21otWJTFCDTFwTxBnI7b"
-});
-
-export const indexDocuments = async (documents: string[]) => {
-  for (const doc of documents) {
-    const embeddingObject = await embeddings.embedDocuments([doc]);
-    // convertendo o objeto de embedding para um array
-    const embeddingArray = Object.values(embeddingObject);
-
-    // convertendo o array para uma string no formato correto para PostgreSQL
-    const embeddingArrayString = `[${embeddingArray.join(',')}]`;
-    await client.query('INSERT INTO documents (content, embedding) VALUES ($1, $2)', [doc, embeddingArrayString]);
-  }
-};
 export const similarChunks = async (userQuery: string): Promise<string> => {
+  // Obtenha o embedding da query
   const queryEmbedding = await embeddings.embedDocuments([userQuery]);
+
+  // Execute a query no PostgreSQL utilizando o embedding
   const res = await client.query('SELECT content FROM documents ORDER BY embedding <-> $1 LIMIT 15', [queryEmbedding]);
 
   if (res.rows.length === 0) {
-    return 'documentos relevantes não encontrados';
+    return 'Documentos relevantes não encontrados';
   }
 
   return res.rows.map((row: any) => row.content).join('\n');

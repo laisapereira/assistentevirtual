@@ -14,12 +14,12 @@ services:
       - ./backend:/app
       - /app/node_modules
       - ./backend/documents:/app/documents
+      - ./backend/logs:/app/logs  
     environment:
       - NODE_ENV=development
       - OPENAI_API_KEY=${OPENAI_API_KEY}
-      - CHROMA_DB_URL=http://chromadb:8000
     depends_on:
-      - chromadb
+      - jo-db
     networks:
       - app-network
       
@@ -28,34 +28,40 @@ services:
     container_name: frontend_c
     image: aceleraprojetosfjs/assistentevirtual-frontend:latest
     build:
-      context: ./frontend    
+      context: ./frontend 
+      args:
+        REACT_APP_API_URL: ${REACT_APP_API_URL}
       dockerfile: Dockerfile
     ports:
       - "3000:80"
     depends_on:
       - backend
-    environment:
-      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    env_file:
+      - ./.env
+    volumes:
+      - ./frontend/.env:/usr/share/nginx/html/.env
     networks:
       - app-network
 
-  chromadb:
-    image: chromadb/chroma:latest
+
+  jo-db:
+    hostname: jo-db
+    image: ankane/pgvector
     ports:
-      - "8000:8000"
+      - "5434:5432"
+    restart: always
     environment:
-      - CHROMA_HOST_ADDR=0.0.0.0
-      - CHROMA_HOST_PORT=8000
-      - CHROMA_WORKERS=1
-      - CHROMA_LOG_CONFIG=chromadb/log_config.yml
-      - CHROMA_TIMEOUT_KEEP_ALIVE=30
+      - POSTGRES_DB=jo-db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234!
+      - POSTGRES_HOST_AUTH_METHOD=trust
     volumes:
-      - chroma_data:/db_path
-    networks:
-      - app-network
+      - db_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
 volumes:
-  chroma_data:
+  db_data:
+    driver: local
 
 networks:
   app-network:
