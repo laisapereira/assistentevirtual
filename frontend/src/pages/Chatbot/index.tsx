@@ -61,10 +61,10 @@ const Chatbot = () => {
       icon: "info",
       showCancelButton: false,
       showDenyButton:true,
-      confirmButtonColor: "#6A1B44",
-      confirmButtonText: "Voltar ao Chat",
-      denyButtonColor: "gray",
-      denyButtonText: "Sugestões? Fale conosco",
+      confirmButtonColor: "gray",
+      confirmButtonText: "Sugestões? Fale conosco",
+      denyButtonColor: "#6A1B44",
+      denyButtonText: "Voltar ao chat",
   }).then((result:any) => {
     if (result) {
       window.location.href = process.env.REACT_APP_FORMS; 
