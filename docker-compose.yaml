@@ -32,6 +32,7 @@ services:
       context: ./frontend 
       args:
         REACT_APP_API_URL: ${REACT_APP_API_URL}
+        REACT_APP_FORMS: ${REACT_APP_FORMS}
       dockerfile: Dockerfile
     ports:
       - "3000:80"

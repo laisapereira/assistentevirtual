@@ -60,14 +60,17 @@ const Chatbot = () => {
       text: "Esta é uma versão de demonstração da Jô. Em breve teremos mais funcionalidades.",
       icon: "info",
       showCancelButton: false,
+      showDenyButton:true,
       confirmButtonColor: "#6A1B44",
       confirmButtonText: "Voltar ao Chat",
-    }).then((result) => {
-      /* if (result.isConfirmed) {
-        console.log("teste");
-      } */
-    });
-  };
+      denyButtonColor: "gray",
+      denyButtonText: "Sugestões? Fale conosco",
+  }).then((result:any) => {
+    if (result) {
+      window.location.href = process.env.REACT_APP_FORMS; 
+    }
+  });
+}
 
   useEffect(() => {
     if (chatLogRef.current) {
