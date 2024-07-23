@@ -66,7 +66,7 @@ const Chatbot = () => {
       denyButtonColor: "gray",
       denyButtonText: "Sugestões? Fale conosco!",
   }).then((result:any) => {
-    if (!result) {
+    if (result) {
       window.open(process.env.REACT_APP_FORMS, '_blank');
     }
   });
