@@ -6,8 +6,8 @@ const { Client } = pg;
 export const client = new Client({
   user: 'postgres',
   host: 'host.docker.internal',
-  database: 'teste-jodb',
-  password: '1234!',
+  database: 'vector_db',
+  password: 'Soc1alwars.',
   port: 5432,
 });
 

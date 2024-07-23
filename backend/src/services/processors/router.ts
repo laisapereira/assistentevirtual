@@ -4,10 +4,23 @@ import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { ChatOpenAI } from "@langchain/openai";
 import * as dotenv from "dotenv";
 import { similarChunks } from "./vectorStore.js";
+import { Client } from "pg";
+import { toSql } from "pgvector"; // importando a função toSql
 
 dotenv.config();
 
 export const router = Router();
+
+// Configuração da conexão com o banco de dados PostgreSQL
+const client = new Client({
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
+});
+
+client.connect();
 
 router.post("/", async (request: Request, response: Response) => {
   const { chats } = request.body;
@@ -19,48 +32,83 @@ router.post("/", async (request: Request, response: Response) => {
   const startTime = Date.now();
 
   const promptLLM = async (userQuery: string, chunks: string): Promise<string> => {
-    const model = new ChatOpenAI({
-      openAIApiKey: process.env.OPENAI_API_KEY as string,
-      modelName: "gpt-4o-2024-05-13",
-    });
+    try {
+      const model = new ChatOpenAI({
+        openAIApiKey: process.env.OPENAI_API_KEY as string,
+        modelName: "gpt-4o-2024-05-13",
+      });
 
-    const promptTemplate = ChatPromptTemplate.fromTemplate(
-      `Quero que você atue como uma assistente da empresa Fundação José Silveira, ou FJS.
-      Você é a Jô, a assistente virtual que veio para facilitar informações para os colaboradores.
-      Um exemplo de informação que você pode dar é acerca dos ramais da Fundação, sobre a história ou
-      sobre as principais sedes da empresa.
+      const promptTemplate = ChatPromptTemplate.fromTemplate(
+        `Quero que você atue como uma assistente da empresa Fundação José Silveira, ou FJS.
+        Você é a Jô, a assistente virtual que veio para facilitar informações para os colaboradores.
+        Um exemplo de informação que você pode dar é acerca dos ramais da Fundação, sobre a história ou
+        sobre as principais sedes da empresa.
 
-      Pergunta do Usuário: {query}
+        Pergunta do Usuário: {query}
 
-      As descrições sobre alguns setores da FJS: {chunks}. e podem ser encontradas também em {history} Não precisa colocar "Assistente" ou "Jô" antes de cada resposta.
-      Se limite a responder com base nessas informações fornecidas. Não traga outras informações na sua resposta. Se o usuário perguntar coisas que fujam do escopo de contexto, assunto ou informações contidos nos documentos, você diz "Não sou treinada pra responder esse tipo de pergunta. No que mais posso ajudar?"
-      Não responda em mais do que 150 palavras.`
-    );
+        As descrições sobre alguns setores da FJS: {chunks}. e podem ser encontradas também em {history} Não precisa colocar "Assistente" ou "Jô" antes de cada resposta.
+        Se limite a responder com base nessas informações fornecidas. Não traga outras informações na sua resposta. Se o usuário perguntar coisas que fujam do escopo de contexto, assunto ou informações contidos nos documentos, você diz "Não sou treinada pra responder esse tipo de pergunta. No que mais posso ajudar?"
+        Não responda em mais do que 150 palavras.`
+      );
 
-    const formattedPrompt = await promptTemplate.format({
-      query: userQuery,
-      chunks: chunks,
-      history: history
-    });
+      const formattedPrompt = await promptTemplate.format({
+        query: userQuery,
+        chunks: chunks,
+        history: history
+      });
 
-    const result = await model.invoke(formattedPrompt);
-    return result.content.toString();
+      const result = await model.invoke(formattedPrompt);
+      return result.content.toString();
+    } catch (error) {
+      console.error("Erro no promptLLM:", error.message);
+      throw error;
+    }
   };
 
   const history: string[] = [];
 
   const chatUser = async (userQuery: string): Promise<string> => {
-    history.push(userQuery);
+    try {
+      history.push(userQuery);
 
-    const chunks = await similarChunks(userQuery);
-    const response = await promptLLM(userQuery, chunks);
+      const chunks = await similarChunks(userQuery);
+      console.log("Chunks encontrados:", chunks);
 
-    history.push(response);
+      // Salvar os embeddings no banco de dados
+      await saveEmbeddings([chunks]);
 
-    console.log(response);
-    console.log(history);
+      const response = await promptLLM(userQuery, chunks);
 
-    return response;
+      history.push(response);
+
+      return response;
+    } catch (error) {
+      console.error("Erro no chatUser:", error.message);
+      throw error;
+    }
+  };
+
+  const saveEmbeddings = async (chunks: string[]) => {
+    try {
+      // Assumindo que chunks é um array de strings JSON que representa os embeddings
+      for (let chunk of chunks) {
+        let embeddingArray = JSON.parse(chunk); // converte string JSON para array
+        embeddingArray = embeddingArray.map(Number); // converte os elementos para números
+
+        const embeddingVector = toSql(embeddingArray); // converte o array para o formato SQL
+
+        const insertQuery = `
+          INSERT INTO documents (content, embedding) VALUES ($1, $2)
+        `;
+
+        await client.query(insertQuery, [embeddingVector]);
+      }
+
+      console.log('Embeddings salvos com sucesso!');
+    } catch (error) {
+      console.error("Erro ao salvar embeddings:", error.message);
+      throw error;
+    }
   };
 
   try {
