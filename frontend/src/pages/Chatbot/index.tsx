@@ -70,7 +70,7 @@ const Chatbot = () => {
         window.open(process.env.REACT_APP_FORMS, '_blank');
       } 
     })
-
+  }
   useEffect(() => {
     if (chatLogRef.current) {
       chatLogRef.current.scrollTop = chatLogRef.current.scrollHeight;
