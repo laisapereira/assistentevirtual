@@ -66,8 +66,8 @@ const Chatbot = () => {
       denyButtonColor: "#6A1B44",
       denyButtonText: "Voltar ao chat",
   }).then((result:any) => {
-    if (!result) {
-      window.location.href = process.env.REACT_APP_FORMS; 
+    if (result) {
+      window.open(process.env.REACT_APP_FORMS, '_blank');
     }
   });
 }
