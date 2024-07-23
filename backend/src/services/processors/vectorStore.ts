@@ -1,7 +1,11 @@
 import pg from 'pg';
 import { OpenAIEmbeddings } from '@langchain/openai';
 
+import * as dotenv from 'dotenv';
+
 const { Client } = pg;
+
+dotenv.config();
 
 export const client = new Client({
   user: 'postgres',
@@ -9,11 +13,6 @@ export const client = new Client({
   database: 'teste-jodb',
   password: '1234!',
   port: 5432,
-});
-
-// Inicialize OpenAIEmbeddings
-export const embeddings = new OpenAIEmbeddings({
-  openAIApiKey: "sk-proj-PcZrHx3E8vsaNYh2rA5nT3BlbkFJ21otWJTFCDTFwTxBnI7b"
 });
 
 try {
@@ -24,15 +23,24 @@ try {
 }
 
 export const similarChunks = async (userQuery: string): Promise<string> => {
-  // Obtenha o embedding da query
-  const queryEmbedding = await embeddings.embedDocuments([userQuery]);
 
-  // Execute a query no PostgreSQL utilizando o embedding
-  const res = await client.query('SELECT content FROM documents ORDER BY embedding <-> $1 LIMIT 15', [queryEmbedding]);
+  const embeddingFunction = new OpenAIEmbeddings({
+  openAIApiKey: process.env.OPENAI_API_KEY as string,
+});
 
-  if (res.rows.length === 0) {
-    return 'Documentos relevantes não encontrados';
+  const queryEmbedding = await embeddingFunction.embedDocuments([userQuery])
+
+  console.log(`Querying for: ${userQuery}`);
+  const { rows } = await client.query(
+    'SELECT content FROM documents ORDER BY vector <-> $1 LIMIT 10', 
+    [queryEmbedding]
+  );
+
+  console.log("Query results:", JSON.stringify(rows, null, 2));
+  if (rows.length === 0) {
+    return "No relevant documents found.";
   }
 
-  return res.rows.map((row: any) => row.content).join('\n');
+  return rows.map((row: { content: any; }) => row.content).join("\n");
 };
+

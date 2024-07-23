@@ -1,4 +1,3 @@
-import fs from "fs";
 import { Request, Response, Router } from "express";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { ChatOpenAI } from "@langchain/openai";
@@ -16,9 +15,10 @@ router.post("/", async (request: Request, response: Response) => {
     return response.status(400).send("O parâmetro 'chats' é necessário.");
   }
 
-  const startTime = Date.now();
-
-  const promptLLM = async (userQuery: string, chunks: string): Promise<string> => {
+  const promptLLM = async (
+    userQuery: string,
+    chunks: string
+  ): Promise<string> => {
     const model = new ChatOpenAI({
       openAIApiKey: process.env.OPENAI_API_KEY as string,
       modelName: "gpt-4o-2024-05-13",
@@ -40,7 +40,7 @@ router.post("/", async (request: Request, response: Response) => {
     const formattedPrompt = await promptTemplate.format({
       query: userQuery,
       chunks: chunks,
-      history: history
+      history: history,
     });
 
     const result = await model.invoke(formattedPrompt);

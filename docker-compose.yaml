@@ -48,7 +48,7 @@ services:
     hostname: jo-db
     image: ankane/pgvector
     ports:
-      - "5434:5432"
+      - "5433:5433"
     restart: always
     environment:
       - POSTGRES_DB=jo-db
