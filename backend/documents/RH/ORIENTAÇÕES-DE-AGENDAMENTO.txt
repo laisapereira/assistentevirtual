@@ -1,311 +1,86 @@
+1: O Caminho para o Cuidado
+Ana LuÃ­sa Musse da Costa, uma renomada fisioterapeuta especializada em uroginecologia, oferece seus serviÃ§os Ã s segundas e quartas-feiras, das 13h Ã s 17:45. Com dedicaÃ§Ã£o e competÃªncia, ela transforma a vida de seus pacientes em sessÃµes de 45 minutos, proporcionando alÃ­vio e melhoria na qualidade de vida.
 
-Serviços de Fisioterapia Uro ginecológica.
+2:Agendamento
+Para iniciar o tratamento com Ana LuÃ­sa, os pacientes precisam passar por uma avaliaÃ§Ã£o inicial de uroginecologia, com o valor de R$140,00, identificada pelo mnemÃ´nico FISIOCON. As sessÃµes subsequentes sÃ£o agendadas presencialmente, garantindo um atendimento personalizado e adequado Ã s necessidades individuais.
 
-Prestador: Ana Luísa Musse da Costa (Cód 2667)
-Dias de atendimento: Segunda-feira e quarta-feira   13H às 17:45
-Duração: 45 minutos
+3:ConvÃªnios Parceiros
+Ana LuÃ­sa atende a uma ampla gama de convÃªnios, incluindo Banco Central, Bradesco, Conab, Fachesf, Geap, Life Empresarial, Mediservice, Pro Social, SaÃºde Caixa, SaÃºde Petrobras, TRT, Unafisco, Atitude SaÃºde, Prevencard, e tambÃ©m pacientes particulares. Esta diversidade de convÃªnios facilita o acesso ao tratamento especializado que ela oferece.
 
-Fluxo de agendamento
+4: Agendamento das SessÃµes
+AvaliaÃ§Ã£o Fisio Uroginecologia
 
-A central, agendará Avaliação AVALIAÇÃO FISIO UROGINECOLOGIA
+MnemÃ´nico: FISIOCON
+SessÃ£o Individual de Fisio UroginecolÃ³gica
 
-VALOR DA AVALIAÇÃO  R$140,00
+MnemÃ´nico: FISIOURO01
+Pacote de 5 SessÃµes de Fisio UroginecolÃ³gica
 
-Mnemônico: FISIOCON
+MnemÃ´nico: FISIOURO05
+Pacote de 10 SessÃµes de Fisio UroginecolÃ³gica
 
-As demais sessões será agendada pela marcação presencial
+MnemÃ´nico: FISIOURO10
 
+5: A OrientaÃ§Ã£o para Exames
+Para garantir a melhor preparaÃ§Ã£o e resultados nos exames, os pacientes devem seguir algumas orientaÃ§Ãµes especÃ­ficas:
 
-ATENDIMENTO LIBERADOS PARA OS SEGUINTES CONVÊNIOS:
-
-BANCO CENTRAL
-BRADESCO
-CONAB
-FACHESF
-GEAP
-LIFE EMPRESARIAL
-MEDISERVICE
-PRO SOCIAL
-SAÚDE CAIXA
-SAÚDE PETROBRAS
-TRT
-UNAFISCO
-ATITUDE SAUDE
-PREVENCARD
-PARTICULAR
-
-
-1- Item de Agenda:  AVALIAÇÃO FISIO UROGINECOLOGIA
-Mnemônico:  FISIOCON
-
-2- Item de Agenda: Fisio Uro ginecológica  - (01 Sessões)
-Mnemônico:  FISIOURO01
-
-3- Item de Agenda: Pacote Fisio Uro ginecológica  - (05 Sessões)
-Memônico: FISIOURO05
-
-4- Item de Agenda: Pacote Fisio Uro ginecológica - (10 Sessões)
-Mnemônico: FISIOURO10
-
-
-
-
-
-
-
-
-ORIENTAÇÃO DE EXAMES
-
-Os exames que necessitam de autorização previa devem enviar: Foto da solicitação médica com validade , Carteira do convênio e RG, para Whatsapp do setor de autorização número: 7198103-6577 para solicitar  autorização.
-Ciente de enviar foto da solicitação, Rg e carteira do
-
-US ABDOME TOTAL
-
-Preparo: Jejum de 8h,
-Beber 4 copos com água 2h antes,
-No dia do exame trazer resultado de exames anteriores para comparação
-No dia do exame: Trazer solicitação médica original na validade, Carteira do convênio e Carteira de identidade.
-Chegar 30 min antes. Se tiver sintomas de gripe vir de máscara.
+US ABDOME TOTAL:
+Jejum de 8 horas
+Beber 4 copos de Ã¡gua 2 horas antes do exame
+Trazer resultados de exames anteriores
+Chegar 30 minutos antes do horÃ¡rio marcado
 
 ENDOSCOPIA
+Jejum absoluto de 8 horas
+Vir acompanhado e nÃ£o dirigir apÃ³s o exame
 
-Enviar foto da solicitação médica com validade, Carteira do convênio e RG, para Whatsapp do setor de autorização número: 7198103-6577 para solicitar  autorização.
-No dia do exame: Trazer solicitação médica original na validade, Carteira do convênio e Carteira de identidade.
-Jejum absoluto de 8h,
-Vir acompanhado, não dirigir após exame.
+ENTREVISTA PARA COLONOSCOPIA
+Trazer resultados de exames laboratoriais e ECG
+Consulta com anestesista realizada no Cmal
 
- ENTREVISTA PARA COLONOSCOPIA:
+ECO DOPPLER FETAL
+Agendar em dois horÃ¡rios para gestaÃ§Ãµes gemelares
+Trazer resultados de todas as ultrassonografias obstÃ©tricas anteriores
+Chegar 30 minutos antes do horÃ¡rio marcado
 
-Trazer resultado dos exames de laboratório + ECG
-Informar que a consulta com o médico Anestesista é realizada no Cmal e  entrevista com enfermeira no setor de Endoscopia.
-
- ECO DOPPLER FETAL:
-
-Gemelar - agendar em dois horários.
-Enviar foto da solicitação médica com validade, Carteira do convênio e RG, para Whatsapp do setor de autorização número: 7198103-6577 para solicitar  autorização.
-Trazer resultado de todas as Ultrassom obstétricas anteriores.
-No dia do exame: Trazer solicitação médica original na validade, Carteira do convênio e Carteira de identidade.
-Chegar 30 min antes.
-
+6: Outros ServiÃ§os e PreparaÃ§Ãµes
 
 US MAMAS
-
-No dia do exame: Trazer solicitação médica original na validade, Carteira do convênio, carteira de identidade.
-
-
-
-
-
-
-MAMOGRAFIA
-
-Enviar foto da solicitação médica com validade, Carteira do convênio e RG, para Whatsapp do setor de autorização número: 7198103-6577 para solicitar  autorização.
-No dia do exame: Trazer solicitação médica original na validade, Carteira do convênio, carteira de identidade.
-Trazer resultado de US mamas e da mamografia anterior.
-
-
-US MORFOLÓGICA
-Só pode agendar no início da agenda.
-Enviar foto da solicitação médica com validade, Carteira do convênio e RG, para Whatsapp do setor de autorização número: 7198103-6577 para solicitar  autorização.
-No dia do exame: Trazer solicitação médica original na validade, Carteira do convênio e Carteira de identidade.
-Só pode entrar um acompanhante na sala
-
-
-US MORFOLÓGICA:  1º trimestre só faz com doppler até 13 semanas.
-
-Enviar foto da solicitação médica com validade, Carteira do convênio e RG, para Whatsapp do setor de autorização número: 7198103-6577 para solicitar  autorização.
-No dia do exame: Trazer solicitação médica original na validade, Carteira do convênio e Carteira de identidade.
-Só pode entrar um acompanhante na sala
-
-
-US MORFOLÓGICA do 2º trimestre só faz com doppler e com cervicometria.
-
-Enviar foto da solicitação médica com validade, Carteira do convênio e RG, para Whatsapp do setor de autorização número: 7198103-6577 para solicitar  autorização.
-No dia do exame: Trazer solicitação médica original na validade, Carteira do convênio e Carteira de identidade.
-Só pode entrar um acompanhante na sala
-
-Us translucência Nucal é o mesmo que Morfológica
-Enviar foto da solicitação médica com validade, Carteira do convênio e RG, para Whatsapp do setor de autorização número: 7198103-6577 para solicitar  autorização.
-No dia do exame: Trazer solicitação médica original na validade, Carteira do convênio e Carteira de identidade.
-Só pode entrar um acompanhante na sala
-
-
-US MORFOLÓGICA C/  CERVICOMETRIA - Agenda em dois horários
-
-Enviar foto da solicitação médica com validade, Carteira do convênio e RG, para Whatsapp do setor de autorização número: 7198103-6577 para solicitar  autorização.
-No dia do exame: Trazer solicitação médica original na validade, Carteira do convênio e Carteira de identidade.
-Só pode entrar um acompanhante na sala
-
-
-ULTRASSOM OBSTÉTRICA GEMELAR : Agenda em dois horários
-
-Só quem realiza é Dr.Marcelo e Dra.Giselle e Dr.Hugo.
-Só quem realiza é Dr. Marcelo e Dr. Hugo.
-Enviar foto da solicitação médica com validade, Carteira do convênio e RG, para Whatsapp do setor de autorização número: 7198103-6577 para solicitar  autorização.
-No dia do exame: Trazer solicitação médica original na validade, Carteira do convênio e Carteira de identidade.
-Só pode entrar um acompanhante na sala
-
-ULTRASSOM OBSTÉTRICA PARA GRAVIDEZ DE RISCO
-
-Só quem realiza é Dr. Marcelo e Dr. Hugo.
-Enviar foto da solicitação médica com validade, Carteira do convênio e RG, para Whatsapp do setor de autorização número: 7198103-6577 para solicitar  autorização.
-No dia do exame: Trazer solicitação médica original na validade, Carteira do convênio e Carteira de identidade.
-Só pode entrar um acompanhante na sala
-
- PROMEDICA
-
-Só realizamos exames com autorização expecional.
-Paciente deve entrar em contato com o SOC e solicitar autorização em nome do Hospital Santo Amaro.
-No dia do exame: Trazer solicitação médica original na validade, Carteira do convênio e Carteira de identidade.
-
-
-COLONOSCOPIA PELA PROMEDICA:
-
-Trazer autorização para consulta pré anestésica  em nome da COPANEST
-Resultado dos  exame de laboratório + ECG,
-Trazer solicitação médica original na validade.
-Carteira do convênio e Carteira de identidade.
-No mesmo dia passará pela enfermeira
-
-
-
- TOMOGRAFIA:
-
-Enviar foto da solicitação médica com validade, Carteira do convênio e RG, para Whatsapp do setor de autorização número: 7198103-6577 para solicitar  autorização.
-Trazer resultados dos exames de ureia e creatinina com validade de 30 dias.
-Não fazer uso de hipoglicemiantes oral, na véspera a noite e pela manhã no dia do exame, j
-Jejum de 6hs,
-No dia do exame: Trazer solicitação médica original na validade, Carteira do convênio e Carteira de identidade.
-Vir acompanhado e chegar 30 min antes.
-
-
-TOMOGRAFIA  ESCORE DE CÁLCIO - Não realizamos
-TOMOGRAFIA  PESQUISA HEPÁTICA - Não realizamos
-TOMOGRAFIA  COM SEDAÇÃO - Não realizamos
-
-ESPIROMETRIA:
-
-Preparo : Não fazer uso de bebida alcoólica 24h antes,
-Não fazer uso de broncodilatador 12h antes do exame.
-Usar roupa confortável, não fumar no dia e chegar 15 min antes.
-Trazer solicitação médica original na validade.
-Carteira do convênio e Carteira de identidade.
-
-
- MAPA:
-
- O aparelho vai ficar por 24h.
-
-Preparo: Não praticar atividade física no dia anterior.
-Caso tome medicamentos trazer a dosagem e não suspender sem orientação médica,
-Trazer um cinto médio.
-Vir com roupa aberta na frente,
-Chegar 30 min antes para pegar autorização na recepção.
-
-
-CONSULTA PRÉ ANESTESISTA:
-
-Trazer resultado dos exames.
-Termo de consentimento original assinado e carimbado pelo médico,
-No dia da consulta vai também realizar  entrevista com enfermeira e nutricionista.
-Consulta para parto
-Trazer resultado dos exames do início ao final da gestação
-
-
-TELE-CONSULTA
-
-Assistente, entrará em contato para informar como funciona o serviço de teleconsulta. Por gentileza esteja atento que as orientações serão enviadas por e-mail.
-Nesse dia também fará a consulta com enfermeira além grupo anestésico no mesmo dia.
-
-
-HIDROGINÁSTICA:
-
-A primeira avaliação é gratuita, caso tenha interesse o valor R$150,00 (08 sessões)
-Forma de pagamento: Aceita cartão de crédito, débito e em espécie).
-Gentileza trazer: Touca, toalha de banho e material de higiene pessoal (sabonete, shampoo e etc.)
-
-
-
-PILATES STUDIO:
-
-A primeira avaliação é gratuita, caso tenha interesse o valor R$195 (08 Sessões) (aceita cartão de Crédito, Débito e em Espécie), solicitar que venha de roupas leves, trazer uma canga ou toalha.
-Forma de pagamento: Aceita cartão de crédito, débito e em espécie).
-
-PILATES SOLO:
-
-A primeira avaliação é gratuita, caso tenha interesse o valor caso tenha interesse o valor R$135,00 (8-sessões)
-Forma de pagamento: Aceita cartão de crédito, débito e em espécie).
-Solicitar que venha de roupas leves, trazer uma canga ou toalha.
-
-
-
-PILATES:
-Temos Pilates Solo ($135,00 para 8 sessões) que é uma série de exercícios que são realizados no chão usando a gravidade e seu próprio peso corporal para fornecer resistência. Pilates Studio ($195,00 para 8 sessões) que é um sistema completo de exercícios com movimentos, posturas, aparelhos e acessórios. Podemos agendar uma aula experimental na unidade do IBR (Instituto de Reabilitação da Bahia) que fica em Ondina. É gratuita e a partir daí poderá escolher e se matricular.
-
-
-
-Raio-X:
-
-Não é necessário agendamento, ordem de chegada na Bioimagem,
-Horário de funcionamento: Segunda à Sexta Feira 7:00hr às 12h e dás 14h 19:00h
-Aos sábados 07h às 12H
-
-Maiores informações: Bioimagem ligar: 71 3504-5001//71 3504-5002.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  Punção Aspirativa por Agulha fina (PAAF) tireoide e mama
-
-O médico que atenderá será Dr.João Lucas Neves.
-
-Core Biopsy da mama -  Devem iniciar a partir do dia: 01/07/2024.
-
-
-
-Terça- feira -  no período da tarde 14 h
-
- Quinta feira - no período da manhã 08 h.
-
-A duração dos exames devem ser de 30 min para cada paciente e agendamento de dois pacientes em cada período, no início de cada turno.
-
-Inicialmente iremos  realizar atendimento particular.
-
-Encaminhar o paciente para o setor de orçamento para saber os valores.
-
-
-
-Mnemônico e códigos cadastrados para os serviços de Punção e Biopsia Mamária e Punção Tireoide;
-
-PUNÇÃO DE TIREOIDE GUIADA POR US
-
-Mnemônico: PTU
-
-PUNCAO MAMARIA ORIENTADA POR AGULHA FINA
-Mnemônico: BPO
-
-
-BIOPSIA DE FRAGMENTO MAMARIO (CORY BIOPSY) AGULHA GROSSA
-Mnemônico: BCO
-
-
-
-
--
-
-
-
+Trazer solicitaÃ§Ã£o mÃ©dica original e documentaÃ§Ã£o necessÃ¡ria
+
+Mamografia
+Enviar foto da solicitaÃ§Ã£o mÃ©dica, carteira do convÃªnio e RG para autorizaÃ§Ã£o via WhatsApp
+Trazer resultados de mamografias e ultrassonografias anteriores
+
+US MorfolÃ³gica
+Agendar no inÃ­cio da agenda
+Trazer solicitaÃ§Ã£o mÃ©dica original e documentaÃ§Ã£o necessÃ¡ria
+
+ESPIROMETRIA
+NÃ£o consumir Ã¡lcool 24 horas antes do exame
+NÃ£o usar broncodilatadores 12 horas antes do exame
+Usar roupa confortÃ¡vel e nÃ£o fumar no dia do exame
+
+7: Consultas e Terapias
+Teleconsulta
+
+Assistente entra em contato para orientar sobre o serviÃ§o de teleconsulta
+HidroginÃ¡stica
+
+Primeira avaliaÃ§Ã£o gratuita, valor de R$150,00 para 8 sessÃµes
+Trazer touca, toalha de banho e material de higiene pessoal
+Pilates Studio e Solo
+
+Primeira avaliaÃ§Ã£o gratuita
+Valor de R$195,00 para 8 sessÃµes de Pilates Studio
+Valor de R$135,00 para 8 sessÃµes de Pilates Solo
+CapÃ­tulo 8: Raio-X e Biopsias
+Raio-X
+
+Atendimento por ordem de chegada na Bioimagem
+PunÃ§Ã£o e BiÃ³psia MamÃ¡ria e Tireoide
+
+Atendimento inicial particular com o Dr. JoÃ£o Lucas Neves
+MnemÃ´nicos: PTU para punÃ§Ã£o de tireoide e BPO para punÃ§Ã£o mamÃ¡ria orientada por agulha fina
+EpÃ­logo: InovaÃ§Ãµes e Cuidado ContÃ­nuo
+O atendimento especializado e dedicado de Ana LuÃ­sa Musse da Costa, combinado com um processo de agendamento eficiente e um amplo suporte de convÃªnios, proporciona um caminho seguro e acolhedor para os pacientes em busca de fisioterapia uroginecolÃ³gica. Seguindo as orientaÃ§Ãµes de preparaÃ§Ã£o para exames e aproveitando os serviÃ§os adicionais, cada paciente recebe um tratamento completo e de alta qualidade, refletindo o compromisso com a saÃºde e bem-estar.
