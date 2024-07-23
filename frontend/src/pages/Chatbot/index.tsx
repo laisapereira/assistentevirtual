@@ -66,11 +66,9 @@ const Chatbot = () => {
       denyButtonColor: "gray",
       denyButtonText: "Sugestões? Fale conosco!",
     }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire('Saved!', '', 'success')
-      } else if (result.isDenied) {
+      if (result.isDenied) {
         window.open(process.env.REACT_APP_FORMS, '_blank');
-      }
+      } 
     })
 
   useEffect(() => {
