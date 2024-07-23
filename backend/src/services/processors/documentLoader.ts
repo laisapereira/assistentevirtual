@@ -11,7 +11,6 @@ dotenv.config();
 
 import { Chroma } from "@langchain/community/vectorstores/chroma";
 
-
 interface IDocument {
   pageContent: string | string[];
 }
@@ -41,8 +40,8 @@ export const loadAndNormalizeDocuments = async (): Promise<string[]> => {
 
   const textSplitter = new RecursiveCharacterTextSplitter({
     separators: ["\n", ".", "!", "?", ";", " ", ""],
-    chunkSize: 200,
-    chunkOverlap: 50,
+    chunkSize: 500,
+    chunkOverlap: 70,
     lengthFunction: (str: string) => str.length,
   });
 
@@ -65,7 +64,7 @@ export const loadAndNormalizeDocuments = async (): Promise<string[]> => {
     documentsForChroma,
     new OpenAIEmbeddings(),
     {
-      collectionName: "mvp-jo",
+      collectionName: "jo-2.0-mvp",
       url: "http://chromadb:8000",
     }
   );

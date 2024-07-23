@@ -37,7 +37,7 @@ const Chatbot = () => {
     setIsProcessing(true);
     const botResponse = await sendMessage(userMessage);
     setIsProcessing(false);
-    console.log(botResponse);
+    
 
     const words = botResponse.split(" ");
 
@@ -60,14 +60,17 @@ const Chatbot = () => {
       text: "Esta é uma versão de demonstração da Jô. Em breve teremos mais funcionalidades.",
       icon: "info",
       showCancelButton: false,
-      confirmButtonColor: "#6A1B44",
-      confirmButtonText: "Voltar ao Chat",
-    }).then((result) => {
-      /*  if (result.isConfirmed) {
-        console.log("Voltar ao Chat");
-      } */
-    });
-  };
+      showDenyButton:true,
+      confirmButtonColor: "gray",
+      confirmButtonText: "Sugestões? Fale conosco",
+      denyButtonColor: "#6A1B44",
+      denyButtonText: "Voltar ao chat",
+  }).then((result:any) => {
+    if (!result) {
+      window.location.href = process.env.REACT_APP_FORMS; 
+    }
+  });
+}
 
   useEffect(() => {
     if (chatLogRef.current) {
@@ -79,22 +82,24 @@ const Chatbot = () => {
     <div className="main-chat">
       <aside className="aside-header">
         <img src={logoFjs} alt="Logo" className="img-logo" />
+        <button>
+          <a href="/">Limpar Chat </a>
+        </button>
         <section className="banner-aside">
-          <button>
-            <a href="/">Limpar Chat </a>
-          </button>
           <img src={bannerFjs} alt="Banner-Fjs" />
         </section>
 
         <div className="footer-aside">
-          <img className="w-[50px]" src={iconUser} alt="user" />
-          <section>
-            <p>Usuário</p>
-            <p>FJS</p>
-          </section>
-          <div onClick={handleAlert} className="icon-engine">
-            <GearFine size={40} color="white" />
-          </div>
+          <aside>
+            <img className="w-[50px]" src={iconUser} alt="user" />
+            <section>
+              <p>Usuário</p>
+              <p>FJS</p>
+            </section>
+            <div onClick={handleAlert} className="icon-engine">
+              <GearFine size={40} color="white" />
+            </div>
+          </aside>
         </div>
       </aside>
 

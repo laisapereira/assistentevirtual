@@ -7,15 +7,15 @@
 }
 
 .aside-header {
-  @apply bg-main-black h-full min-h-full max-w-[22%] min-w-[17%] flex flex-col items-center justify-between gap-16;
+  @apply bg-main-black h-full min-h-full max-w-[22%] min-w-[17%] flex flex-col items-center justify-between;
 }
 
 .banner-aside {
-  @apply flex flex-col items-center justify-evenly gap-12 px-[20%] max-w-[28rem] min-w-[15rem] w-auto;
+  @apply flex flex-col items-center justify-evenly gap-12 px-[20%] max-w-[28rem] min-w-[17rem] w-auto;
 }
 
 .aside-header button {
-  @apply bg-main-white text-lg w-auto p-[1rem] rounded-[1.25rem] hover:bg-main-gray font-bold font-fira-code;
+  @apply bg-main-white text-lg w-[82%] max-w-[85%] p-[5%] rounded-[1.25rem] hover:bg-main-gray font-bold font-fira-code;
 }
 
 .banner-aside img {
@@ -23,11 +23,15 @@
 }
 
 .img-logo {
-  @apply w-[16rem] h-auto pt-12;
+  @apply w-[82%] h-auto pt-12;
 }
 
 .footer-aside {
-  @apply bg-color-fjs w-full h-[15%] flex items-center justify-center gap-5 border-white;
+  @apply bg-color-fjs w-full h-[15%] flex items-center justify-center gap-5 ;
+}
+
+.footer-aside aside {
+ @apply border-white border-2 flex items-center justify-center gap-5 p-3 rounded-xl w-[92%] h-[70%];
 }
 
 .footer-aside p {
