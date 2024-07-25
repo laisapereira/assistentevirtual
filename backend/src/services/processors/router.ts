@@ -4,10 +4,10 @@ import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { ChatOpenAI } from "@langchain/openai";
 import * as dotenv from "dotenv";
 import { similarChunks } from "./vectorStore.js";
+import path from "path";
+import { fileURLToPath } from "url";
 
 dotenv.config();
-
-import path from "path";
 
 let contadorDeChamadas = 0;
 
@@ -15,31 +15,11 @@ let totalInteractions = 0;
 let resolvedInteractions = 0;
 let totalTimeSpent = 0;
 
-/* onst addConsultaAoHistorico = (consulta: string, resposta: string) => {
-  const timestamp = new Date().toLocaleString("pt-BR", {
-    timeZone: "America/Sao_Paulo",
-  });
-  const logEntry = `${timestamp} - Consulta: ${consulta}\nResposta: ${resposta}\n\n`;
-
-  fs.appendFile("consultas.log", logEntry, (err) => {
-    if (err) {
-      console.error("Erro ao adicionar consulta ao histórico:", err);
-    } else {
-      console.log(
-        `Consulta adicionada ao histórico com sucesso: ${contadorDeChamadas} e ${logEntry}`
-      );
-    }
-  });
-
-  contadorDeChamadas++;
-  fs.writeFile("contador.txt", contadorDeChamadas.toString(), (err) => {
-    if (err) {
-      console.error("Erro ao escrever no arquivo contador.txt:", err);
-    }
-  });
-}; */
-
 export const router = Router();
+
+// Resolve the directory name
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 router.post("/", async (request: Request, response: Response) => {
   const { chats } = request.body;
@@ -92,19 +72,24 @@ router.post("/", async (request: Request, response: Response) => {
 
     history.push(response);
 
-  /*   try {
-      const contadorString = fs.readFileSync("contador.txt", "utf-8");
-      contadorDeChamadas = parseInt(contadorString, 10);
-    } catch (err) {
-      // Se o arquivo não existir, inicie o contador em 0
-      contadorDeChamadas = 0;
-      console.error("Erro ao ler o contador de chamadas:", err);
-    } */
+    // Log the user query and response
+    logUserQueryAndResponse(userQuery, response);
 
     console.log(response);
     console.log(history);
 
     return response;
+  };
+
+  const logUserQueryAndResponse = (userQuery: string, userResponse: string) => {
+    const logFilePath = path.join(__dirname, "consultas.log");
+    const logEntry = `${new Date().toISOString()} - Pergunta do Usuário: ${userQuery} - Resposta: ${userResponse}\n`;
+
+    fs.appendFile(logFilePath, logEntry, (err) => {
+      if (err) {
+        console.error("Erro ao gravar no arquivo de log:", err);
+      }
+    });
   };
 
   try {
@@ -130,9 +115,8 @@ router.post("/", async (request: Request, response: Response) => {
   }
 
   function logMetrics() {
-    
+    console.log(`Total Interactions: ${totalInteractions}`);
+    console.log(`Resolved Interactions: ${resolvedInteractions}`);
+    console.log(`Total Time Spent: ${totalTimeSpent} ms`);
   }
-  console.log(`Total Interactions: ${totalInteractions}`);
-  console.log(`Resolved Interactions: ${resolvedInteractions}`);
-  console.log(`Total Time Spent: ${totalTimeSpent} ms`);
 });
