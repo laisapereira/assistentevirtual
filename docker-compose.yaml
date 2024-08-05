@@ -14,7 +14,7 @@ services:
       - ./backend:/app
       - /app/node_modules
       - ./backend/documents:/app/documents
-      - ./backend/src/services/processors/logs:/app/src/services/processors/logs
+      - /home/assistente/consultas-jo:/app/src/services/processors/logs
     environment:
       - NODE_ENV=development
       - OPENAI_API_KEY=${OPENAI_API_KEY}
