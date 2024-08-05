@@ -14,6 +14,7 @@ services:
       - ./backend:/app
       - /app/node_modules
       - ./backend/documents:/app/documents
+      - ./backend/src/services/processors:/app/src/services/processors
     environment:
       - NODE_ENV=development
       - OPENAI_API_KEY=${OPENAI_API_KEY}
