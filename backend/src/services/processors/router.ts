@@ -72,8 +72,9 @@ router.post("/", async (request: Request, response: Response) => {
 
     history.push(response);
 
-    // Log the user query
-    logUserQuery(userQuery);
+   
+    logUserInteraction(userQuery, response);
+    console.log(userQuery);
 
     console.log(response);
     console.log(history);
@@ -81,9 +82,9 @@ router.post("/", async (request: Request, response: Response) => {
     return response;
   };
 
-  const logUserQuery = (userQuery: string) => {
+  const logUserInteraction = (userQuery: string, botResponse: string) => {
     const logFilePath = path.join(__dirname, "consultas.log");
-    const logEntry = `${new Date().toISOString()} - Pergunta do Usuário: ${userQuery}\n`;
+    const logEntry = `${new Date().toISOString()} - Pergunta do Usuário: ${userQuery}\nResposta do Bot: ${botResponse}\n\n`;
 
     fs.appendFile(logFilePath, logEntry, (err) => {
       if (err) {
