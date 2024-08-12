@@ -1,24 +1,20 @@
-name: Assistente CI-CD Workflow.
+
+name: Assistente CI-CD Workflow
 
 on:
   push:
     branches:
-      - jo-dev
       - jo-prod
   pull_request:
     branches:
-      - jo-dev
       - jo-prod
 
 jobs:
-  build-and-push-dev:
-    if: github.ref == 'refs/heads/dev'
+  build-and-push:
     runs-on: self-hosted
     steps:
-      - name: Checkout dev Branch
+      - name: Checkout Source
         uses: actions/checkout@v3
-        with:
-          ref: dev
 
       - name: Set up Docker
         uses: docker/setup-buildx-action@v1
@@ -30,21 +26,20 @@ jobs:
       - name: Login to DockerHub
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
-      - name: Building Docker Image for Frontend (Dev)
-        run: docker build --build-arg REACT_APP_API_URL=${{ vars.REACT_APP_API_URL }} -t aceleraprojetosfjs/assistentevirtual-frontend:dev ./frontend
+      - name: Building Docker Image for Frontend
+        run: docker build --build-arg REACT_APP_API_URL=${{ vars.REACT_APP_API_URL }} -t aceleraprojetosfjs/assistentevirtual-frontend:latest ./frontend
 
-      - name: Building Docker Image for Backend (Dev)
-        run: docker build -t aceleraprojetosfjs/assistentevirtual-backend:dev ./backend
+      - name: Building Docker Image for Backend
+        run: docker build -t aceleraprojetosfjs/assistentevirtual-backend:latest ./backend
 
-      - name: Pushing Docker Image for Frontend (Dev)
-        run: docker push aceleraprojetosfjs/assistentevirtual-frontend:dev
+      - name: Pushing Docker Image for Frontend
+        run: docker push aceleraprojetosfjs/assistentevirtual-frontend:latest
 
-      - name: Pushing Docker Image for Backend (Dev)
-        run: docker push aceleraprojetosfjs/assistentevirtual-backend:dev
+      - name: Pushing Docker Image for Backend
+        run: docker push aceleraprojetosfjs/assistentevirtual-backend:latest
 
-  deploy-dev:
-    if: github.ref == 'refs/heads/dev'
-    needs: build-and-push-dev
+  deploy:
+    needs: build-and-push
     runs-on: self-hosted
     steps:
       - name: Checkout Source
@@ -52,76 +47,16 @@ jobs:
 
       - name: Re-create .env file
         run: |
-          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" > .env
+          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}"> .env
 
       - name: Login to DockerHub
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
-      - name: Pull Docker Images (Dev)
+      - name: Pull Docker Images
         run: |
-          docker pull aceleraprojetosfjs/assistentevirtual-frontend:dev
-          docker pull aceleraprojetosfjs/assistentevirtual-backend:dev
+          docker pull aceleraprojetosfjs/assistentevirtual-frontend:latest
+          docker pull aceleraprojetosfjs/assistentevirtual-backend:latest
 
-      - name: Deploy using Docker Compose (Dev)
-        run: |
-          docker-compose down
-          REACT_APP_API_URL=${{ vars.REACT_APP_API_URL }} docker-compose up --build -d
-
-  build-and-push-prod:
-    if: github.ref == 'refs/heads/prod'
-    runs-on: self-hosted
-    steps:
-      - name: Checkout prod Branch
-        uses: actions/checkout@v3
-        with:
-          ref: prod
-
-      - name: Set up Docker
-        uses: docker/setup-buildx-action@v1
-
-      - name: Create env file
-        run: |
-          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" > .env
-
-      - name: Login to DockerHub
-        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-
-      - name: Building Docker Image for Frontend (Prod)
-        run: docker build --build-arg REACT_APP_API_URL=${{ vars.REACT_APP_API_URL }} -t aceleraprojetosfjs/assistentevirtual-frontend:prod ./frontend
-
-      - name: Building Docker Image for Backend (Prod)
-        run: docker build -t aceleraprojetosfjs/assistentevirtual-backend:prod ./backend
-
-      - name: Pushing Docker Image for Frontend (Prod)
-        run: docker push aceleraprojetosfjs/assistentevirtual-frontend:prod
-
-      - name: Pushing Docker Image for Backend (Prod)
-        run: docker push aceleraprojetosfjs/assistentevirtual-backend:prod
-
-  deploy-prod:
-    if: github.ref == 'refs/heads/prod'
-    needs: build-and-push-prod
-    runs-on: self-hosted
-    steps:
-      - name: Checkout Source
-        uses: actions/checkout@v3
-
-      - name: Re-create .env file
-        run: |
-          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" > .env
-
-      - name: Login to DockerHub
-        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-
-      - name: Pull Docker Images (Prod)
-        run: |
-          docker pull aceleraprojetosfjs/assistentevirtual-frontend:prod
-          docker pull aceleraprojetosfjs/assistentevirtual-backend:prod
-
-      - name: Deploy using Docker Compose (Prod)
-        run: |
-          docker-compose down
-          REACT_APP_API_URL=${{ vars.REACT_APP_API_URL }} docker-compose up --build -d
       - name: Deploy using Docker Compose
         run: |
           docker-compose down
