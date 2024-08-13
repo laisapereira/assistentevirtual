@@ -74,9 +74,14 @@ router.post("/", async (request: Request, response: Response) => {
 
     history.push(response);
 
+<<<<<<< HEAD
    
     logUserInteraction(userQuery, response);
     console.log(userQuery);
+=======
+    // Log the user query and response
+    logUserQueryAndResponse(userQuery, response);
+>>>>>>> fc6509bbffc4031600abcb950ba923e41170f68b
 
     console.log(response);
     console.log(history);
@@ -84,9 +89,15 @@ router.post("/", async (request: Request, response: Response) => {
     return response;
   };
 
+<<<<<<< HEAD
   const logUserInteraction = (userQuery: string, botResponse: string) => {
     const logFilePath = path.join(__dirname, "./logs/consultas.log");
     const logEntry = `${new Date().toISOString()} - Pergunta do Usuário: ${userQuery}\nResposta do Bot: ${botResponse}\n\n`;
+=======
+  const logUserQueryAndResponse = (userQuery: string, userResponse: string) => {
+    const logFilePath = path.join(__dirname, "consultas.log");
+    const logEntry = `${new Date().toISOString()} - Pergunta do Usuário: ${userQuery} - Resposta: ${userResponse}\n`;
+>>>>>>> fc6509bbffc4031600abcb950ba923e41170f68b
 
     fs.appendFile(logFilePath, logEntry, (err) => {
       if (err) {
