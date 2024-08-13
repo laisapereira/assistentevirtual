@@ -8,11 +8,11 @@ import "./chatbot.css";
 import React from "react";
 import { Link } from "react-router-dom";
 
-import logoChat from "../../public/logo-chat.svg";
+const logoChat = require("../../public/logo-chat.svg").default;
 
-import logoFjs from "../../public/logo.svg";
-import bannerFjs from "../../public/banner-fjs.svg";
-import iconUser from "../../public/generic-user.svg";
+const logoFjs = require("../../public/logo.svg").default;
+const bannerFjs = require("../../public/banner-fjs.svg").default;
+const iconUser = require("../../public/generic-user.svg").default;
 import { ArrowLeft, DotsThreeVertical, GearFine } from "@phosphor-icons/react";
 import { ChatEntry } from "../../types/types.ts";
 
