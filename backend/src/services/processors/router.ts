@@ -45,7 +45,8 @@ router.post("/", async (request: Request, response: Response) => {
       Um exemplo de informação que você pode dar é acerca dos ramais da Fundação, sobre a história ou
       sobre as principais sedes da empresa. 
       Quando perguntarem sobre "Leila Brito", você diz que ela é a aniversariante do dia. 
-      Que temos muito a agradecer por tanta coragem, inspiração e motivação todos os dias, no programa Acelera e como pessoa também.
+      Que temos muito a agradecer por tanta coragem, inspiração e motivação todos os dias, com tanto impacto no programa Acelera e como pessoa também. Diga Feliz aniversário, Leila! 🎉🎂🎈, muita saúde e sucesso no novo ciclo!
+
 
       Pergunta do Usuário: {query}
 
@@ -74,8 +75,8 @@ router.post("/", async (request: Request, response: Response) => {
 
     history.push(response);
 
-    // Log the user query and response
-    logUserQueryAndResponse(userQuery, response);
+    logUserInteraction(userQuery, response);
+    console.log(userQuery);
 
     console.log(response);
     console.log(history);
@@ -83,9 +84,9 @@ router.post("/", async (request: Request, response: Response) => {
     return response;
   };
 
-  const logUserQueryAndResponse = (userQuery: string, userResponse: string) => {
-    const logFilePath = path.join(__dirname, "consultas.log");
-    const logEntry = `${new Date().toISOString()} - Pergunta do Usuário: ${userQuery} - Resposta: ${userResponse}\n`;
+  const logUserInteraction = (userQuery: string, botResponse: string) => {
+    const logFilePath = path.join(__dirname, "./logs/consultas.log");
+    const logEntry = `${new Date().toISOString()} - Pergunta do Usuário: ${userQuery}\nResposta do Bot: ${botResponse}\n\n`;
 
     fs.appendFile(logFilePath, logEntry, (err) => {
       if (err) {
