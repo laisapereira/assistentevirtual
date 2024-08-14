@@ -1,4 +1,4 @@
-name: Assistente CICD Workflow.
+name: Assistente CICD Workflow
 
 on:
   push:
