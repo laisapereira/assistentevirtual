@@ -18,8 +18,6 @@ services:
     environment:
       - NODE_ENV=development
       - OPENAI_API_KEY=${OPENAI_API_KEY}
-    depends_on:
-      - jo-db
     networks:
       - app-network
       
@@ -42,26 +40,6 @@ services:
       - ./frontend/.env:/usr/share/nginx/html/.env
     networks:
       - app-network
-
-
-  jo-db:
-    hostname: jo-db
-    image: ankane/pgvector
-    ports:
-      - "5433:5433"
-    restart: always
-    environment:
-      - POSTGRES_DB=jo-db
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=1234!
-      - POSTGRES_HOST_AUTH_METHOD=trust
-    volumes:
-      - db_data:/var/lib/postgresql/data
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-
-volumes:
-  db_data:
-    driver: local
 
 networks:
   app-network:
