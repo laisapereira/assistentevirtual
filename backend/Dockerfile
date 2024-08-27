@@ -13,7 +13,7 @@ RUN apk add --no-cache git
 
 ENV PYTHON=/usr/bin/python3
 
-RUN npm install
+RUN npm install -g npm@latest
 
 RUN npm install -g node-gyp@latest
 
