@@ -10,7 +10,6 @@ on:
 
 jobs:
   build-and-push-prod:
-    if: github.ref == 'refs/heads/jo-prod'
     runs-on: self-hosted
     steps:
       - name: Checkout jo-prod Branch
@@ -41,7 +40,6 @@ jobs:
         run: docker push aceleraprojetosfjs/assistentevirtual-backend:prod
 
   deploy-prod:
-    if: github.ref == 'refs/heads/jo-prod'
     needs: build-and-push-prod
     runs-on: self-hosted
     steps:
