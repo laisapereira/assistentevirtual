@@ -69,6 +69,6 @@ export const loadAndNormalizeDocuments = async (): Promise<string[]> => {
     }
   );
 
-  console.log("Vector store created and documents indexed.");
+  console.log("Vector store creat and documents indexed.");
   return documents;
 };

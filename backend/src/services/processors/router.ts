@@ -9,7 +9,6 @@ import { fileURLToPath } from "url";
 
 dotenv.config();
 
-let contadorDeChamadas = 0;
 
 let totalInteractions = 0;
 let resolvedInteractions = 0;
