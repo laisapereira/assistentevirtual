@@ -4,9 +4,9 @@ WORKDIR /frontend
 
 COPY package.json .
 
-RUN apk add --no-cache git
-
 RUN npm install
+
+RUN apk add --no-cache git
 
 ARG REACT_APP_API_URL
 
