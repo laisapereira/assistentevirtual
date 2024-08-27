@@ -28,7 +28,7 @@ router.post("/", async (request: Request, response: Response) => {
     return response.status(400).send("O parâmetro 'chats' é necessário.");
   }
 
-  const startTime = Date.now();
+  const startTime = performance.now();
 
   const promptLLM = async (
     userQuery: string,
@@ -96,7 +96,7 @@ router.post("/", async (request: Request, response: Response) => {
   try {
     const userResponse = await chatUser(chats);
 
-    const endTime = Date.now();
+    const endTime = performance.now();
     const elapsedTime = endTime - startTime;
 
     totalInteractions++;
