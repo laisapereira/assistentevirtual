@@ -8,6 +8,10 @@ RUN apk add --no-cache git
 
 RUN npm install -g npm@latest
 
+RUN npm uninstall react-scripts
+
+RUN npm install -D react-scripts
+
 ARG REACT_APP_API_URL
 
 ARG REACT_APP_FORMS
