@@ -10,8 +10,11 @@ generator client {
 
 model Colaborador {
   id    Int    @id @default(autoincrement())
-  email String @unique
-  name  String
+  email String
+  nome  String
+  matricula String @unique
+
 
   @@index([setor])
 }
+
