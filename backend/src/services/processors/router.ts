@@ -1,38 +1,21 @@
 import fs from "fs";
-import path from "path";
 import { Request, Response, Router } from "express";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { ChatOpenAI } from "@langchain/openai";
 import * as dotenv from "dotenv";
 import { saveEmbeddings, similarChunks } from "./vectorStore.js";
-import pg from "pg";
-
-import { fileURLToPath } from "url";
 
 dotenv.config();
 
 export const router = Router();
 
-// Configuração da conexão com o banco de dados PostgreSQL
-const client = new pg.Client({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT ? parseInt(process.env.DB_PORT) : 5432,
-});
 
-client.connect();
 
 let contadorDeChamadas = 0;
 
 let totalInteractions = 0;
 let resolvedInteractions = 0;
 let totalTimeSpent = 0;
-
-// Resolve the directory name
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 router.post("/", async (request: Request, response: Response) => {
   const { chats } = request.body;
