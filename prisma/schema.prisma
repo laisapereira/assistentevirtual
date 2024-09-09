@@ -1,7 +1,7 @@
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = "postgresql://localhost:5432/joauth"
 }
 
 generator client {
