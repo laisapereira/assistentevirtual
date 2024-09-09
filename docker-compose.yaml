@@ -11,10 +11,17 @@ services:
     env_file:
       - ./.env
     volumes:
+<<<<<<< HEAD
       - ./backend:/app
       - /app/node_modules
       - ./backend/documents:/app/documents
       - ./backend/logs:/app/logs  
+=======
+      - ./backend:/backend
+      - /backend/node_modules
+      - ./backend/documents:/backend/documents
+      - /home/assistente/consultas-jo:/backend/src/services/processors/logs
+>>>>>>> jo-prod
     environment:
       - NODE_ENV=development
       - OPENAI_API_KEY=${OPENAI_API_KEY}
@@ -29,6 +36,10 @@ services:
       context: ./frontend 
       args:
         REACT_APP_API_URL: ${REACT_APP_API_URL}
+<<<<<<< HEAD
+=======
+        REACT_APP_FORMS: ${REACT_APP_FORMS}
+>>>>>>> jo-prod
       dockerfile: Dockerfile
     ports:
       - "3000:80"
@@ -36,6 +47,24 @@ services:
       - backend
     env_file:
       - ./.env
+<<<<<<< HEAD
+=======
+    volumes:
+      - ./frontend/.env:/usr/share/nginx/html/.env
+    networks:
+      - app-network
+
+  chromadb:
+    image: chromadb/chroma:latest
+    ports:
+      - "8000:8000"
+    environment:
+      - CHROMA_HOST_ADDR=0.0.0.0
+      - CHROMA_HOST_PORT=8000
+      - CHROMA_WORKERS=1
+      - CHROMA_LOG_CONFIG=chromadb/log_config.yml
+      - CHROMA_TIMEOUT_KEEP_ALIVE=30
+>>>>>>> jo-prod
     volumes:
       - ./frontend/.env:/usr/share/nginx/html/.env
     networks:

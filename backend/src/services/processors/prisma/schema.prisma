@@ -14,7 +14,38 @@ model Colaborador {
   nome  String
   matricula String @unique
 
-
-  @@index([setor])
 }
+
+model tbl_documents_geral {
+  id    Int @id  @default(autoincrement())
+  content   String
+  vector    Unsupported("vector")
+}
+
+model tbl_documents_rh {
+  id    Int @id  @default(autoincrement())
+  content   String
+  vector    Unsupported("vector")
+}
+
+model tbl_documents_comercial {
+  id    Int @id  @default(autoincrement())
+  content   String
+  vector    Unsupported("vector")
+}
+
+
+model tbl_documents_qualidade {
+  id    Int @id  @default(autoincrement())
+  content   String
+  vector    Unsupported("vector")
+}
+
+model tbl_documents_ibr {
+  id    Int @id  @default(autoincrement())
+  content   String
+  vector    Unsupported("vector")
+}
+
+
 

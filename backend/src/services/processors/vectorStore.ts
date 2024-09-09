@@ -16,14 +16,6 @@ export const client = new Client({
   port: process.env.DB_PORT ? parseInt(process.env.DB_PORT) : 5432,
 });
 
-/* export const client = new Client({
-  user: process.env.DB_USER,
-  host: 'host.docker.internal',
-  database: 'vector_db',
-  password: 'Soc1alwars.',
-  port: 5432,
-}); */
-
 try {
   await client.connect();
   console.log('Conexão realizada com sucesso');
@@ -47,15 +39,10 @@ export const similarChunks = async (userQuery: string): Promise<string> => {
 
   console.log("Query results:", JSON.stringify(rows, null, 2));
   if (rows.length === 0) {
-    return "No relevant documents found.";
+    return "documentos relevantes não encontrados";
   }
 
-
- 
-
-  return rows.map((row: { content: any; }) => row.content).join("\n")
-
-
+  return rows.map((row: { content: any; }) => row.content).join("\n");
 
 };
 
@@ -76,9 +63,8 @@ export const saveEmbeddings = async (chunks: string[]) => {
     }
 
     console.log("Embeddings salvos com sucesso!");
-  } catch (error) {
+  } catch (error: any) {
     console.error("Erro ao salvar embeddings:", error.message);
     throw error;
   }
 };
-
