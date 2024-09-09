@@ -15,6 +15,7 @@ interface IDocument {
   pageContent: string | string[];
 }
 
+
 export const loadAndNormalizeDocuments = async (): Promise<string[]> => {
   const loader = new DirectoryLoader("./documents", {
     ".pdf": (path: string) => new PDFLoader(path),

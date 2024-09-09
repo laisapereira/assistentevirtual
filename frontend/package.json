@@ -81,6 +81,7 @@
     "cypress": "12.5.0",
     "dotenv": "^16.4.5",
     "dotenv-webpack": "^8.1.0",
+    "front-end-assistente-virtual": "file:",
     "fs": "^0.0.1-security",
     "jest": "29.4.1",
     "js-cookie": "^3.0.5",
