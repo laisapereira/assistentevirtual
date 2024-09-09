@@ -17,6 +17,8 @@ RUN npm install -g node-gyp@latest
 
 RUN npm install pg pgvector
 
+RUN npm install @prisma/client
+
 RUN npm install
 
 COPY . .

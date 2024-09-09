@@ -1,0 +1,20 @@
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Colaborador {
+  id    Int    @id @default(autoincrement())
+  email String
+  nome  String
+  matricula String @unique
+
+
+  @@index([setor])
+}
+

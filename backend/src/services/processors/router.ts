@@ -3,24 +3,19 @@ import { Request, Response, Router } from "express";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { ChatOpenAI } from "@langchain/openai";
 import * as dotenv from "dotenv";
-import { similarChunks } from "./vectorStore.js";
-import { Client } from "pg";
-import { toSql } from "pgvector"; // importando a função toSql
+import { saveEmbeddings, similarChunks } from "./vectorStore.js";
 
 dotenv.config();
 
 export const router = Router();
 
-// Configuração da conexão com o banco de dados PostgreSQL
-const client = new Client({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT,
-});
 
-client.connect();
+
+let contadorDeChamadas = 0;
+
+let totalInteractions = 0;
+let resolvedInteractions = 0;
+let totalTimeSpent = 0;
 
 router.post("/", async (request: Request, response: Response) => {
   const { chats } = request.body;
@@ -31,7 +26,10 @@ router.post("/", async (request: Request, response: Response) => {
 
   const startTime = Date.now();
 
-  const promptLLM = async (userQuery: string, chunks: string): Promise<string> => {
+  const promptLLM = async (
+    userQuery: string,
+    chunks: string
+  ): Promise<string> => {
     try {
       const model = new ChatOpenAI({
         openAIApiKey: process.env.OPENAI_API_KEY as string,
@@ -54,7 +52,7 @@ router.post("/", async (request: Request, response: Response) => {
       const formattedPrompt = await promptTemplate.format({
         query: userQuery,
         chunks: chunks,
-        history: history
+        history: history,
       });
 
       const result = await model.invoke(formattedPrompt);
@@ -81,6 +79,7 @@ router.post("/", async (request: Request, response: Response) => {
 
       history.push(response);
 
+      logUserInteraction(userQuery, response);
       return response;
     } catch (error) {
       console.error("Erro no chatUser:", error.message);
@@ -88,36 +87,42 @@ router.post("/", async (request: Request, response: Response) => {
     }
   };
 
-  const saveEmbeddings = async (chunks: string[]) => {
-    try {
-      // Assumindo que chunks é um array de strings JSON que representa os embeddings
-      for (let chunk of chunks) {
-        let embeddingArray = JSON.parse(chunk); // converte string JSON para array
-        embeddingArray = embeddingArray.map(Number); // converte os elementos para números
+  const logUserInteraction = (userQuery: string, botResponse: string) => {
+    const logFilePath = path.join(__dirname, "./logs/consultas.log");
+    const logEntry = `${new Date().toISOString()} - Pergunta do Usuário: ${userQuery}\nResposta do Bot: ${botResponse}\n\n`;
 
-        const embeddingVector = toSql(embeddingArray); // converte o array para o formato SQL
-
-        const insertQuery = `
-          INSERT INTO documents (content, embedding) VALUES ($1, $2)
-        `;
-
-        await client.query(insertQuery, [embeddingVector]);
+    fs.appendFile(logFilePath, logEntry, (err: any) => {
+      if (err) {
+        console.error("Erro ao gravar no arquivo de log:", err);
       }
-
-      console.log('Embeddings salvos com sucesso!');
-    } catch (error) {
-      console.error("Erro ao salvar embeddings:", error.message);
-      throw error;
-    }
+    });
   };
 
   try {
     const userResponse = await chatUser(chats);
+
+    const endTime = Date.now();
+    const elapsedTime = endTime - startTime;
+
+    totalInteractions++;
+    totalTimeSpent += elapsedTime;
+
+    if (userResponse) {
+      resolvedInteractions++;
+    }
+
+    logMetrics();
 
     response.json({ output: userResponse });
   } catch (error) {
     console.log(history);
     console.error("Erro ao processar a consulta:", error.message);
     response.status(500).send("Erro ao processar a consulta.");
+  }
+
+  function logMetrics() {
+    console.log(`Total Interactions: ${totalInteractions}`);
+    console.log(`Resolved Interactions: ${resolvedInteractions}`);
+    console.log(`Total Time Spent: ${totalTimeSpent} ms`);
   }
 });

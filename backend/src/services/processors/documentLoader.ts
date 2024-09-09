@@ -2,11 +2,9 @@ import { PDFLoader } from 'langchain/document_loaders/fs/pdf';
 import { DirectoryLoader } from 'langchain/document_loaders/fs/directory';
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 import { TextLoader } from 'langchain/document_loaders/fs/text';
-import * as dotenv from 'dotenv';
-import { client, embeddings} from '../processors/vectorStore.js';
-import { OpenAIEmbeddings } from '@langchain/openai';
 
-dotenv.config();
+import { client} from '../processors/vectorStore.js';
+
 
 interface IDocument {
   pageContent: string | string[];
@@ -42,22 +40,16 @@ export const loadAndNormalizeDocuments = async (): Promise<string[]> => {
     lengthFunction: (str: string) => str.length,
   });
 
-  const combinedText = normalizedDocs.join('\n');
+  const combinedText = normalizedDocs.join("\n");
   const documents = await textSplitter.splitText(combinedText);
-  console.log('Text chunks:', JSON.stringify(documents, null, 2));
+  console.log("Text chunks:", JSON.stringify(documents, null, 2));
 
+  const insertChunks = documents.map((doc) => client.query(
+    `INSERT INTO documents (content) VALUES ($1) RETURNING *`, 
+    [doc]
+  ));
+  await Promise.all(insertChunks);
 
-  const indexDocuments = async (documents: string[]) => {
-    for (const doc of documents) {
-      const embeddingObject = await embeddings.embedDocuments([doc]);
-      // convertendo o objeto de embedding para um array
-      const embeddingArray = Object.values(embeddingObject);
-  
-      // convertendo o array para uma string no formato correto para PostgreSQL
-      const embeddingArrayString = `[${embeddingArray.join(',')}]`;
-      await client.query('INSERT INTO documents (content, embedding) VALUES ($1, $2)', [doc, embeddingArrayString]);
-    }
-  };
-  console.log('Documents indexed.');
+  console.log("Chunks inserted into PostgreSQL.");
   return documents;
 };
