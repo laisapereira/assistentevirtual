@@ -41,8 +41,8 @@ export const loadAndNormalizeDocuments = async (): Promise<string[]> => {
 
   const textSplitter = new RecursiveCharacterTextSplitter({
     separators: ["\n", ".", "!", "?", ";", " ", ""],
-    chunkSize: 500,
-    chunkOverlap: 70,
+    chunkSize: 400,
+    chunkOverlap: 80,
     lengthFunction: (str: string) => str.length,
   });
 
@@ -65,11 +65,11 @@ export const loadAndNormalizeDocuments = async (): Promise<string[]> => {
     documentsForChroma,
     new OpenAIEmbeddings(),
     {
-      collectionName: "jo-2.0-mvp",
+      collectionName: "mvp-jo",
       url: "http://chromadb:8000",
     }
   );
 
-  console.log("Vector store created and documents indexed.");
+  console.log("Vector store creat and documents indexed.");
   return documents;
 };

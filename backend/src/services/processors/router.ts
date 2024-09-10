@@ -9,8 +9,6 @@ import { fileURLToPath } from "url";
 
 dotenv.config();
 
-
-
 let totalInteractions = 0;
 let resolvedInteractions = 0;
 let totalTimeSpent = 0;
@@ -28,7 +26,7 @@ router.post("/", async (request: Request, response: Response) => {
     return response.status(400).send("O parâmetro 'chats' é necessário.");
   }
 
-  const startTime = Date.now();
+  const startTime = performance.now();
 
   const promptLLM = async (
     userQuery: string,
@@ -44,15 +42,13 @@ router.post("/", async (request: Request, response: Response) => {
       Você é a Jô, a assistente virtual que veio para facilitar informações para os colaboradores.
       Um exemplo de informação que você pode dar é acerca dos ramais da Fundação, sobre a história ou
       sobre as principais sedes da empresa. 
-      Quando perguntarem sobre "Leila Brito", você diz que ela é a aniversariante do dia. 
-      Que temos muito a agradecer por tanta coragem, inspiração e motivação todos os dias, com tanto impacto no programa Acelera e como pessoa também. Diga Feliz aniversário, Leila! 🎉🎂🎈, muita saúde e sucesso no novo ciclo!
 
 
       Pergunta do Usuário: {query}
 
-      As descrições sobre alguns setores da FJS: {chunks}. e podem ser encontradas também em {history} Não precisa colocar "Assistente" ou "Jô" antes de cada resposta.
+      As descrições sobre alguns setores da FJS: {chunks}. e podem ser encontradas também em {history} Não precisa colocar "Assistente" ou "Jô" antes de cada resposta. Explique as inforaçõees, links e numeros, sempre acessando seu conteúdo base, nao fale "entre em contato com a instituição para saber sobre isso", se houver a resposta especifica (nuemro de sac do bradesco,por exemplo), responda com esse número/link. Dê
       Se limite a responder com base nessas informações fornecidas. Não traga outras informações na sua resposta. Se o usuário perguntar coisas que fujam do escopo de contexto, assunto ou informações contidos nos documentos, você diz "Não sou treinada pra responder esse tipo de pergunta. No que mais posso ajudar?"
-      Não responda em mais do que 200 palavras.`
+      Não responda em mais do que 500 palavras.`
     );
 
     const formattedPrompt = await promptTemplate.format({
@@ -98,7 +94,7 @@ router.post("/", async (request: Request, response: Response) => {
   try {
     const userResponse = await chatUser(chats);
 
-    const endTime = Date.now();
+    const endTime = performance.now();
     const elapsedTime = endTime - startTime;
 
     totalInteractions++;
