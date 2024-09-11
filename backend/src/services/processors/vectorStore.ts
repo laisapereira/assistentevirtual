@@ -16,13 +16,6 @@ export const client = new Client({
   port: process.env.DB_PORT ? parseInt(process.env.DB_PORT) : 5432,
 });
 
-try {
-  await client.connect();
-  console.log('Conexão realizada com sucesso');
-} catch (err: any) {
-  console.error('Erro ao tentar realizar a conexão', err.stack);
-}
-
 export const similarChunks = async (userQuery: string): Promise<string> => {
 
   const embeddingFunction = new OpenAIEmbeddings({
@@ -68,3 +61,10 @@ export const saveEmbeddings = async (chunks: string[]) => {
     throw error;
   }
 };
+
+try {
+  await client.connect();
+  console.log('Conexão realizada com sucesso');
+} catch (err: any) {
+  console.error('Erro ao tentar realizar a conexão', err.stack);
+}
