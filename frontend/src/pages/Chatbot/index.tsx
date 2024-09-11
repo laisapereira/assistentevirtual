@@ -8,11 +8,11 @@ import "./chatbot.css";
 import React from "react";
 import { Link } from "react-router-dom";
 
-import logoChat from "../../public/logo-chat.svg";
+const logoChat = require("../../public/logo-chat.svg").default;
 
-import logoFjs from "../../public/logo.svg";
-import bannerFjs from "../../public/banner-fjs.svg";
-import iconUser from "../../public/generic-user.svg";
+const logoFjs = require("../../public/logo.svg").default;
+const bannerFjs = require("../../public/banner-fjs.svg").default;
+const iconUser = require("../../public/generic-user.svg").default;
 import { ArrowLeft, DotsThreeVertical, GearFine } from "@phosphor-icons/react";
 import { ChatEntry } from "../../types/types.ts";
 
@@ -37,7 +37,7 @@ const Chatbot = () => {
     setIsProcessing(true);
     const botResponse = await sendMessage(userMessage);
     setIsProcessing(false);
-    console.log(botResponse);
+    
 
     const words = botResponse.split(" ");
 
@@ -60,15 +60,17 @@ const Chatbot = () => {
       text: "Esta é uma versão de demonstração da Jô. Em breve teremos mais funcionalidades.",
       icon: "info",
       showCancelButton: false,
+      showDenyButton:true,
       confirmButtonColor: "#6A1B44",
-      confirmButtonText: "Voltar ao Chat",
+      confirmButtonText: "Voltar ao chat",
+      denyButtonColor: "gray",
+      denyButtonText: "Sugestões? Fale conosco!",
     }).then((result) => {
-      /*  if (result.isConfirmed) {
-        console.log("Voltar ao Chat");
-      } */
-    });
-  };
-
+      if (result.isDenied) {
+        window.open(process.env.REACT_APP_FORMS, '_blank');
+      } 
+    })
+  }
   useEffect(() => {
     if (chatLogRef.current) {
       chatLogRef.current.scrollTop = chatLogRef.current.scrollHeight;
@@ -79,22 +81,24 @@ const Chatbot = () => {
     <div className="main-chat">
       <aside className="aside-header">
         <img src={logoFjs} alt="Logo" className="img-logo" />
+        <button>
+          <a href="/">Limpar Chat </a>
+        </button>
         <section className="banner-aside">
-          <button>
-            <a href="/">Limpar Chat </a>
-          </button>
           <img src={bannerFjs} alt="Banner-Fjs" />
         </section>
 
         <div className="footer-aside">
-          <img className="w-[50px]" src={iconUser} alt="user" />
-          <section>
-            <p>Usuário</p>
-            <p>FJS</p>
-          </section>
-          <div onClick={handleAlert} className="icon-engine">
-            <GearFine size={40} color="white" />
-          </div>
+          <aside>
+            <img className="w-[50px]" src={iconUser} alt="user" />
+            <section>
+              <p>Usuário</p>
+              <p>FJS</p>
+            </section>
+            <div onClick={handleAlert} className="icon-engine">
+              <GearFine size={40} color="white" />
+            </div>
+          </aside>
         </div>
       </aside>
 

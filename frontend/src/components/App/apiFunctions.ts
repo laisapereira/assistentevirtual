@@ -1,25 +1,15 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
+const baseURL = process.env.REACT_APP_API_URL;
+
 const API = axios.create({
+<<<<<<< HEAD
   baseURL: "http://172.27.192.1:9000",
+=======
+  baseURL,
+>>>>>>> jo-prod
 });
-
-/* // interceptador de solicitação adicionado à instância do axios:
-// unção que é chamada antes de cada solicitação ser enviada.
-//A função obtém o token do cookie e o adiciona ao cabeçalho Authorization da solicitação
-
-API.interceptors.request.use((config) => {
-  const token = Cookies.get("authToken");
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-
-  console.log("Token:", token);
-  console.log("Request headers:", config.headers);
-  return config;
-});
-*/
 
 export const sendMessage = async (message: string) => {
   const token = Cookies.get("authToken");

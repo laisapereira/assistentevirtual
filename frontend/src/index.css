@@ -8,15 +8,12 @@
   box-sizing: border-box;
 }
 
-
-
-
 nav {
-  @apply bg-main-gray flex flex-col items-start justify-start gap-3 font-fira-code text-main-black
+  @apply bg-main-gray flex flex-col items-start justify-start gap-3 font-fira-code text-main-black;
 }
 
 .body-page {
-  font-size: 23px;
+  font-size: 22px;
   font-family: "Poppins", sans-serif;
   color: #fff;
   text-align: center;
