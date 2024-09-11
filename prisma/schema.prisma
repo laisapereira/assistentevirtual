@@ -1,0 +1,45 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Colaborador {
+  id        Int    @id @default(autoincrement())
+  email     String
+  nome      String
+  matricula String @unique
+}
+
+model tbl_documents_geral {
+  id      Int                   @id @default(autoincrement())
+  content String
+  vector  Unsupported("vector")
+}
+
+model tbl_documents_rh {
+  id      Int                   @id @default(autoincrement())
+  content String
+  vector  Unsupported("vector")
+}
+
+model tbl_documents_comercial {
+  id      Int                   @id @default(autoincrement())
+  content String
+  vector  Unsupported("vector")
+}
+
+model tbl_documents_qualidade {
+  id      Int                   @id @default(autoincrement())
+  content String
+  vector  Unsupported("vector")
+}
+
+model tbl_documents_ibr {
+  id      Int                   @id @default(autoincrement())
+  content String
+  vector  Unsupported("vector")
+}

@@ -45,7 +45,7 @@ export const loadAndNormalizeDocuments = async (): Promise<string[]> => {
   console.log("Text chunks:", JSON.stringify(documents, null, 2));
 
   const insertChunks = documents.map((doc) => client.query(
-    `INSERT INTO documents (content) VALUES ($1) RETURNING *`, 
+    `INSERT INTO tbl_documents_geral (content) VALUES ($1) RETURNING *`, 
     [doc]
   ));
   await Promise.all(insertChunks);

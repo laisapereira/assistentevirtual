@@ -9,7 +9,7 @@ CREATE TABLE tbl_colaboradores (
     status BOOLEAN NOT NULL
 );
 
-CREATE TABLE tbl_documents (
+CREATE TABLE tbl_documents_geral(
   id SERIAL PRIMARY KEY,
   content TEXT NOT NULL,
   embedding VECTOR(2048)

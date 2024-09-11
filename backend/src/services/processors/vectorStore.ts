@@ -3,10 +3,19 @@ import { OpenAIEmbeddings } from '@langchain/openai';
 
 import * as dotenv from 'dotenv';
 import { toSql } from 'pgvector';
+import { loadAndNormalizeDocuments } from './documentLoader.js';
 
 const { Client } = pg;
 
 dotenv.config();
+
+/* 
+1- precisamos chunkenizar os documentos e/ou perguntas do usuário 
+sera que precisa chunkenizar a pergunta do usuário? sera que isso nao é feito pelo openai?
+2 - transformar os chunks em embeddings
+3 - salvar os chunks e embeddings no banco de dados
+
+*/
 
 export const client = new Client({
   user: process.env.DB_USER,
@@ -16,13 +25,6 @@ export const client = new Client({
   port: process.env.DB_PORT ? parseInt(process.env.DB_PORT) : 5432,
 });
 
-/* export const client = new Client({
-  user: process.env.DB_USER,
-  host: 'host.docker.internal',
-  database: 'vector_db',
-  password: 'Soc1alwars.',
-  port: 5432,
-}); */
 
 try {
   await client.connect();
@@ -31,17 +33,20 @@ try {
   console.error('Erro ao tentar realizar a conexão', err.stack);
 }
 
-export const similarChunks = async (userQuery: string): Promise<string> => {
+export const SimilarChunks = async (userQuery: string): Promise<string> => {
 
   const embeddingFunction = new OpenAIEmbeddings({
   openAIApiKey: process.env.OPENAI_API_KEY as string,
 });
 
-  const queryEmbedding = await embeddingFunction.embedDocuments([userQuery])
+
+
+const queryEmbedding = await embeddingFunction.embedDocuments([userQuery])
+
 
   console.log(`Querying for: ${userQuery}`);
   const { rows } = await client.query(
-    'SELECT content FROM documents ORDER BY vector <-> $1 LIMIT 10', 
+    'SELECT (content) FROM tbl_documents_geral ORDER BY vector <-> $1 LIMIT 10', 
     [queryEmbedding]
   );
 
@@ -50,16 +55,11 @@ export const similarChunks = async (userQuery: string): Promise<string> => {
     return "No relevant documents found.";
   }
 
-
- 
-
   return rows.map((row: { content: any; }) => row.content).join("\n")
-
-
 
 };
 
-export const saveEmbeddings = async (chunks: string[]) => {
+export const SaveEmbeddings = async (chunks: string[]) => {
   try {
     // Assumindo que chunks é um array de strings JSON que representa os embeddings
     for (let chunk of chunks) {
@@ -69,7 +69,7 @@ export const saveEmbeddings = async (chunks: string[]) => {
       const embeddingVector = toSql(embeddingArray); // converte o array para o formato SQL
 
       const insertQuery = `
-        INSERT INTO documents (content, embedding) VALUES ($1, $2)
+        INSERT INTO tbl_documents_geral (content, embedding) VALUES ($1, $2)
       `;
 
       await client.query(insertQuery, [embeddingVector]);
@@ -81,4 +81,8 @@ export const saveEmbeddings = async (chunks: string[]) => {
     throw error;
   }
 };
+
+
+
+
 

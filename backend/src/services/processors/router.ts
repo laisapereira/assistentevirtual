@@ -4,7 +4,7 @@ import { Request, Response, Router } from "express";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { ChatOpenAI } from "@langchain/openai";
 import * as dotenv from "dotenv";
-import { saveEmbeddings, similarChunks } from "./vectorStore.js";
+import { SaveEmbeddings, SimilarChunks } from "./vectorStore.js";
 import pg from "pg";
 
 import { fileURLToPath } from "url";
@@ -86,11 +86,11 @@ router.post("/", async (request: Request, response: Response) => {
     try {
       history.push(userQuery);
 
-      const chunks = await similarChunks(userQuery);
+      const chunks = await SimilarChunks(userQuery);
       console.log("Chunks encontrados:", chunks);
 
-      // Salvar os embeddings no banco de dados
-      await saveEmbeddings([chunks]);
+    
+      await SaveEmbeddings([chunks]);
 
       const response = await promptLLM(userQuery, chunks);
 
