@@ -74,7 +74,7 @@ router.post("/", async (request: Request, response: Response) => {
 
       const result = await model.invoke(formattedPrompt);
       return result.content.toString();
-    } catch (error) {
+    } catch (error: any) {
       console.error("Erro no promptLLM:", error.message);
       throw error;
     }

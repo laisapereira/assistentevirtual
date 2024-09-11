@@ -93,3 +93,9 @@ export const SaveEmbeddings = async (chunks: string[]) => {
   }
 };
 
+try {
+  await client.connect();
+  console.log('Conexão realizada com sucesso');
+} catch (err: any) {
+  console.error('Erro ao tentar realizar a conexão', err.stack);
+}
