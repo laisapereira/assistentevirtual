@@ -29,10 +29,7 @@ jobs:
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
       - name: Building Docker Image for Frontend (jo-prod)
-        run: docker build 
-          --build-arg REACT_APP_API_URL=${{ vars.REACT_APP_API_URL }} 
-          --build-arg REACT_APP_FORMS=${{ vars.REACT_APP_FORMS }} 
-          -t aceleraprojetosfjs/assistentevirtual-frontend:prod ./frontend
+        run: docker build --build-arg REACT_APP_API_URL=${{ vars.REACT_APP_API_URL }} REACT_APP_FORMS=${{ vars.REACT_APP_FORMS }} -t aceleraprojetosfjs/assistentevirtual-frontend:prod ./frontend
 
       - name: Building Docker Image for Backend (jo-prod)
         run: docker build -t aceleraprojetosfjs/assistentevirtual-backend:prod ./backend
