@@ -60,14 +60,11 @@ button:hover {
 }
 
 .chat-log {
-  @apply w-full h-[85%] pb-3;
-  overflow-y: hidden;
-  overflow-y: scroll;
+  @apply w-full h-[85%] pb-3 overflow-y-scroll overflow-y-hidden;
 }
 
 .chat-log::-webkit-scrollbar-thumb {
-  background-color: rgb(106 27 68);
-  border-radius: 10px;
+  @apply bg-color-fjs rounded-lg;
 }
 
 .chatbot {
