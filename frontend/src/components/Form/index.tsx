@@ -16,7 +16,7 @@ const ChatForm: React.FC<ChatFormProps> = ({ onSubmit }) => {
       setInput("");
     }
   };
-
+0
   return (
     <form onSubmit={handleSubmit}  className="form-submit">
       <input
