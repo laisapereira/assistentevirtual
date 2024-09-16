@@ -61,6 +61,7 @@ export const loadAndNormalizeDocuments = async (): Promise<string[]> => {
     JSON.stringify(documentsForChroma, null, 2)
   );
 
+  
   // Armazenar os chunks e os embeddings no ChromaDB
   const vectorStores = await Chroma.fromDocuments(
     documentsForChroma, // Chunks + metadados
