@@ -46,6 +46,7 @@ router.post("/", async (request: Request, response: Response) => {
       sobre as principais sedes da empresa. Pergunta do Usuário: {query}. Não responda em mais que 150 palavras.
       As descrições sobre alguns setores da FJS: {chunks}. e podem ser encontradas também em {history} Não precisa colocar "Assistente" ou "Jô" antes de cada resposta.
       Se limite a responder com base nessas informações fornecidas. Não traga outras informações na sua resposta. Se o usuário perguntar coisas que fujam do escopo de contexto, assunto ou informações contidos nos documentos, você diz "Não sou treinada pra responder esse tipo de pergunta. No que mais posso ajudar?"
+      Não inventar informações para dar como resposta.
       Não responda em mais do que 150 palavras.`
     );
 

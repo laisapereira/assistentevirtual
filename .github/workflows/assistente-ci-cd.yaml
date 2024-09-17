@@ -32,7 +32,8 @@ jobs:
         run: docker build \
             --build-arg REACT_APP_API_URL=${{ vars.REACT_APP_API_URL }} \
             --build-arg REACT_APP_FORMS=${{ vars.REACT_APP_FORMS }} \
-            -t aceleraprojetosfjs/assistentevirtual-frontend:prod ./frontend
+            -t aceleraprojetosfjs/assistentevirtual-frontend:prod \
+            -f ./frontend
 
       - name: Building Docker Image for Backend (jo-prod)
         run: docker build -t aceleraprojetosfjs/assistentevirtual-backend:prod ./backend
