@@ -67,7 +67,7 @@ const Chatbot = () => {
       denyButtonText: "Sugestões? Fale conosco!",
     }).then((result) => {
       if (result.isDenied) {
-        window.open(process.env.REACT_APP_FORMS, '_blank');
+        window.open("https://docs.google.com/forms/d/e/1FAIpQLSdYYUk-ig9K9RaysWPJdkZcM4WpigLxbou08-5JH8zPdVBjCQ/viewform", '_blank');
       } 
     })
   }
