@@ -21,6 +21,8 @@ const Chatbot = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const chatLogRef = useRef<HTMLDivElement>(null);
 
+  const [alertPopup, setAlertPopup] = useState(true);
+
   const handleSubmit = async (userMessage: string) => {
     setChatLog((prevChatLog: ChatEntry[]) => [
       ...prevChatLog,
@@ -37,7 +39,6 @@ const Chatbot = () => {
     setIsProcessing(true);
     const botResponse = await sendMessage(userMessage);
     setIsProcessing(false);
-    
 
     const words = botResponse.split(" ");
 
@@ -57,25 +58,33 @@ const Chatbot = () => {
   const handleAlert = () => {
     Swal.fire({
       title: "Olá, obrigada por testar!",
-      text: "Esta é uma versão de demonstração da Jô. Em breve teremos mais funcionalidades.",
+      text: "Esta é uma versão de demonstração da Jô, ela ainda está em aprendizado e pode te responder informações equivocadas ou não tão precisas. Em breve mais melhorias e funcionalidades.",
       icon: "info",
       showCancelButton: false,
-      showDenyButton:true,
+      showDenyButton: true,
       confirmButtonColor: "#6A1B44",
       confirmButtonText: "Voltar ao chat",
       denyButtonColor: "gray",
       denyButtonText: "Sugestões? Fale conosco!",
     }).then((result) => {
       if (result.isDenied) {
-        window.open("https://docs.google.com/forms/d/e/1FAIpQLSdYYUk-ig9K9RaysWPJdkZcM4WpigLxbou08-5JH8zPdVBjCQ/viewform", '_blank');
-      } 
-    })
-  }
+        window.open(
+          "https://docs.google.com/forms/d/e/1FAIpQLSdYYUk-ig9K9RaysWPJdkZcM4WpigLxbou08-5JH8zPdVBjCQ/viewform",
+          "_blank"
+        );
+      }
+    });
+  };
   useEffect(() => {
     if (chatLogRef.current) {
       chatLogRef.current.scrollTop = chatLogRef.current.scrollHeight;
     }
   }, [chatLog]);
+
+  useEffect(() => {
+    setAlertPopup(!alertPopup);
+    handleAlert();
+  }, []);
 
   return (
     <div className="main-chat">
