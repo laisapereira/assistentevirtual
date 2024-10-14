@@ -3,20 +3,20 @@ name: Assistente CICD Workflow
 on:
   push:
     branches:
-      - jo-prod
+      - jo-aws
   pull_request:
     branches:
-      - jo-prod
+      - jo-aws
 
 jobs:
   build-and-push-prod:
-    if: github.ref == 'refs/heads/jo-prod'
+    if: github.ref == 'refs/heads/jo-aws'
     runs-on: self-hosted
     steps:
-      - name: Checkout jo-prod Branch
+      - name: Checkout jo-aws Branch
         uses: actions/checkout@v3
         with:
-          ref: jo-prod
+          ref: jo-aws
 
       - name: Set up Docker
         uses: docker/setup-buildx-action@v1
@@ -28,21 +28,21 @@ jobs:
       - name: Login to DockerHub
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
-      - name: Building Docker Image for Frontend (jo-prod)
+      - name: Building Docker Image for Frontend (jo-aws)
         run: docker build --build-arg REACT_APP_API_URL=${{ vars.REACT_APP_API_URL }} -t aceleraprojetosfjs/assistentevirtual-frontend:prod ./frontend
 
-      - name: Building Docker Image for Backend (jo-prod)
+      - name: Building Docker Image for Backend (jo-aws)
         run: docker build -t aceleraprojetosfjs/assistentevirtual-backend:prod ./backend
 
-      - name: Pushing Docker Image for Frontend (jo-prod)
+      - name: Pushing Docker Image for Frontend (jo-aws)
         run: docker push aceleraprojetosfjs/assistentevirtual-frontend:prod
 
-      - name: Pushing Docker Image for Backend (jo-prod)
+      - name: Pushing Docker Image for Backend (jo-aws)
         run: docker push aceleraprojetosfjs/assistentevirtual-backend:prod
 
   deploy-prod:
-    if: github.ref == 'refs/heads/jo-prod'
-    needs: build-and-push-prod
+    if: github.ref == 'refs/heads/jo-aws'
+    needs: build-and-push-aws
     runs-on: self-hosted
     steps:
       - name: Checkout Source
@@ -55,12 +55,12 @@ jobs:
       - name: Login to DockerHub
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
-      - name: Pull Docker Images (jo-prod)
+      - name: Pull Docker Images (jo-aws)
         run: |
           docker pull aceleraprojetosfjs/assistentevirtual-frontend:prod
           docker pull aceleraprojetosfjs/assistentevirtual-backend:prod
 
-      - name: Deploy using Docker Compose (jo-prod)
+      - name: Deploy using Docker Compose (jo-aws)
         run: |
           docker-compose down
           REACT_APP_API_URL=${{ vars.REACT_APP_API_URL }} docker-compose up --build -d
