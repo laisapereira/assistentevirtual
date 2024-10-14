@@ -28,6 +28,8 @@ const Chatbot = () => {
 
 
 
+
+
   const handleSubmit = async (userMessage: string) => {
     setChatLog((prevChatLog: ChatEntry[]) => [
       ...prevChatLog,
@@ -80,7 +82,7 @@ const windowAlert = () => {
       })
       
     }, 2000)
-  } */
+  }
 
  
 
@@ -107,7 +109,7 @@ const windowAlert = () => {
     }
   }, [chatLog]);
 
-
+}
 
   return (
     <div className="main-chat">
@@ -131,6 +133,7 @@ const windowAlert = () => {
               <GearFine size={40} color="white" />
             </div>
           </aside>
+
         </div>
       </aside>
 
