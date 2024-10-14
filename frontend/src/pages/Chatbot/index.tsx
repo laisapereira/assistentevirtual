@@ -16,7 +16,8 @@ const iconUser = require("../../public/generic-user.svg").default;
 import { ArrowLeft, DotsThreeVertical, GearFine } from "@phosphor-icons/react";
 import { ChatEntry } from "../../types/types.ts";
 
-const Chatbot = () => {
+export function Chatbot() {
+ 
   const [chatLog, setChatLog] = useState<ChatEntry[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [popUpAlert, setPopupAlert] = useState<boolean | null>(false)
@@ -25,9 +26,6 @@ const Chatbot = () => {
   useEffect(() => {
     setPopupAlert(!popUpAlert)
   }, [popUpAlert])
-
-
-
 
 
   const handleSubmit = async (userMessage: string) => {
@@ -84,7 +82,7 @@ const windowAlert = () => {
     }, 2000)
   }
 
- 
+
 
   const handleAlert = () => {
     Swal.fire({
@@ -103,13 +101,15 @@ const windowAlert = () => {
       } 
     })
   }
+
+
+
   useEffect(() => {
     if (chatLogRef.current) {
       chatLogRef.current.scrollTop = chatLogRef.current.scrollHeight;
     }
   }, [chatLog]);
 
-}
 
   return (
     <div className="main-chat">
@@ -180,7 +180,16 @@ const windowAlert = () => {
         <ChatForm onSubmit={handleSubmit} />
       </section>
     </div>
+
+        
   );
-};
+
+}
+  
+
+
+
+
+
 
 export default Chatbot;
