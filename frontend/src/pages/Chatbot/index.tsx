@@ -19,7 +19,14 @@ import { ChatEntry } from "../../types/types.ts";
 const Chatbot = () => {
   const [chatLog, setChatLog] = useState<ChatEntry[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [popUpAlert, setPopupAlert] = useState<boolean | null>(false)
   const chatLogRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setPopupAlert(!popUpAlert)
+  }, [popUpAlert])
+
+
 
   const handleSubmit = async (userMessage: string) => {
     setChatLog((prevChatLog: ChatEntry[]) => [
@@ -54,6 +61,29 @@ const Chatbot = () => {
     }
   };
 
+const windowAlert = () => {
+    setTimeout(() => {
+      Swal.fire({
+        title: "Olá, obrigada por testar!",
+        text: "Esta é uma versão de demonstração da Jô. Em breve teremos mais funcionalidades.",
+        icon: "info",
+        showCancelButton: false,
+        showDenyButton:true,
+        confirmButtonColor: "#6A1B44",
+        confirmButtonText: "Voltar ao chat",
+        denyButtonColor: "gray",
+        denyButtonText: "Sugestões? Fale conosco!",
+      }).then((result) => {
+        if (result.isDenied) {
+          window.open("https://docs.google.com/forms/d/e/1FAIpQLSdYYUk-ig9K9RaysWPJdkZcM4WpigLxbou08-5JH8zPdVBjCQ/viewform", '_blank');
+        } 
+      })
+      
+    }, 2000)
+  } */
+
+ 
+
   const handleAlert = () => {
     Swal.fire({
       title: "Olá, obrigada por testar!",
@@ -76,6 +106,8 @@ const Chatbot = () => {
       chatLogRef.current.scrollTop = chatLogRef.current.scrollHeight;
     }
   }, [chatLog]);
+
+
 
   return (
     <div className="main-chat">
