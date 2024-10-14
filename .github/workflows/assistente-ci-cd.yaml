@@ -1,4 +1,4 @@
-name: Assistente CI-CD Workflow
+name: Assistente CICD Workflow
 
 on:
   push:
