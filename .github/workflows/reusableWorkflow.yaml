@@ -10,7 +10,7 @@ on:
 jobs:
   build-and-push:
     name: Build and Push Docker Images
-    runs-on: self-hosted
+    runs-on: ${{ inputs.environment == 'Production' && 'self-hosted, Production' || 'self-hosted, DEV' }}
     steps:
       - name: Checkout Branch
         uses: actions/checkout@v3
@@ -42,7 +42,7 @@ jobs:
   deploy:
     name: Deploy to ${{ inputs.environment }}
     needs: build-and-push
-    runs-on: self-hosted
+    runs-on: ${{ inputs.environment == 'prod' && 'self-hosted, prod' || 'self-hosted, dev' }}
     steps:
       - name: Checkout Source
         uses: actions/checkout@v3
