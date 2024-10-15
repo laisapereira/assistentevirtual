@@ -1,0 +1,68 @@
+
+services:
+  backend:
+    container_name: backend_c
+    image: aceleraprojetosfjs/assistentevirtual-backend:latest
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "9000:9000"
+    env_file:
+      - ./.env
+    volumes:
+      - ./backend:/backend
+      - /backend/node_modules
+      - ./backend/documents:/backend/documents
+      - /home/assistente/consultas-jo:/backend/src/services/processors/logs
+    environment:
+      - NODE_ENV=development
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - CHROMA_DB_URL=http://chromadb:8000
+    depends_on:
+      - chromadb
+    networks:
+      - app-network
+      
+
+  frontend:
+    container_name: frontend_c
+    image: aceleraprojetosfjs/assistentevirtual-frontend:latest
+    build:
+      context: ./frontend 
+      args:
+        REACT_APP_API_URL: ${REACT_APP_API_URL}
+        REACT_APP_FORMS: ${REACT_APP_FORMS}
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    env_file:
+      - ./.env
+    volumes:
+      - ./frontend/.env:/usr/share/nginx/html/.env
+    networks:
+      - app-network
+
+  chromadb:
+    image: chromadb/chroma:latest
+    ports:
+      - "8000:8000"
+    environment:
+      - CHROMA_HOST_ADDR=0.0.0.0
+      - CHROMA_HOST_PORT=8000
+      - CHROMA_WORKERS=1
+      - CHROMA_LOG_CONFIG=chromadb/log_config.yml
+      - CHROMA_TIMEOUT_KEEP_ALIVE=30
+    volumes:
+      - chroma_data:/db_path
+    networks:
+      - app-network
+
+volumes:
+  chroma_data:
+
+networks:
+  app-network:
+    driver: bridge
