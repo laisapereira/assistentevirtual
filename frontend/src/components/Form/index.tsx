@@ -23,7 +23,7 @@ const ChatForm: React.FC<ChatFormProps> = ({ onSubmit }) => {
         type="text"
         id="user-input"
         name="user-input"
-        placeholder="Digite aqui sua dúvida..."
+        placeholder="Digite sua dúvida..."
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
