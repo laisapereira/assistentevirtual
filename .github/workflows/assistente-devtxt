@@ -1,0 +1,15 @@
+name: Assistente CI/CD Workflow for Development
+
+on:
+  push:
+    branches:
+      - jo-dev
+  pull_request:
+    branches:
+      - jo-dev
+
+jobs:
+  build-and-deploy-dev:
+    uses: ./.github/workflows/reusableWorkflow.yaml  
+    with:
+      environment: "DEV" 
