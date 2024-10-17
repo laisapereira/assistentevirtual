@@ -10,7 +10,7 @@ on:
 jobs:
   build-and-push:
     name: Build and Push Docker Images
-    runs-on: ${{ inputs.environment == 'Production' && 'self-hosted, Production' || 'self-hosted, DEV' }}
+    runs-on: ${{ inputs.environment == 'Production' }} == 'Production' ? 'self-hosted, Production' : 'self-hosted, DEV'
     steps:
       - name: Checkout Branch
         uses: actions/checkout@v3
