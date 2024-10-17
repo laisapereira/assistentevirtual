@@ -8,14 +8,15 @@ on:
         type: string
 
 jobs:
-  build-and-push:
-    name: Build and Push Docker Images
-    runs-on: ${{ inputs.environment == 'Production' }} == 'Production' ? 'self-hosted, Production' : 'self-hosted, DEV'
+  build-and-push-production:
+    if: ${{ inputs.environment == 'Production' }}
+    name: Build and Push Docker Images (Production)
+    runs-on: self-hosted, Production
     steps:
       - name: Checkout Branch
         uses: actions/checkout@v3
         with:
-          ref: ${{ inputs.environment }}
+          ref: jo-prod
 
       - name: Set up Docker
         uses: docker/setup-buildx-action@v1
@@ -28,38 +29,45 @@ jobs:
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
       - name: Build Docker Image for Frontend
-        run: docker build --build-arg REACT_APP_API_URL=${{ vars.REACT_APP_API_URL }} -t aceleraprojetosfjs/assistentevirtual-frontend:${{ inputs.environment }} ./frontend
+        run: docker build --build-arg REACT_APP_API_URL=${{ vars.REACT_APP_API_URL }} -t aceleraprojetosfjs/assistentevirtual-frontend:Production ./frontend
 
       - name: Build Docker Image for Backend
-        run: docker build -t aceleraprojetosfjs/assistentevirtual-backend:${{ inputs.environment }} ./backend
+        run: docker build -t aceleraprojetosfjs/assistentevirtual-backend:Production ./backend
 
       - name: Push Docker Image for Frontend
-        run: docker push aceleraprojetosfjs/assistentevirtual-frontend:${{ inputs.environment }}
+        run: docker push aceleraprojetosfjs/assistentevirtual-frontend:Production
 
       - name: Push Docker Image for Backend
-        run: docker push aceleraprojetosfjs/assistentevirtual-backend:${{ inputs.environment }}
+        run: docker push aceleraprojetosfjs/assistentevirtual-backend:Production
 
-  deploy:
-    name: Deploy to ${{ inputs.environment }}
-    needs: build-and-push
-    runs-on: ${{ inputs.environment == 'prod' && 'self-hosted, prod' || 'self-hosted, dev' }}
+  build-and-push-development:
+    if: ${{ inputs.environment == 'DEV' }}
+    name: Build and Push Docker Images (Development)
+    runs-on: self-hosted, DEV
     steps:
-      - name: Checkout Source
+      - name: Checkout Branch
         uses: actions/checkout@v3
+        with:
+          ref: jo-dev
 
-      - name: Re-create .env file
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v1
+
+      - name: Create env file
         run: |
           echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" > .env
 
       - name: Login to DockerHub
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
-      - name: Pull Docker Images
-        run: |
-          docker pull aceleraprojetosfjs/assistentevirtual-frontend:${{ inputs.environment }}
-          docker pull aceleraprojetosfjs/assistentevirtual-backend:${{ inputs.environment }}
+      - name: Build Docker Image for Frontend
+        run: docker build --build-arg REACT_APP_API_URL=${{ vars.REACT_APP_API_URL }} -t aceleraprojetosfjs/assistentevirtual-frontend:DEV ./frontend
 
-      - name: Deploy using Docker Compose
-        run: |
-          docker-compose down
-          REACT_APP_API_URL=${{ vars.REACT_APP_API_URL }} docker-compose up --build -d
+      - name: Build Docker Image for Backend
+        run: docker build -t aceleraprojetosfjs/assistentevirtual-backend:DEV ./backend
+
+      - name: Push Docker Image for Frontend
+        run: docker push aceleraprojetosfjs/assistentevirtual-frontend:DEV
+
+      - name: Push Docker Image for Backend
+        run: docker push aceleraprojetosfjs/assistentevirtual-backend:DEV
