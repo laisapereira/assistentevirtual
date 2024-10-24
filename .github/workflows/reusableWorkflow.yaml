@@ -12,12 +12,12 @@ jobs:
     name: Build and Push Docker Images
     runs-on: 
       - self-hosted
-      - ${{ inputs.environment == 'Production' && 'Production' || 'DEV' }}  # Ajustado para separar o ambiente
+      - ${{ inputs.environment == 'Production' && 'Production' || 'DEV' }}  
     steps:
       - name: Checkout Branch
         uses: actions/checkout@v3
         with:
-          ref: ${{ inputs.environment == 'Production' && 'jo-prod' || 'jo-dev' }}  # Define a branch correta
+          ref: ${{ inputs.environment == 'Production' && 'jo-prod' || 'jo-dev' }}  
 
       - name: Set up Docker
         uses: docker/setup-buildx-action@v1
