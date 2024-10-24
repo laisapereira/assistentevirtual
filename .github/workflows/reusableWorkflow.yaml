@@ -10,13 +10,14 @@ on:
 jobs:
   build-and-push:
     name: Build and Push Docker Images
-    runs-on: ${{ inputs.environment == 'Production' && 'self-hosted' }}
-    if: ${{ inputs.environment == 'Production' }}
+    runs-on: 
+      - self-hosted
+      - ${{ inputs.environment == 'Production' && 'Production' || 'DEV' }}  # Ajustado para separar o ambiente
     steps:
       - name: Checkout Branch
         uses: actions/checkout@v3
         with:
-          ref: jo-prod
+          ref: ${{ inputs.environment == 'Production' && 'jo-prod' || 'jo-dev' }}  # Define a branch correta
 
       - name: Set up Docker
         uses: docker/setup-buildx-action@v1
@@ -43,8 +44,9 @@ jobs:
   deploy:
     name: Deploy to ${{ inputs.environment }}
     needs: build-and-push
-    runs-on: ${{ inputs.environment == 'Production' && 'self-hosted' }}
-    if: ${{ inputs.environment == 'Production' }}
+    runs-on: 
+      - self-hosted
+      - ${{ inputs.environment == 'Production' && 'prod' || 'dev' }}
     steps:
       - name: Checkout Source
         uses: actions/checkout@v3
