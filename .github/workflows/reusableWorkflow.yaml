@@ -6,7 +6,7 @@ on:
       environment:
         required: true
         type: string
-        
+
 
 jobs:
   build-and-push:
@@ -17,7 +17,7 @@ jobs:
       - name: Checkout Branch
         uses: actions/checkout@v3
         with:
-          ref: ${{ inputs.environment }}
+          ref: jo-prod
 
       - name: Set up Docker
         uses: docker/setup-buildx-action@v1
