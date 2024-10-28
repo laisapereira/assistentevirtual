@@ -25,7 +25,7 @@ jobs:
 
       - name: Create env file
         run: |
-          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" > .env
+          echo "OPENAI_API_KEY=${{ vars.OPENAI_API_KEY }}" > .env
 
       - name: Login to DockerHub
         run: echo ${{ vars.DOCKER_PASSWORD }} | docker login -u ${{ vars.DOCKER_USERNAME }} --password-stdin
@@ -54,7 +54,7 @@ jobs:
 
       - name: Re-create .env file
         run: |
-          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" > .env
+          echo "OPENAI_API_KEY=${{ vars.OPENAI_API_KEY }}" > .env
 
       - name: Login to DockerHub
         run: echo ${{ vars.DOCKER_PASSWORD }} | docker login -u ${{ vars.DOCKER_USERNAME }} --password-stdin
