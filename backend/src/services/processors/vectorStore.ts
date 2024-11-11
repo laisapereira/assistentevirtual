@@ -15,7 +15,6 @@ export const similarChunks = async (userQuery: string): Promise<string> => {
     }),
   });
 
-  
   console.log(`Querying for: ${userQuery}`);
   const results = await collection.query({
     queryTexts: [userQuery],
