@@ -1,7 +1,7 @@
 
 services:
   backend:
-    container_name: backend_cc
+    container_name: backend_c
     image: aceleraprojetosfjs/assistentevirtual-backend:latest
     build:
       context: ./backend
