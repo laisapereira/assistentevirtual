@@ -82,9 +82,10 @@ const Chatbot = () => {
   }, [chatLog]);
 
   useEffect(() => {
-    setAlertPopup(!alertPopup);
+    setAlertPopup(true);
+    console.log("oi");
     handleAlert();
-  }, []);
+  }, [alertPopup]);
 
   return (
     <div className="main-chat">
