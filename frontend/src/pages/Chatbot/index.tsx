@@ -1,12 +1,12 @@
-import { useState, useEffect, useRef } from "react";
-import ChatForm from "../../components/Form/index.tsx";
-import { sendMessage } from "../../components/App/apiFunctions.ts";
-
-import Swal from "sweetalert2";
-
-import "./chatbot.css";
+import { useEffect, useRef, useState } from "react";
 import React from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+
+import { sendMessage } from "../../components/App/apiFunctions.ts";
+import ChatForm from "../../components/Form/index.tsx";
+
+import "./chatbot.css";
 
 const logoChat = require("../../public/logo-chat.svg").default;
 
@@ -16,12 +16,12 @@ const iconUser = require("../../public/generic-user.svg").default;
 import { ArrowLeft, DotsThreeVertical, GearFine } from "@phosphor-icons/react";
 import { ChatEntry } from "../../types/types.ts";
 
-const Chatbot = () => {
+export function Chatbot() {
+ 
   const [chatLog, setChatLog] = useState<ChatEntry[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [popUpAlert, setPopupAlert] = useState<boolean | null>(false)
   const chatLogRef = useRef<HTMLDivElement>(null);
-
-  const [alertPopup, setAlertPopup] = useState(true);
 
   const handleSubmit = async (userMessage: string) => {
     setChatLog((prevChatLog: ChatEntry[]) => [
@@ -55,6 +55,29 @@ const Chatbot = () => {
     }
   };
 
+const windowAlert = () => {
+    setTimeout(() => {
+      Swal.fire({
+        title: "Olá, obrigada por testar!",
+        text: "Esta é uma versão de demonstração da Jô. Em breve teremos mais funcionalidades.",
+        icon: "info",
+        showCancelButton: false,
+        showDenyButton:true,
+        confirmButtonColor: "#6A1B44",
+        confirmButtonText: "Voltar ao chat",
+        denyButtonColor: "gray",
+        denyButtonText: "Sugestões? Fale conosco!",
+      }).then((result) => {
+        if (result.isDenied) {
+          window.open("https://docs.google.com/forms/d/e/1FAIpQLSdYYUk-ig9K9RaysWPJdkZcM4WpigLxbou08-5JH8zPdVBjCQ/viewform", '_blank');
+        } 
+      })
+      
+    }, 2000)
+  }
+
+
+
   const handleAlert = () => {
     Swal.fire({
       title: "Olá, obrigada por testar!",
@@ -68,24 +91,15 @@ const Chatbot = () => {
       denyButtonText: "Sugestões? Fale conosco!",
     }).then((result) => {
       if (result.isDenied) {
-        window.open(
-          "https://docs.google.com/forms/d/e/1FAIpQLSdYYUk-ig9K9RaysWPJdkZcM4WpigLxbou08-5JH8zPdVBjCQ/viewform",
-          "_blank"
-        );
-      }
-    });
-  };
+        window.open("https://docs.google.com/forms/d/e/1FAIpQLSdYYUk-ig9K9RaysWPJdkZcM4WpigLxbou08-5JH8zPdVBjCQ/viewform", '_blank');
+      } 
+    })
+  }
   useEffect(() => {
     if (chatLogRef.current) {
       chatLogRef.current.scrollTop = chatLogRef.current.scrollHeight;
     }
   }, [chatLog]);
-
-  useEffect(() => {
-    setAlertPopup(true);
-    console.log("oi");
-    handleAlert();
-  }, [alertPopup]);
 
   return (
     <div className="main-chat">
@@ -109,6 +123,7 @@ const Chatbot = () => {
               <GearFine size={40} color="white" />
             </div>
           </aside>
+
         </div>
       </aside>
 
@@ -155,7 +170,16 @@ const Chatbot = () => {
         <ChatForm onSubmit={handleSubmit} />
       </section>
     </div>
+
+        
   );
-};
+
+}
+  
+
+
+
+
+
 
 export default Chatbot;

@@ -61,3 +61,7 @@ jobs:
           docker-compose down
           REACT_APP_API_URL=${{ vars.REACT_APP_API_URL }} docker-compose up --build -d
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d93532e47d8033b59c51854124cc68aac3d3454e

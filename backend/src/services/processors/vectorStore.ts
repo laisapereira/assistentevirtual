@@ -27,4 +27,5 @@ export const similarChunks = async (userQuery: string): Promise<string> => {
   }
 
   return results.documents[0].join("\n");
+  
 };
