@@ -3,27 +3,13 @@
 @tailwind utilities;
 
 .form-submit {
-  @apply bg-main-gray flex items-center justify-center h-[15%] max-w-[100%];
-  position: relative; /* Torna o contêiner um contexto de posicionamento para o botão */
+  @apply bg-main-gray flex p-10  justify-center items-center h-[15%] max-w-[100%];
 }
 
-.input-wrapper button {
-  @apply absolute right-4 top-1/2 transform -translate-y-1/2 bg-black text-white px-6 py-3 rounded-[10px] shadow-md;
-  z-index: 10; /* Garante que o botão esteja acima do texto */
-  hover:bg-gray-900;
-}
-
-.input-wrapper textarea {
-  @apply h-auto flex-1 bg-transparent border-none outline-none rounded-[2rem] p-4 pr-20 text-2xl;
-  line-height: 1.5rem;
-  resize: none; /* Impede redimensionamento manual */
-  overflow-y: auto; /* Adiciona rolagem caso necessário */
-}
-
-.input-wrapper {
-  @apply relative w-[75%] flex items-center bg-main-white rounded-[2rem] shadow-sm shadow-black;
-}
-
+.form-submit button {
+  @apply bg-black text-white px-8 py-5 rounded-[29px] 
+  ml-[-9rem] w-[7rem] hover:bg-gray-900;
+}zz
 
 .form-submit input {
   @apply h-[90px] bg-main-white rounded-[2rem] w-[75%] p-8 shadow-sm shadow-black text-2xl;
