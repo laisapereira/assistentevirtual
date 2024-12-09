@@ -11,6 +11,14 @@
   ml-[-9rem] w-[7rem] hover:bg-gray-900;
 }
 
+.form-submit textarea {
+  @apply h-auto bg-main-white rounded-[2rem] w-[75%] p-8 shadow-sm shadow-black text-2xl;
+  line-height: 1.5rem;
+  max-height: 200px; /* Altura máxima do textarea */
+  overflow-y: auto; /* Permite rolagem vertical se o texto exceder o tamanho máximo */
+}
+
+
 .form-submit input {
   @apply h-[90px] bg-main-white rounded-[2rem] w-[75%] p-8 shadow-sm shadow-black text-2xl;
 }

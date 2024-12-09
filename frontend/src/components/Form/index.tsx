@@ -18,19 +18,19 @@ const ChatForm: React.FC<ChatFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}  className="form-submit">
-      <input
-        type="text"
+    <form onSubmit={handleSubmit} className="form-submit">
+      <textarea
         id="user-input"
         name="user-input"
         placeholder="Digite sua dúvida..."
         value={input}
         onChange={(e) => setInput(e.target.value)}
+        rows={1} // Defina o número mínimo de linhas visíveis
+       className="resize-none" // Desabilite o redimensionamento manual, se necessário
       />
-      <button type="submit">
-        Enviar
-      </button>
-    </form>
+
+  <button type="submit">Enviar</button>
+</form>
   );
 };
 
