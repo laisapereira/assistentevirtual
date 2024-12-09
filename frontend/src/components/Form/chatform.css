@@ -3,19 +3,22 @@
 @tailwind utilities;
 
 .form-submit {
-  @apply bg-main-gray flex p-10  justify-center items-center h-[15%] max-w-[100%];
+  @apply relative bg-main-gray flex justify-center items-center h-[15%] max-w-[100%];
 }
 
 .form-submit button {
-  @apply bg-black text-white px-8 py-5 rounded-[29px] 
-  ml-[-9rem] w-[7rem] hover:bg-gray-900;
+  @apply bg-black text-white px-4 py-2 rounded-[10px] absolute top-1/2 right-4 transform -translate-y-1/2;
+  z-index: 10; /* Garante que o botão fique acima do textarea */
+  hover:bg-gray-900;
 }
 
 .form-submit textarea {
-  @apply h-auto bg-main-white rounded-[2rem] w-[75%] p-8 shadow-sm shadow-black text-2xl;
+  @apply h-auto bg-main-white rounded-[2rem] w-[75%] p-8 pr-24 shadow-sm shadow-black text-2xl;
   line-height: 1.5rem;
-  max-height: 200px; /* Altura máxima do textarea */
-  overflow-y: auto; /* Permite rolagem vertical se o texto exceder o tamanho máximo */
+  max-height: 200px;
+  overflow-y: auto;
+  resize: none;
+  position: relative;
 }
 
 
