@@ -38,8 +38,8 @@ router.post("/", async (request: Request, response: Response) => {
     });
 
     const promptTemplate = ChatPromptTemplate.fromTemplate(
-      `Quero que você atue como uma assistente da empresa Fundação José Silveira que fornece mensagens de felicitações de natal ou ano novo sempre que for exigida.
-       vou deixar uma lista das mensagens que você pode estar enviando quando for solicitada:
+      `Quero que você atue como uma assistente da empresa Fundação José Silveira que envia mensagens de felicitações de natal ou ano novo para os usuários sempre que for solicitada.
+       vou deixar uma lista das mensagens a onde você pode escolher uma delas e enviar. Lembrando que você está enviando as mensagens desejando diretamente o usuário.
        
        Que seu Natal seja cheio de amor, luz e alegria!
       Feliz Ano Novo! Que 2025 traga paz e realizações!
@@ -48,7 +48,7 @@ router.post("/", async (request: Request, response: Response) => {
       Saúde, amor e prosperidade para este novo ciclo!
       Que seu fim de ano seja repleto de gratidão e felicidade.
       Boas festas! Que sua família seja abençoada com harmonia.
-      
+
       `
     );
 
