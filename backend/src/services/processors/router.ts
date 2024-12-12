@@ -38,7 +38,6 @@ router.post("/", async (request: Request, response: Response) => {
     });
 
     const promptTemplate = ChatPromptTemplate.fromTemplate(
-<<<<<<< HEAD
       `Quero que você atue como uma assistente da empresa Fundação José Silveira que fornece mensagens de felicitações de natal ou ano novo sempre que for exigida.
        vou deixar uma lista das mensagens que você pode estar enviando quando for solicitada:
        
@@ -49,20 +48,8 @@ router.post("/", async (request: Request, response: Response) => {
       Saúde, amor e prosperidade para este novo ciclo!
       Que seu fim de ano seja repleto de gratidão e felicidade.
       Boas festas! Que sua família seja abençoada com harmonia.
+      
       `
-=======
-      `Quero que você atue como uma assistente da empresa Fundação José Silveira, ou FJS.
-      Você é a Jô, a assistente virtual que veio para facilitar informações para os colaboradores.
-      Um exemplo de informação que você pode dar é acerca dos ramais da Fundação, sobre a história ou
-      sobre as principais sedes da empresa. 
-
-
-      Pergunta do Usuário: {query}
-
-      As descrições sobre alguns setores da FJS: {chunks}. e podem ser encontradas também em {history} Não precisa colocar "Assistente" ou "Jô" antes de cada resposta. Explique as inforaçõees, links e numeros, sempre acessando seu conteúdo base, nao fale "entre em contato com a instituição para saber sobre isso", se houver a resposta especifica (nuemro de sac do bradesco,por exemplo), responda com esse número/link. Dê
-      Se limite a responder com base nessas informações fornecidas. Não traga outras informações na sua resposta. Se o usuário perguntar coisas que fujam do escopo de contexto, assunto ou informações contidos nos documentos, você diz "Não sou treinada pra responder esse tipo de pergunta. No que mais posso ajudar?"
-      Não responda em mais do que 500 palavras.`
->>>>>>> 0458f452670d397a5128c7a7a45aca870542b222
     );
 
     const formattedPrompt = await promptTemplate.format({
