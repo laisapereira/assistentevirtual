@@ -6,7 +6,11 @@ COPY package.json .
 
 RUN apk add --no-cache git
 
-RUN npm install
+RUN npm install -g npm@latest
+
+RUN npm uninstall react-scripts
+
+RUN npm install -D react-scripts
 
 ARG REACT_APP_API_URL
 

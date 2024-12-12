@@ -1,12 +1,12 @@
-import { useState, useEffect, useRef } from "react";
-import ChatForm from "../../components/Form/index.tsx";
-import { sendMessage } from "../../components/App/apiFunctions.ts";
-
-import Swal from "sweetalert2";
-
-import "./chatbot.css";
+import { useEffect, useRef, useState } from "react";
 import React from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+
+import { sendMessage } from "../../components/App/apiFunctions.ts";
+import ChatForm from "../../components/Form/index.tsx";
+
+import "./chatbot.css";
 
 const logoChat = require("../../public/logo-chat.svg").default;
 
@@ -22,11 +22,6 @@ export function Chatbot() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [popUpAlert, setPopupAlert] = useState<boolean | null>(false)
   const chatLogRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setPopupAlert(!popUpAlert)
-  }, [popUpAlert])
-
 
   const handleSubmit = async (userMessage: string) => {
     setChatLog((prevChatLog: ChatEntry[]) => [
@@ -44,7 +39,6 @@ export function Chatbot() {
     setIsProcessing(true);
     const botResponse = await sendMessage(userMessage);
     setIsProcessing(false);
-    
 
     const words = botResponse.split(" ");
 
@@ -87,10 +81,10 @@ const windowAlert = () => {
   const handleAlert = () => {
     Swal.fire({
       title: "Olá, obrigada por testar!",
-      text: "Esta é uma versão de demonstração da Jô. Em breve teremos mais funcionalidades.",
+      text: "Esta é uma versão de demonstração da Jô, ela ainda está em aprendizado e pode te responder informações equivocadas ou não tão precisas. Em breve mais melhorias e funcionalidades.",
       icon: "info",
       showCancelButton: false,
-      showDenyButton:true,
+      showDenyButton: true,
       confirmButtonColor: "#6A1B44",
       confirmButtonText: "Voltar ao chat",
       denyButtonColor: "gray",
@@ -101,15 +95,11 @@ const windowAlert = () => {
       } 
     })
   }
-
-
-
   useEffect(() => {
     if (chatLogRef.current) {
       chatLogRef.current.scrollTop = chatLogRef.current.scrollHeight;
     }
   }, [chatLog]);
-
 
   return (
     <div className="main-chat">
