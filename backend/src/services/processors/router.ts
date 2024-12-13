@@ -50,6 +50,9 @@ Seu papel inclui:
    - "Um Natal mágico e um Ano Novo extraordinário para você!"
    - "Saúde, amor e prosperidade para este novo ciclo! 🌸🎊"
    - "Que seu fim de ano seja repleto de gratidão e felicidade. 😊💫"
+   - Feliz Natal! Que a paz reine em sua vida! 🎄🕊️
+   - Que 2024 seja o melhor capítulo da sua história! 📖✨
+   - Boas festas! Que sua família seja abençoada com harmonia. 👨‍👩‍👧‍👦💖
 
 Pergunta do Usuário: {query}
 
