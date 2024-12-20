@@ -3,29 +3,21 @@
 @tailwind utilities;
 
 .form-submit {
-  @apply bg-main-gray flex p-10 justify-center items-center h-[15%] max-w-[100%];
-  position: relative; /* Garante controle de posicionamento */
+  @apply bg-main-gray flex p-10  justify-center items-center h-[15%] max-w-[100%];
 }
 
 .form-submit button {
-  @apply bg-black text-white px-8 py-5 rounded-[29px] w-[7rem] hover:bg-gray-900;
-  position: absolute; /* Permite posicionamento absoluto */
-  right: 2%; /* Alinha à direita do container */
-  bottom: 10px; /* Adiciona espaçamento do fundo */
+  @apply bg-black text-white px-8 py-5 rounded-[29px] 
+  ml-[-9rem] w-[7rem] hover:bg-gray-900;
 }
 
-.form-submit input {
-  @apply h-auto bg-main-white rounded-[2rem] w-[75%] p-8 shadow-sm shadow-black text-2xl;
-  resize: none; /* Impede redimensionamento manual */
-  overflow-y: auto; /* Adiciona rolagem automática */
-  min-height: 60px; /* Altura mínima */
+.form-submit textarea {
+  @apply h-auto bg-main-white rounded-[2rem] w-[75%] p-8 shadow-sm shadow-black text-2xl resize-none;
+  line-height: 1.5;
+  overflow-y: auto; /* Permite rolagem vertical se necessário */
+  max-height: 150px; /* Define um limite máximo para altura */
 }
 
-#user-input {
-  word-break: break-word; /* Quebra palavras longas */
-  line-height: 1.5rem; /* Linha consistente */
-  white-space: pre-wrap; /* Mantém formatação de espaços */
-}
 
 .title-user::before {
   content: "SUA PERGUNTA: ";
