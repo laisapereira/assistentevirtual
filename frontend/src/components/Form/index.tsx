@@ -9,6 +9,13 @@ interface ChatFormProps {
 const ChatForm: React.FC<ChatFormProps> = ({ onSubmit }) => {
   const [input, setInput] = useState("");
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputField = e.target as HTMLTextAreaElement;
+    inputField.style.height = "auto"; // Reseta a altura para ajustar novamente
+    inputField.style.height = `${inputField.scrollHeight}px`; // Ajusta a altura dinamicamente
+    setInput(inputField.value); // Atualiza o estado com o valor digitado
+  };
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (input.trim() !== "") {
@@ -18,18 +25,17 @@ const ChatForm: React.FC<ChatFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}  className="form-submit">
-      <input
-        type="text"
+    <form onSubmit={handleSubmit} className="form-submit">
+      <textarea
         id="user-input"
         name="user-input"
         placeholder="Digite sua dúvida..."
         value={input}
-        onChange={(e) => setInput(e.target.value)}
+        onChange={handleInputChange}
+        rows={1} // Altura inicial do campo de texto
+        style={{ overflow: "hidden", resize: "none" }} // Evita redimensionamento manual
       />
-      <button type="submit">
-        Enviar
-      </button>
+      <button type="submit">Enviar</button>
     </form>
   );
 };
