@@ -16,10 +16,10 @@
 }
 
 .form-submit textarea {
-  @apply h-[90px] bg-main-white rounded-[2rem] w-[75%] p-8 shadow-sm shadow-black text-2xl resize-none;
+  @apply h-[90px] bg-main-white rounded-[2rem] w-[75%] p-8 shadow-sm shadow-black text-2xl resize-none max-w-[80%];
   line-height: 1.5;
-  overflow-y: auto; /* Permite rolagem vertical se necessário */
-  max-height: 150px; /* Define um limite máximo para altura */
+  overflow-y: auto; 
+  max-height: 150px; 
 }
 
 .title-user::before {
