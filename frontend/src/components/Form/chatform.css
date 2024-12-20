@@ -11,13 +11,16 @@
   ml-[-9rem] w-[7rem] hover:bg-gray-900;
 }
 
+.form-submit input {
+  @apply h-[90px] bg-main-white rounded-[2rem] w-[75%] p-8 shadow-sm shadow-black text-2xl;
+}
+
 .form-submit textarea {
-  @apply h-auto bg-main-white rounded-[2rem] w-[75%] p-8 shadow-sm shadow-black text-2xl resize-none;
+  @apply h-[90px] bg-main-white rounded-[2rem] w-[75%] p-8 shadow-sm shadow-black text-2xl resize-none;
   line-height: 1.5;
   overflow-y: auto; /* Permite rolagem vertical se necessário */
   max-height: 150px; /* Define um limite máximo para altura */
 }
-
 
 .title-user::before {
   content: "SUA PERGUNTA: ";
