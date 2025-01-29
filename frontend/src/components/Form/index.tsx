@@ -15,14 +15,20 @@ const ChatForm: React.FC<ChatFormProps> = ({ onSubmit, onAudioRecorded }) => {
 
   // Iniciar a gravação de áudio
   const startRecording = async () => {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      console.error("O navegador não suporta captura de áudio.");
+      alert("Seu navegador não suporta a gravação de áudio.");
+      return;
+    }
+  
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       mediaRecorder.current = new MediaRecorder(stream);
-
+  
       mediaRecorder.current.ondataavailable = (event) => {
         audioChunks.current.push(event.data);
       };
-
+  
       mediaRecorder.current.onstop = () => {
         const audioBlob = new Blob(audioChunks.current, { type: "audio/webm" });
         audioChunks.current = []; // Resetar os chunks
@@ -30,13 +36,15 @@ const ChatForm: React.FC<ChatFormProps> = ({ onSubmit, onAudioRecorded }) => {
           onAudioRecorded(audioBlob); // Enviar o áudio para processamento
         }
       };
-
+  
       mediaRecorder.current.start();
       setRecording(true);
     } catch (error) {
       console.error("Erro ao acessar o microfone:", error);
+      alert("Não foi possível acessar o microfone. Verifique as permissões do navegador.");
     }
   };
+  
 
   // Parar a gravação de áudio
   const stopRecording = () => {
