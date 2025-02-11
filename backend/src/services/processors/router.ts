@@ -85,9 +85,12 @@ router.post("/fine-tune", async (req: Request, res: Response) => {
   try {
     console.log("Iniciando envio do dataset para fine-tuning...");
 
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+
     const trainingFile = await openai.files.create({
-      file: fs.createReadStream("./ramais_fjs_dataset.jsonl"),
-      purpose: "fine-tune",
+  file: fs.createReadStream(path.join(__dirname, "ramais_fjs_dataset.jsonl")),
+  purpose: "fine-tune",
     });
 
     console.log("Arquivo enviado com sucesso! ID do arquivo:", trainingFile.id);
