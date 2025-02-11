@@ -83,22 +83,30 @@ router.post("/", async (request: Request, response: Response) => {
 // Endpoint para iniciar o fine-tuning
 router.post("/fine-tune", async (req: Request, res: Response) => {
   try {
+    console.log("Iniciando envio do dataset para fine-tuning...");
+
     const trainingFile = await openai.files.create({
       file: fs.createReadStream("./ramais_fjs_dataset.jsonl"),
       purpose: "fine-tune",
     });
+
+    console.log("Arquivo enviado com sucesso! ID do arquivo:", trainingFile.id);
 
     const fineTune = await openai.fineTunes.create({
       training_file: trainingFile.id,
       model: "gpt-4o",
     });
 
+    console.log("Fine-tuning iniciado! ID:", fineTune.id);
+
     res.json({ message: "Fine-tuning iniciado", fineTuneId: fineTune.id });
-  } catch (error) {
-    console.error("Erro ao iniciar fine-tuning:", error.message);
-    res.status(500).send("Erro ao iniciar fine-tuning.");
+
+  } catch (error: any) {
+    console.error("Erro ao iniciar fine-tuning:", error);
+    res.status(500).json({ error: error.message, details: error });
   }
 });
+
 
 // Endpoint para verificar status do fine-tuning
 router.get("/fine-tune/status/:id", async (req: Request, res: Response) => {
