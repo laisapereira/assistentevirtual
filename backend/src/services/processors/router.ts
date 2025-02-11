@@ -10,7 +10,7 @@ import OpenAI from "openai";
 
 dotenv.config();
 
-console.log("API Key OpenAI:", process.env.OPENAI_API_KEY);
+
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 let totalInteractions = 0;
@@ -24,6 +24,8 @@ const __dirname = path.dirname(__filename);
 const FINE_TUNED_MODEL = process.env.FINE_TUNED_MODEL || "gpt-4o-2024-05-13";
 
 router.post("/", async (request: Request, response: Response) => {
+
+  console.log("API Key OpenAI:", process.env.OPENAI_API_KEY);
   const { chats } = request.body;
   if (!chats) {
     return response.status(400).send("O parâmetro 'chats' é necessário.");
@@ -85,6 +87,8 @@ router.post("/", async (request: Request, response: Response) => {
 // Endpoint para iniciar o fine-tuning
 router.post("/fine-tune", async (req: Request, res: Response) => {
   try {
+
+    console.log("API Key OpenAI:", process.env.OPENAI_API_KEY);
     console.log("Iniciando envio do dataset para fine-tuning...");
 
     const __filename = fileURLToPath(import.meta.url);
