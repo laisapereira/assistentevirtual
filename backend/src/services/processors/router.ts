@@ -10,6 +10,8 @@ import OpenAI from "openai";
 
 dotenv.config();
 
+console.log("API Key OpenAI:", process.env.OPENAI_API_KEY);
+
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 let totalInteractions = 0;
 let resolvedInteractions = 0;
